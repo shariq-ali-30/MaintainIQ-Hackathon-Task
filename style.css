@@ -1,0 +1,200 @@
+:root {
+    --primary-color: #16A34A;
+
+    --body-bg: #F8FAF9;
+    --navbar-bg: #FFFFFF;
+    --reset-demo-data-bg: #FFFFFF;
+    --reset-demo-data-bg-hover: #F9FAFB;
+    --add-new-task-btn-bg: #16A34A;
+    --add-new-task-btn-bg-hover: #179746;
+    --total-assets-icon-box-bg: #ECFDF5;
+    --active-issues-icon-box-bg: #FFFBEB;
+
+    --primary-text: #111827;
+    --secondary-text: #6B7280;
+    --reset-demo-data-btn-text: #374151;
+    --add-new-task-btn-text: #FFFFFF;
+    --total-assets-icon-box-text: #16A34A;
+    --active-issues-icon-box-text: #D97706;
+
+    --navbar-border: 1px solid #E5E7EB;
+    --reset-demo-data-btn-border: 1px solid #D1D5DB;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    background-color: var(--body-bg);
+}
+
+.container {
+    max-width: 1450px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+/* Navbar */
+
+.navbar {
+    background-color: var(--navbar-bg);
+    border-bottom: var(--navbar-border);
+    height: 70px;
+}
+
+.navbar .container {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar .logo i {
+    font-size: 28px;
+    color: var(--primary-color);
+}
+
+.navbar .logo h2 {
+    color: var(--primary-text);
+    font-size: 28px;
+}
+
+.navbar .logo h2 span {
+    color: var(--primary-color);
+}
+
+.navbar .reset-demo-data-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--reset-demo-data-bg);
+    border: var(--reset-demo-data-btn-border);
+    color: var(--reset-demo-data-btn-text);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.navbar .reset-demo-data-btn:hover {
+    background-color: var(--reset-demo-data-bg-hover);
+}
+
+.navbar .reset-demo-data-btn i {
+    transform: scaleX(-1);
+}
+
+section {
+    margin-top: 20px;
+}
+
+/* Title Section */
+
+.title-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title-section .dashboard-title {
+    color: var(--primary-text);
+}
+
+.title-section .dashboard-title p {
+    font-size: 13px;
+    margin-top: 2px;
+    color: var(--secondary-text);
+}
+
+.title-section .add-new-asset-btn {
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    color: var(--add-new-task-btn-text);
+    border: none;
+    background-color: var(--add-new-task-btn-bg);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.title-section .add-new-asset-btn:hover {
+    background-color: var(--add-new-task-btn-bg-hover);
+}
+
+.title-section .add-new-asset-btn i {
+    font-size: 16px;
+}
+
+/* KPI Cards SSection */
+
+.KPI-cards-section {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.KPI-cards-section .KPI-card {
+    flex-grow: 1;
+    background-color: var(--navbar-bg);
+    border: var(--navbar-border);
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-radius: 10px;
+}
+
+.KPI-cards-section .KPI-card .icon-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    width: 70px;
+    height: 70px;
+    border-radius: 8px;
+}
+
+.total-assets-icon-box {
+    background-color: var(--total-assets-icon-box-bg);
+    color: var(--total-assets-icon-box-text);
+}
+
+.active-issues-icon-box {
+    background-color: var(--active-issues-icon-box-bg);
+    color: var(--active-issues-icon-box-text);
+}
+
+
+
+.KPI-cards-section .KPI-card .KPI-card-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 6px;
+}
+
+.KPI-cards-section .KPI-card .KPI-card-details .title {
+    font-size: 14px;
+    text-transform: capitalize;
+    font-weight: 500;
+    color: var(--secondary-text);
+}
+
+.KPI-cards-section .KPI-card .KPI-card-details .value {
+    font-size: 36px;
+}
