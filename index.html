@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/phosphor-icons@1.4.2/src/css/icons.min.css">
     <link rel="stylesheet" href="style.css">
     <title>MaintainIQ</title>
 </head>
@@ -21,7 +22,7 @@
                 <h2>Maintain<span>IQ</span></h2>
             </div>
             <button class="reset-demo-data-btn">
-                <i class="fa-solid fa-arrow-rotate-left"></i>
+                <i class="ph ph-arrow-clockwise"></i>
                 Reset Demo Data
             </button>
         </div>
@@ -40,39 +41,63 @@
             </button>
         </section>
 
-        <section class="KPI-cards-section">
+        <section class="stats-cards-section">
 
-            <div class="KPI-card">
+            <div class="stats-card">
                 <div class="icon-box total-assets-icon-box">
-                    <i class="fa-solid fa-cube"></i>
+                    <i class="ph ph-cube"></i>
                 </div>
-                <div class="KPI-card-details">
+                <div class="stats-card-details">
                     <p class="title">Total Assets</p>
-                    <h2 class="value">5</h2>
+                    <h2 class="number">5</h2>
+                </div>
+                <div class="icon-circle total-assets-icon-box">
+                    <i class="ph ph-trend-up"></i>
                 </div>
             </div>
             
-            <div class="KPI-card">
+            <div class="stats-card">
                 <div class="icon-box active-issues-icon-box">
-                    <i class="fa-solid fa-cube"></i>
+                    <i class="ph ph-warning"></i>
                 </div>
-                <div class="KPI-card-details">
+                <div class="stats-card-details">
                     <p class="title">Total Assets</p>
-                    <h2 class="value">5</h2>
+                    <h2 class="number">1</h2>
+                </div>
+                <div class="icon-circle active-issues-icon-box">
+                    <i class="ph ph-trend-up"></i>
                 </div>
             </div>
             
-            <div class="KPI-card">
+            <div class="stats-card">
                 <div class="icon-box under-maintainance-icon-box">
-                    <i class="fa-solid fa-cube"></i>
+                    <i class="ph ph-wrench"></i>
                 </div>
-                <div class="KPI-card-details">
+                <div class="stats-card-details">
                     <p class="title">Total Assets</p>
-                    <h2 class="value">5</h2>
+                    <h2 class="number">1</h2>
+                </div>
+                <div class="icon-circle under-maintainance-icon-box">
+                    <i class="ph ph-trend-up"></i>
                 </div>
             </div>
 
         </section>
+
+        <!-- <section class="search-and-filter-section">
+            <div class="input-box">
+                <i class="ph ph-magnifying-glass"></i>
+                <input type="text" placeholder="Search by name or code...">
+            </div>
+            <select class="status-filter">
+                <option value="operational">Operational</option>
+                <option value="issue reportes">Issue Reported</option>
+                <option value="under maintainance">Under Maintainance</option>
+            </select>
+            <select class="location-filter">
+
+            </select>
+        </section> -->
     </div>
 </body>
 

@@ -1,4 +1,4 @@
-:root {
+/* :root {
     --primary-color: #16A34A;
 
     --body-bg: #F8FAF9;
@@ -19,6 +19,166 @@
 
     --navbar-border: 1px solid #E5E7EB;
     --reset-demo-data-btn-border: 1px solid #D1D5DB;
+} */
+
+:root {
+
+    /* BODY */
+
+    --body-bg: #F7F9FC;
+    --body-text: #111827;
+    --body-text-secondary: #6B7280;
+
+    /* NAVBAR */
+
+    --navbar-bg: #FFFFFF;
+    --navbar-border: 1px solid #E8EDF3;
+    --navbar-shadow: 0 1px 3px rgba(16, 24, 40, .05);
+
+    /* LOGO */
+
+    --logo-primary: #16A34A;
+    --logo-text: #111827;
+
+    /* PAGE HEADINGS */
+
+    --page-title-color: #111827;
+    --page-subtitle-color: #6B7280;
+
+    /* GLOBAL CARDS */
+
+    --card-bg: #FFFFFF;
+    --card-border: 1px solid #E7ECF2;
+    --card-radius: 18px;
+    --card-shadow: 0 2px 12px rgba(15, 23, 42, .06);
+
+    --card-hover-bg: #FFFFFF;
+    --card-hover-border: 1px solid #D7DEE8;
+    --card-hover-shadow: 0 10px 24px rgba(15, 23, 42, .10);
+
+    /* STATS CARD */
+
+    --stats-card-bg: #FFFFFF;
+    --stats-card-title: #6B7280;
+    --stats-card-number: #111827;
+
+    /* ICON BOXES */
+
+    --asset-icon-box-bg: #EAF8F0;
+    --asset-icon-color: #16A34A;
+
+    --issue-icon-box-bg: #FFF7E6;
+    --issue-icon-color: #EAB308;
+
+    --maintenance-icon-box-bg: #FFF1EC;
+    --maintenance-icon-color: #F97316;
+
+    /* PRIMARY BUTTON */
+
+    --btn-primary-bg: #16A34A;
+    --btn-primary-color: #FFFFFF;
+    --btn-primary-border: 1px solid transparent;
+    --btn-primary-shadow: 0 4px 12px rgba(22, 163, 74, .25);
+
+    --btn-primary-hover-bg: #179345;
+    --btn-primary-hover-color: #FFFFFF;
+    --btn-primary-hover-border: 1px solid #15803D;
+    --btn-primary-hover-shadow: 0 8px 20px rgba(22, 163, 74, .30);
+
+    --btn-primary-active-bg: #178d42;
+    --btn-primary-active-border: 1px solid #166534;
+
+    /* SECONDARY BUTTON */
+
+    --btn-secondary-bg: #FFFFFF;
+    --btn-secondary-color: #374151;
+    --btn-secondary-border: 1px solid #E5E7EB;
+    --btn-secondary-shadow: 0 1px 3px rgba(0, 0, 0, .05);
+
+    --btn-secondary-hover-bg: #F8FAFC;
+    --btn-secondary-hover-border: 1px solid #D1D5DB;
+
+    /* SEARCH */
+
+    --search-bg: #FFFFFF;
+    --search-color: #111827;
+    --search-placeholder: #9CA3AF;
+    --search-border: 1px solid #E5E7EB;
+    --search-icon: #6B7280;
+
+    --search-hover-border: 1px solid #CBD5E1;
+    --search-focus-border: 1px solid #16A34A;
+    --search-focus-shadow: 0 0 0 4px rgba(22, 163, 74, .15);
+
+    /* SELECT */
+
+    --select-bg: #FFFFFF;
+    --select-color: #111827;
+    --select-placeholder: #6B7280;
+    --select-border: 1px solid #E5E7EB;
+    --select-arrow: #6B7280;
+
+    --select-hover-border: 1px solid #CBD5E1;
+    --select-focus-border: 1px solid #16A34A;
+
+    /* FILTER BUTTON */
+
+    --filter-btn-bg: #FFFFFF;
+    --filter-btn-color: #111827;
+    --filter-btn-icon: #374151;
+    --filter-btn-border: 1px solid #E5E7EB;
+
+    --filter-btn-hover-bg: #F8FAFC;
+    --filter-btn-hover-border: 1px solid #D1D5DB;
+
+    /* TABLE */
+
+    --table-bg: #FFFFFF;
+    --table-border: 1px solid #E8EDF3;
+    --table-shadow: 0 2px 12px rgba(15, 23, 42, .06);
+
+    --table-header-bg: #FFFFFF;
+    --table-header-color: #6B7280;
+    --table-header-border: 1px solid #E8EDF3;
+
+    --table-row-bg: #FFFFFF;
+    --table-row-hover-bg: #F9FAFB;
+    --table-row-border: 1px solid #EEF2F6;
+
+    --table-primary-text: #111827;
+    --table-secondary-text: #6B7280;
+
+    /* ASSET ICON */
+
+    --asset-table-icon-bg: #FFFFFF;
+    --asset-table-icon-border: 1px solid #E5E7EB;
+    --asset-table-icon-color: #374151;
+
+    /* STATUS */
+
+    --status-radius: 999px;
+
+    --status-operational-bg: #EAF8F0;
+    --status-operational-text: #15803D;
+    --status-operational-dot: #16A34A;
+
+    --status-issue-bg: #FFF8E6;
+    --status-issue-text: #D97706;
+    --status-issue-dot: #F59E0B;
+
+    --status-maintenance-bg: #FFF1EC;
+    --status-maintenance-text: #EA580C;
+    --status-maintenance-dot: #F97316;
+
+    /* VIEW BUTTON */
+
+    --view-btn-bg: #FFFFFF;
+    --view-btn-color: #374151;
+    --view-btn-icon: #374151;
+    --view-btn-border: 1px solid #E5E7EB;
+
+    --view-btn-hover-bg: #F8FAFC;
+    --view-btn-hover-border: 1px solid #D1D5DB;
 }
 
 * {
@@ -30,6 +190,7 @@
 
 body {
     background-color: var(--body-bg);
+    color: var(--body-text);
 }
 
 .container {
@@ -43,6 +204,7 @@ body {
 .navbar {
     background-color: var(--navbar-bg);
     border-bottom: var(--navbar-border);
+    box-shadow: var(--navbar-shadow);
     height: 70px;
 }
 
@@ -61,7 +223,7 @@ body {
 
 .navbar .logo i {
     font-size: 28px;
-    color: var(--primary-color);
+    color: var(--logo-primary);
 }
 
 .navbar .logo h2 {
@@ -70,16 +232,16 @@ body {
 }
 
 .navbar .logo h2 span {
-    color: var(--primary-color);
+    color: var(--logo-primary);
 }
 
 .navbar .reset-demo-data-btn {
     display: flex;
     align-items: center;
     gap: 8px;
-    background-color: var(--reset-demo-data-bg);
-    border: var(--reset-demo-data-btn-border);
-    color: var(--reset-demo-data-btn-text);
+    background-color: var(--btn-secondary-bg);
+    border: var(--btn-secondary-border);
+    color: var(--btn-secondary-color);
     padding: 8px 12px;
     border-radius: 6px;
     font-size: 13px;
@@ -89,11 +251,8 @@ body {
 }
 
 .navbar .reset-demo-data-btn:hover {
-    background-color: var(--reset-demo-data-bg-hover);
-}
-
-.navbar .reset-demo-data-btn i {
-    transform: scaleX(-1);
+    background-color: var(--btn-secondary-hover-bg);
+    border: var(--btn-secondary-hover-border);
 }
 
 section {
@@ -109,13 +268,13 @@ section {
 }
 
 .title-section .dashboard-title {
-    color: var(--primary-text);
+    color: var(--page-title-color);
 }
 
 .title-section .dashboard-title p {
     font-size: 13px;
     margin-top: 2px;
-    color: var(--secondary-text);
+    color: var(--page-subtitle-color);
 }
 
 .title-section .add-new-asset-btn {
@@ -124,34 +283,40 @@ section {
     align-items: center;
     gap: 8px;
     padding: 12px 20px;
-    color: var(--add-new-task-btn-text);
+    color: var(--btn-primary-color);
     border: none;
-    background-color: var(--add-new-task-btn-bg);
+    background-color: var(--btn-primary-bg);
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
 .title-section .add-new-asset-btn:hover {
-    background-color: var(--add-new-task-btn-bg-hover);
+    background-color: var(--btn-primary-hover-bg);
+}
+
+.title-section .add-new-asset-btn:active {
+    background-color: var(--btn-primary-active-bg);
 }
 
 .title-section .add-new-asset-btn i {
     font-size: 16px;
 }
 
-/* KPI Cards SSection */
+/* stats Cards SSection */
 
-.KPI-cards-section {
+.stats-cards-section {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 16px;
 }
 
-.KPI-cards-section .KPI-card {
+.stats-cards-section .stats-card {
     flex-grow: 1;
-    background-color: var(--navbar-bg);
-    border: var(--navbar-border);
+    background-color: var(--stats-card-bg);
+    border: var(--card-border);
+    box-shadow: var(--card-shadow);
     padding: 16px;
     display: flex;
     align-items: center;
@@ -159,42 +324,80 @@ section {
     border-radius: 10px;
 }
 
-.KPI-cards-section .KPI-card .icon-box {
+.stats-cards-section .stats-card .icon-box {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 36px;
+    font-size: 38px;
     width: 70px;
     height: 70px;
     border-radius: 8px;
 }
 
 .total-assets-icon-box {
-    background-color: var(--total-assets-icon-box-bg);
-    color: var(--total-assets-icon-box-text);
+    background-color: var(--asset-icon-box-bg);
+    color: var(--asset-icon-color);
 }
 
 .active-issues-icon-box {
-    background-color: var(--active-issues-icon-box-bg);
-    color: var(--active-issues-icon-box-text);
+    background-color: var(--issue-icon-box-bg);
+    color: var(--issue-icon-color);
 }
 
+.under-maintainance-icon-box {
+    background-color: var(--maintenance-icon-box-bg);
+    color: var(--maintenance-icon-color);
+}
 
-
-.KPI-cards-section .KPI-card .KPI-card-details {
+.stats-cards-section .stats-card .stats-card-details {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 6px;
 }
 
-.KPI-cards-section .KPI-card .KPI-card-details .title {
+.stats-cards-section .stats-card .stats-card-details .title {
     font-size: 14px;
     text-transform: capitalize;
     font-weight: 500;
-    color: var(--secondary-text);
+    color: var(--body-text-secondary);
 }
 
-.KPI-cards-section .KPI-card .KPI-card-details .value {
+.stats-cards-section .stats-card .stats-card-details .number {
     font-size: 36px;
+}
+
+.stats-cards-section .stats-card .icon-circle {
+    margin-left: auto;
+    align-self: flex-end;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    font-size: 30px;
+}
+
+@media (max-width: 450px) {
+
+    .container {
+        padding: 0 12px;
+    }
+
+    .navbar .logo i {
+        font-size: 24px;
+    }
+
+    .navbar .logo h2 {
+        font-size: 24px;
+    }
+
+    .title-section .dashboard-title p {
+        display: none;
+    }
+
+    .title-section .add-new-asset-btn {
+        margin-left: auto;
+    }
 }
