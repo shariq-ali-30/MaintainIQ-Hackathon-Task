@@ -101,16 +101,16 @@
     /* TABLE */
 
     --table-bg: #FFFFFF;
-    --table-border: 1px solid #E8EDF3;
+    --table-border: 1.5px solid #E8EDF3;
     --table-shadow: 0 2px 12px rgba(15, 23, 42, .06);
 
-    --table-header-bg: #FFFFFF;
+    --table-header-bg: #F8FAFC;
     --table-header-color: #6B7280;
-    --table-header-border: 1px solid #E8EDF3;
+    --table-header-border: 1.5px solid #E8EDF3;
 
     --table-row-bg: #FFFFFF;
     --table-row-hover-bg: #F9FAFB;
-    --table-row-border: 1px solid #EEF2F6;
+    --table-row-border: 1.5px solid #EEF2F6;
 
     --table-primary-text: #111827;
     --table-secondary-text: #6B7280;
@@ -142,10 +142,10 @@
     --view-btn-bg: #FFFFFF;
     --view-btn-color: #374151;
     --view-btn-icon: #374151;
-    --view-btn-border: 1px solid #E5E7EB;
+    --view-btn-border: 1.5px solid #E5E7EB;
 
     --view-btn-hover-bg: #F8FAFC;
-    --view-btn-hover-border: 1px solid #D1D5DB;
+    --view-btn-hover-border: 1.5px solid #D1D5DB;
 }
 
 * {
@@ -158,6 +158,7 @@
 body {
     background-color: var(--body-bg);
     color: var(--body-text);
+    padding-bottom: 30px;
 }
 
 .container {
@@ -185,17 +186,17 @@ body {
 .navbar .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: clamp(6px, 0.8vw, 12px);
 }
 
 .navbar .logo i {
-    font-size: 28px;
+    font-size: clamp(22px, 2vw, 28px);
     color: var(--logo-primary);
 }
 
 .navbar .logo h2 {
     color: var(--primary-text);
-    font-size: 28px;
+    font-size: clamp(20px, 1.8vw, 28px);
 }
 
 .navbar .logo h2 span {
@@ -205,21 +206,20 @@ body {
 .navbar .reset-demo-data-btn {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: clamp(4px, 0.6vw, 8px);
     background-color: var(--btn-secondary-bg);
     border: var(--btn-secondary-border);
     color: var(--btn-secondary-color);
     padding: 8px 12px;
     border-radius: 6px;
-    font-size: 13px;
+    font-size: clamp(11px, 0.9vw, 13px);
     font-weight: 500;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease;
 }
 
 .navbar .reset-demo-data-btn:hover {
     background-color: var(--btn-secondary-hover-bg);
-    border: var(--btn-secondary-hover-border);
 }
 
 section {
@@ -234,12 +234,12 @@ section {
     align-items: center;
 }
 
-.title-section .dashboard-title {
-    color: var(--page-title-color);
+.title-section .dashboard-title h1 {
+    font-size: clamp(20px, 2.2vw, 32px);
 }
 
 .title-section .dashboard-title p {
-    font-size: 13px;
+    font-size: clamp(11px, 0.9vw, 13px);
     margin-top: 2px;
     color: var(--page-subtitle-color);
 }
@@ -248,13 +248,14 @@ section {
     font-weight: 500;
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 12px 20px;
+    gap: clamp(4px, 0.6vw, 8px);
+    padding: clamp(8px, 1vw, 12px) clamp(14px, 1.5vw, 20px);
     color: var(--btn-primary-color);
     border: none;
     background-color: var(--btn-primary-bg);
     border-radius: 6px;
     cursor: pointer;
+    font-size: clamp(13px, 1vw, 15px);
     transition: all 0.2s ease;
 }
 
@@ -267,7 +268,7 @@ section {
 }
 
 .title-section .add-new-asset-btn i {
-    font-size: 16px;
+    font-size: clamp(14px, 1.1vw, 18px);
 }
 
 /* Stats Cards SSection */
@@ -276,7 +277,7 @@ section {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: clamp(10px, 1.2vw, 16px);
 }
 
 .stats-cards-section .stats-card {
@@ -284,10 +285,10 @@ section {
     background-color: var(--stats-card-bg);
     border: var(--card-border);
     box-shadow: var(--card-shadow);
-    padding: 16px;
+    padding: clamp(12px, 1.3vw, 18px);
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: clamp(12px, 1.5vw, 20px);
     border-radius: 10px;
 }
 
@@ -295,9 +296,9 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 38px;
-    width: 70px;
-    height: 70px;
+    font-size: clamp(28px, 2.8vw, 38px);
+    width: clamp(50px, 5vw, 70px);
+    height: clamp(50px, 5vw, 70px);
     border-radius: 8px;
 }
 
@@ -311,7 +312,7 @@ section {
     color: var(--issue-icon-color);
 }
 
-.under-maintainance-icon-box {
+.under-maintenance-icon-box {
     background-color: var(--maintenance-icon-box-bg);
     color: var(--maintenance-icon-color);
 }
@@ -320,18 +321,19 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 6px;
+    gap: clamp(2px, 0.4vw, 6px);
 }
 
 .stats-cards-section .stats-card .stats-card-details .title {
-    font-size: 14px;
+    font-size: clamp(11px, 1vw, 14px);
     text-transform: capitalize;
     font-weight: 500;
     color: var(--body-text-secondary);
 }
 
 .stats-cards-section .stats-card .stats-card-details .number {
-    font-size: 36px;
+    font-size: clamp(24px, 2.5vw, 36px);
+    font-weight: 700;
 }
 
 .stats-cards-section .stats-card .icon-circle {
@@ -340,10 +342,10 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50px;
-    width: 50px;
+    height: clamp(35px, 3.5vw, 50px);
+    width: clamp(35px, 3.5vw, 50px);
     border-radius: 50%;
-    font-size: 30px;
+    font-size: clamp(20px, 2vw, 30px);
 }
 
 /* Search & Filter Section */
@@ -353,24 +355,24 @@ section {
     border: var(--card-border);
     box-shadow: var(--card-shadow);
     border-radius: 10px;
-    padding: 14px;
+    padding: clamp(10px, 1vw, 14px);
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: clamp(10px, 1.2vw, 16px);
 }
 
 .search-and-filter-section .input-box {
     position: relative;
-    height: 40px;
+    height: clamp(36px, 3vw, 40px);
     flex-grow: 1;
 }
 
 .search-and-filter-section .input-box input {
     height: 100%;
     width: 100%;
-    padding: 0 16px 0 34px;
-    font-size: 13px;
+    padding: 0 16px 0 clamp(30px, 2.5vw, 34px);
+    font-size: clamp(11px, 0.9vw, 13px);
     background-color: var(--search-bg);
     border: var(--search-border);
     outline: none;
@@ -392,13 +394,14 @@ section {
     transform: translateY(-50%);
     left: 10px;
     color: var(--search-icon);
+    font-size: clamp(12px, 1vw, 14px);
 }
 
 .search-and-filter-section .filters {
     width: 100%;
     max-width: 400px;
     display: flex;
-    gap: 16px;
+    gap: clamp(10px, 1.2vw, 16px);
 }
 
 .search-and-filter-section .filters .select-box {
@@ -406,13 +409,14 @@ section {
     display: flex;
     justify-content: space-between;
     position: relative;
-    height: 40px;
+    height: clamp(36px, 3vw, 40px);
 }
 
 .search-and-filter-section .filters .select-box select {
     height: 100%;
     flex-grow: 1;
-    padding: 0 8px;
+    padding: 0 clamp(6px, 0.6vw, 10px);
+    font-size: clamp(11px, 0.9vw, 13px);
     background-color: var(--select-bg);
     border: var(--select-border);
     border-radius: 8px;
@@ -420,7 +424,6 @@ section {
     outline: none;
     transition: border 0.2s ease;
 }
-
 
 .search-and-filter-section .filters .select-box select:focus {
     border: var(--select-focus-border);
@@ -430,22 +433,116 @@ section {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 16px;
+    right: 8px;
     color: var(--select-arrow);
+    font-size: clamp(11px, 0.9vw, 13px);
+}
+
+/* Asset Table Section */
+
+.asset-table-section table {
+    
+    background-color: var(--table-bg);
+    border: var(--table-border);
+    box-shadow: var(--table-shadow);
+    width: 100%;
+    border-radius: 10px;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+}
+
+.asset-table-section table thead th {
+    background-color: var(--table-header-bg);
+    color: var(--table-header-color);
+    border-bottom: var(--table-header-border);
+}
+
+.asset-table-section table thead tr th {
+    padding: clamp(8px, 0.8vw, 12px) 0;
+    padding-left: clamp(14px, 1.8vw, 24px);
+    text-align: left;
+    text-transform: uppercase;
+    font-size: clamp(9px, 0.8vw, 11px);
+    font-weight: 600;
+}
+
+.asset-table-section table tbody tr td {
+    padding: clamp(8px, 1vw, 14px) clamp(12px, 1.5vw, 20px);
+    padding-left: clamp(14px, 1.8vw, 24px);
+    font-size: clamp(12px, 1vw, 14px);
+    font-weight: 500;
+}
+
+.asset-table-section table tbody tr td.status p {
+    display: flex;
+    align-items: center;
+    gap: clamp(4px, 0.5vw, 8px);
+    width: fit-content;
+    padding: 4px clamp(8px, 0.8vw, 12px);
+    border-radius: 999px;
+    font-size: clamp(11px, 0.9vw, 13px);
+}
+
+.asset-table-section table tbody tr td.status p .dot {
+    border: clamp(2.5px, 0.3vw, 3.5px) solid;
+    border-radius: 50%;
+}
+
+.asset-table-section table tbody tr td.operational p {
+    background-color: var(--status-operational-bg);
+    color: var(--status-operational-text);
+}
+
+.asset-table-section table tbody tr td.operational p .dot {
+    border-color: var(--status-operational-dot);
+}
+
+.asset-table-section table tbody tr td.issue p {
+    background-color: var(--status-issue-bg);
+    color: var(--status-issue-text);
+}
+
+.asset-table-section table tbody tr td.issue p .dot {
+    border-color: var(--status-issue-dot);
+}
+
+.asset-table-section table tbody tr td.maintenance p {
+    background-color: var(--status-maintenance-bg);
+    color: var(--status-maintenance-text);
+}
+
+.asset-table-section table tbody tr td.maintenance p .dot {
+    border-color: var(--status-maintenance-dot);
+}
+
+.asset-table-section table tbody tr td.action button {
+    display: flex;
+    align-items: center;
+    gap: clamp(4px, 0.5vw, 8px);
+    padding: clamp(6px, 0.6vw, 10px) clamp(10px, 1vw, 16px);
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: clamp(11px, 0.9vw, 13px);
+    background-color: var(--view-btn-bg);
+    color: var(--view-btn-color);
+    border: var(--view-btn-border);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.asset-table-section table tbody tr td.action button:hover {
+    background-color: var(--view-btn-hover-bg);
+}
+
+.asset-table-section table tbody tr td.action button i {
+    font-size: clamp(12px, 1vw, 16px);
 }
 
 @media (max-width: 450px) {
 
     .container {
         padding: 0 12px;
-    }
-
-    .navbar .logo i {
-        font-size: 24px;
-    }
-
-    .navbar .logo h2 {
-        font-size: 24px;
     }
 
     .title-section .dashboard-title p {

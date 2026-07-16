@@ -61,7 +61,7 @@
                     <i class="ph ph-warning"></i>
                 </div>
                 <div class="stats-card-details">
-                    <p class="title">Total Assets</p>
+                    <p class="title">Active Issues</p>
                     <h2 class="number">1</h2>
                 </div>
                 <div class="icon-circle active-issues-icon-box">
@@ -70,14 +70,14 @@
             </div>
 
             <div class="stats-card">
-                <div class="icon-box under-maintainance-icon-box">
+                <div class="icon-box under-maintenance-icon-box">
                     <i class="ph ph-wrench"></i>
                 </div>
                 <div class="stats-card-details">
-                    <p class="title">Total Assets</p>
+                    <p class="title">Under Maintenance</p>
                     <h2 class="number">1</h2>
                 </div>
-                <div class="icon-circle under-maintainance-icon-box">
+                <div class="icon-circle under-maintenance-icon-box">
                     <i class="ph ph-trend-up"></i>
                 </div>
             </div>
@@ -85,6 +85,7 @@
         </section>
 
         <section class="search-and-filter-section">
+
             <div class="input-box">
                 <i class="ph ph-magnifying-glass"></i>
                 <input type="text" placeholder="Search by name or code...">
@@ -95,7 +96,7 @@
                         <option disabled selected>Status</option>
                         <option value="operational">Operational</option>
                         <option value="issue reportes">Issue Reported</option>
-                        <option value="under maintainance">Under Maintainance</option>
+                        <option value="under maintenance">Under maintenance</option>
                     </select>
                     <i class="ph ph-caret-down"></i>
                 </div>
@@ -109,8 +110,224 @@
                     <i class="ph ph-caret-down"></i>
                 </div>
             </div>
-            
+
         </section>
+
+        <section class="asset-table-section">
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Asset Code</th>
+                        <th>Asset Name</th>
+                        <th>Location</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td class="asset-code">AST-1001</td>
+                        <td class="asset-name">Computer Lab Projector</td>
+                        <td class="location">Computer Lab</td>
+                        <td class="status operational">
+                            <p><span class="dot"></span> Operational</p>
+                        </td>
+                        <td class="action"><button><i class="ph ph-eye"></i> View</button></td>
+                    </tr>
+
+                    <tr>
+                        <td class="asset-code">AST-1002</td>
+                        <td class="asset-name">Library Desktop PC</td>
+                        <td class="location">Library</td>
+                        <td class="status issue">
+                            <p><span class="dot"></span> Issue Reported</p>
+                        </td>
+                        <td class="action"><button><i class="ph ph-eye"></i> View</button></td>
+                    </tr>
+
+                    <tr>
+                        <td class="asset-code">AST-1003</td>
+                        <td class="asset-name">Administration Printer</td>
+                        <td class="location">Admin Office</td>
+                        <td class="status operational">
+                            <p><span class="dot"></span> Operational</p>
+                        </td>
+                        <td class="action"><button><i class="ph ph-eye"></i> View</button></td>
+                    </tr>
+
+                    <tr>
+                        <td class="asset-code">AST-1004</td>
+                        <td class="asset-name">Auditorium Sound System</td>
+                        <td class="location">Auditorium</td>
+                        <td class="status maintenance">
+                            <p><span class="dot"></span> Under Maintenance</p>
+                        </td>
+                        <td class="action"><button><i class="ph ph-eye"></i> View</button></td>
+                    </tr>
+
+                    <tr>
+                        <td class="asset-code">AST-1005</td>
+                        <td class="asset-name">Staff Room Air Conditioner</td>
+                        <td class="location">Staff Room</td>
+                        <td class="status operational">
+                            <p><span class="dot"></span> Operational</p>
+                        </td>
+                        <td class="action"><button><i class="ph ph-eye"></i> View</button></td>
+                    </tr>
+                    <tr>
+                        <td class="asset-code">AST-1001</td>
+                        <td class="asset-name">Computer Lab Projector</td>
+                        <td class="location">Computer Lab</td>
+                        <td class="status operational">
+                            <p><span class="dot"></span> Operational</p>
+                        </td>
+                        <td class="action"><button><i class="ph ph-eye"></i> View</button></td>
+                    </tr>
+
+                    <tr>
+                        <td class="asset-code">AST-1002</td>
+                        <td class="asset-name">Library Desktop PC</td>
+                        <td class="location">Library</td>
+                        <td class="status issue">
+                            <p><span class="dot"></span> Issue Reported</p>
+                        </td>
+                        <td class="action"><button><i class="ph ph-eye"></i> View</button></td>
+                    </tr>
+
+                    <tr>
+                        <td class="asset-code">AST-1003</td>
+                        <td class="asset-name">Administration Printer</td>
+                        <td class="location">Admin Office</td>
+                        <td class="status operational">
+                            <p><span class="dot"></span> Operational</p>
+                        </td>
+                        <td class="action"><button><i class="ph ph-eye"></i> View</button></td>
+                    </tr>
+
+                    <tr>
+                        <td class="asset-code">AST-1004</td>
+                        <td class="asset-name">Auditorium Sound System</td>
+                        <td class="location">Auditorium</td>
+                        <td class="status maintenance">
+                            <p><span class="dot"></span> Under Maintenance</p>
+                        </td>
+                        <td class="action"><button><i class="ph ph-eye"></i> View</button></td>
+                    </tr>
+
+                    <tr>
+                        <td class="asset-code">AST-1005</td>
+                        <td class="asset-name">Staff Room Air Conditioner</td>
+                        <td class="location">Staff Room</td>
+                        <td class="status operational">
+                            <p><span class="dot"></span> Operational</p>
+                        </td>
+                        <td class="action"><button><i class="ph ph-eye"></i> View</button></td>
+                    </tr>
+                    <tr>
+                        <td class="asset-code">AST-1001</td>
+                        <td class="asset-name">Computer Lab Projector</td>
+                        <td class="location">Computer Lab</td>
+                        <td class="status operational">
+                            <p><span class="dot"></span> Operational</p>
+                        </td>
+                        <td class="action"><button><i class="ph ph-eye"></i> View</button></td>
+                    </tr>
+
+                    <tr>
+                        <td class="asset-code">AST-1002</td>
+                        <td class="asset-name">Library Desktop PC</td>
+                        <td class="location">Library</td>
+                        <td class="status issue">
+                            <p><span class="dot"></span> Issue Reported</p>
+                        </td>
+                        <td class="action"><button><i class="ph ph-eye"></i> View</button></td>
+                    </tr>
+
+                    <tr>
+                        <td class="asset-code">AST-1003</td>
+                        <td class="asset-name">Administration Printer</td>
+                        <td class="location">Admin Office</td>
+                        <td class="status operational">
+                            <p><span class="dot"></span> Operational</p>
+                        </td>
+                        <td class="action"><button><i class="ph ph-eye"></i> View</button></td>
+                    </tr>
+
+                    <tr>
+                        <td class="asset-code">AST-1004</td>
+                        <td class="asset-name">Auditorium Sound System</td>
+                        <td class="location">Auditorium</td>
+                        <td class="status maintenance">
+                            <p><span class="dot"></span> Under Maintenance</p>
+                        </td>
+                        <td class="action"><button><i class="ph ph-eye"></i> View</button></td>
+                    </tr>
+
+                    <tr>
+                        <td class="asset-code">AST-1005</td>
+                        <td class="asset-name">Staff Room Air Conditioner</td>
+                        <td class="location">Staff Room</td>
+                        <td class="status operational">
+                            <p><span class="dot"></span> Operational</p>
+                        </td>
+                        <td class="action"><button><i class="ph ph-eye"></i> View</button></td>
+                    </tr>
+                    <tr>
+                        <td class="asset-code">AST-1001</td>
+                        <td class="asset-name">Computer Lab Projector</td>
+                        <td class="location">Computer Lab</td>
+                        <td class="status operational">
+                            <p><span class="dot"></span> Operational</p>
+                        </td>
+                        <td class="action"><button><i class="ph ph-eye"></i> View</button></td>
+                    </tr>
+
+                    <tr>
+                        <td class="asset-code">AST-1002</td>
+                        <td class="asset-name">Library Desktop PC</td>
+                        <td class="location">Library</td>
+                        <td class="status issue">
+                            <p><span class="dot"></span> Issue Reported</p>
+                        </td>
+                        <td class="action"><button><i class="ph ph-eye"></i> View</button></td>
+                    </tr>
+
+                    <tr>
+                        <td class="asset-code">AST-1003</td>
+                        <td class="asset-name">Administration Printer</td>
+                        <td class="location">Admin Office</td>
+                        <td class="status operational">
+                            <p><span class="dot"></span> Operational</p>
+                        </td>
+                        <td class="action"><button><i class="ph ph-eye"></i> View</button></td>
+                    </tr>
+
+                    <tr>
+                        <td class="asset-code">AST-1004</td>
+                        <td class="asset-name">Auditorium Sound System</td>
+                        <td class="location">Auditorium</td>
+                        <td class="status maintenance">
+                            <p><span class="dot"></span> Under Maintenance</p>
+                        </td>
+                        <td class="action"><button><i class="ph ph-eye"></i> View</button></td>
+                    </tr>
+
+                    <tr>
+                        <td class="asset-code">AST-1005</td>
+                        <td class="asset-name">Staff Room Air Conditioner</td>
+                        <td class="location">Staff Room</td>
+                        <td class="status operational">
+                            <p><span class="dot"></span> Operational</p>
+                        </td>
+                        <td class="action"><button><i class="ph ph-eye"></i> View</button></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </section>
+
     </div>
 </body>
 
