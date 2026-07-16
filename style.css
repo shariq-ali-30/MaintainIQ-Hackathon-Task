@@ -173,7 +173,7 @@ body {
     background-color: var(--navbar-bg);
     border-bottom: var(--navbar-border);
     box-shadow: var(--navbar-shadow);
-    height: 70px;
+    height: clamp(55px, 7vw, 70px);
 }
 
 .navbar .container {
@@ -249,14 +249,14 @@ section {
     display: flex;
     align-items: center;
     gap: clamp(4px, 0.6vw, 8px);
-    padding: clamp(8px, 1vw, 12px) clamp(14px, 1.5vw, 20px);
+    padding: clamp(10px, 1vw, 12px) clamp(14px, 1.5vw, 20px);
     color: var(--btn-primary-color);
     border: none;
     background-color: var(--btn-primary-bg);
     border-radius: 6px;
     cursor: pointer;
     font-size: clamp(13px, 1vw, 15px);
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease;
 }
 
 .title-section .add-new-asset-btn:hover {
@@ -296,9 +296,9 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: clamp(28px, 2.8vw, 38px);
-    width: clamp(50px, 5vw, 70px);
-    height: clamp(50px, 5vw, 70px);
+    font-size: clamp(32px, 2.8vw, 38px);
+    width: clamp(55px, 5vw, 70px);
+    height: clamp(55px, 5vw, 70px);
     border-radius: 8px;
 }
 
@@ -321,7 +321,7 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: clamp(2px, 0.4vw, 6px);
+    gap: clamp(6px, 0.4vw, 8px);
 }
 
 .stats-cards-section .stats-card .stats-card-details .title {
@@ -342,10 +342,10 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: clamp(35px, 3.5vw, 50px);
-    width: clamp(35px, 3.5vw, 50px);
+    height: clamp(40px, 3.5vw, 50px);
+    width: clamp(40px, 3.5vw, 50px);
     border-radius: 50%;
-    font-size: clamp(20px, 2vw, 30px);
+    font-size: clamp(22px, 2vw, 30px);
 }
 
 /* Search & Filter Section */
@@ -355,7 +355,7 @@ section {
     border: var(--card-border);
     box-shadow: var(--card-shadow);
     border-radius: 10px;
-    padding: clamp(10px, 1vw, 14px);
+    padding: clamp(12px, 1vw, 14px);
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -364,15 +364,15 @@ section {
 
 .search-and-filter-section .input-box {
     position: relative;
-    height: clamp(36px, 3vw, 40px);
+    height: 40px;
     flex-grow: 1;
 }
 
 .search-and-filter-section .input-box input {
     height: 100%;
     width: 100%;
-    padding: 0 16px 0 clamp(30px, 2.5vw, 34px);
-    font-size: clamp(11px, 0.9vw, 13px);
+    padding: 0 16px 0 30px;
+    font-size: 13px;
     background-color: var(--search-bg);
     border: var(--search-border);
     outline: none;
@@ -394,7 +394,7 @@ section {
     transform: translateY(-50%);
     left: 10px;
     color: var(--search-icon);
-    font-size: clamp(12px, 1vw, 14px);
+    font-size: 14px;
 }
 
 .search-and-filter-section .filters {
@@ -409,14 +409,14 @@ section {
     display: flex;
     justify-content: space-between;
     position: relative;
-    height: clamp(36px, 3vw, 40px);
+    height: 40px;
 }
 
 .search-and-filter-section .filters .select-box select {
     height: 100%;
     flex-grow: 1;
-    padding: 0 clamp(6px, 0.6vw, 10px);
-    font-size: clamp(11px, 0.9vw, 13px);
+    padding: 0 10px;
+    font-size: 13px;
     background-color: var(--select-bg);
     border: var(--select-border);
     border-radius: 8px;
@@ -435,43 +435,49 @@ section {
     transform: translateY(-50%);
     right: 8px;
     color: var(--select-arrow);
-    font-size: clamp(11px, 0.9vw, 13px);
+    font-size: 13px;
 }
 
 /* Asset Table Section */
 
+.asset-table-section {
+    overflow: auto;
+    scrollbar-width: none;
+}
+
 .asset-table-section table {
-    
     background-color: var(--table-bg);
     border: var(--table-border);
     box-shadow: var(--table-shadow);
     width: 100%;
     border-radius: 10px;
-    border-collapse: separate;
     border-spacing: 0;
     overflow: hidden;
 }
 
-.asset-table-section table thead th {
+.asset-table-section table thead tr th {
     background-color: var(--table-header-bg);
     color: var(--table-header-color);
     border-bottom: var(--table-header-border);
-}
-
-.asset-table-section table thead tr th {
-    padding: clamp(8px, 0.8vw, 12px) 0;
-    padding-left: clamp(14px, 1.8vw, 24px);
+    padding: clamp(10px, 0.8vw, 12px) clamp(18px, 1.8vw, 24px);
     text-align: left;
     text-transform: uppercase;
-    font-size: clamp(9px, 0.8vw, 11px);
+    font-size: 11px;
     font-weight: 600;
+    white-space: nowrap;
 }
 
 .asset-table-section table tbody tr td {
-    padding: clamp(8px, 1vw, 14px) clamp(12px, 1.5vw, 20px);
-    padding-left: clamp(14px, 1.8vw, 24px);
-    font-size: clamp(12px, 1vw, 14px);
+    background-color: var(--table-row-bg);
+    border-bottom: var(--table-row-border);
+    padding: clamp(8px, 1vw, 12px) clamp(18px, 1.5vw, 20px);
+    font-size: clamp(13px, 1vw, 14px);
     font-weight: 500;
+    white-space: nowrap;
+}
+
+.asset-table-section table tbody tr:last-child td {
+    border-bottom: none;
 }
 
 .asset-table-section table tbody tr td.status p {
@@ -479,7 +485,7 @@ section {
     align-items: center;
     gap: clamp(4px, 0.5vw, 8px);
     width: fit-content;
-    padding: 4px clamp(8px, 0.8vw, 12px);
+    padding: 5px clamp(8px, 0.8vw, 12px);
     border-radius: 999px;
     font-size: clamp(11px, 0.9vw, 13px);
 }
@@ -498,32 +504,32 @@ section {
     border-color: var(--status-operational-dot);
 }
 
-.asset-table-section table tbody tr td.issue p {
+.asset-table-section table tbody tr td.issue-reported p {
     background-color: var(--status-issue-bg);
     color: var(--status-issue-text);
 }
 
-.asset-table-section table tbody tr td.issue p .dot {
+.asset-table-section table tbody tr td.issue-reported p .dot {
     border-color: var(--status-issue-dot);
 }
 
-.asset-table-section table tbody tr td.maintenance p {
+.asset-table-section table tbody tr td.under-maintenance p {
     background-color: var(--status-maintenance-bg);
     color: var(--status-maintenance-text);
 }
 
-.asset-table-section table tbody tr td.maintenance p .dot {
+.asset-table-section table tbody tr td.under-mintenance p .dot {
     border-color: var(--status-maintenance-dot);
 }
 
 .asset-table-section table tbody tr td.action button {
     display: flex;
     align-items: center;
-    gap: clamp(4px, 0.5vw, 8px);
+    gap: clamp(6px, 0.5vw, 8px);
     padding: clamp(6px, 0.6vw, 10px) clamp(10px, 1vw, 16px);
     border-radius: 6px;
     font-weight: 500;
-    font-size: clamp(11px, 0.9vw, 13px);
+    font-size: clamp(12px, 0.9vw, 13px);
     background-color: var(--view-btn-bg);
     color: var(--view-btn-color);
     border: var(--view-btn-border);
@@ -536,10 +542,14 @@ section {
 }
 
 .asset-table-section table tbody tr td.action button i {
-    font-size: clamp(12px, 1vw, 16px);
+    font-size: clamp(14px, 1vw, 16px);
 }
 
 @media (max-width: 450px) {
+
+    * {
+        cursor: default !important;
+    }
 
     .container {
         padding: 0 12px;
