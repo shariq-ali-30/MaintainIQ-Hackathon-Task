@@ -31,6 +31,7 @@
     <div class="container">
 
         <section class="title-section">
+
             <div class="dashboard-title">
                 <h2>Dashboard</h2>
                 <p>Welcome Back, Admin User!</p>
@@ -39,6 +40,43 @@
                 <i class="fa-solid fa-plus"></i>
                 Add New Asset
             </button>
+
+            <div class="modal-overlay">
+                <div class="add-new-asset-modal">
+
+                    <div class="modal-header">
+                        <div class="icon-circle">
+                            <i class="fa fa-plus"></i>
+                        </div>
+
+                        <div class="modal-title">
+                            <h2>Add New Asset</h2>
+                            <p>Fill in the details below to add a new asset.</p>
+                        </div>
+                    </div>
+
+                    <div class="hr"></div>
+
+                    <div class="input-fields">
+                        <label>Asset Name <span>*</span></label>
+                        <input type="text" placeholder="e.g., Lab Monitor 1">
+
+                        <label>Location <span>*</span></label>
+                        <select>
+                            <option selected disabled>Location</option>
+                            <option>Computer Lab</option>
+                            <option>Auditorium</option>
+                        </select>                        
+                    </div>
+
+                    <div class="modal-btns">
+                        <button class="cancle-btn">Cancle</button>
+                        <button class="add-asset-btn"><i class="fa fa-plus"></i>Add Asset</button>
+                    </div>
+
+                </div>
+            </div>
+
         </section>
 
         <section class="stats-cards-section">
