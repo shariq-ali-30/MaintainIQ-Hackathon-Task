@@ -15,13 +15,18 @@
 </head>
 
 <body>
+    <div class="toast-notification">
+        <i class="fa-solid fa-circle-xmark"></i>
+        Message
+    </div>
+
     <nav class="navbar">
         <div class="container">
             <div class="logo">
                 <i class="fa-solid fa-screwdriver-wrench"></i>
                 <h2>Maintain<span>IQ</span></h2>
             </div>
-            <button class="reset-demo-data-btn">
+            <button class="reset-demo-data-btn" onclick="f()">
                 <i class="ph ph-arrow-clockwise"></i>
                 Reset Demo Data
             </button>
@@ -62,11 +67,14 @@
                         <input type="text" placeholder="e.g., Lab Monitor 1" class="name-input">
 
                         <label>Location <span>*</span></label>
-                        <select class="location-input">
-                            <option selected disabled>Location</option>
-                            <option>Computer Lab</option>
-                            <option>Auditorium</option>
-                        </select>                        
+                        <div>
+                            <select class="location-input">
+                                <option selected disabled>Location</option>
+                                <option>Computer Lab</option>
+                                <option>Auditorium</option>
+                            </select>
+                            <i class="ph ph-caret-down"></i>
+                        </div>
                     </div>
 
                     <div class="modal-btns">

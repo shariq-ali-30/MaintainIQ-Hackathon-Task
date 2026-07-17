@@ -5,6 +5,11 @@ let cancelBtn = document.querySelector(".cancel-btn")
 let addAssetBtn = document.querySelector(".add-asset-btn")
 let assetName = document.querySelector(".name-input")
 let assetLocation = document.querySelector(".location-input")
+let toastNotification = document.querySelector(".toast-notification")
+let toastNotificationIcon = document.querySelector(".toast-notification i")
+
+console.log(toastNotificationIcon);
+
 
 const allAssetsData = [
     { code: 1001, name: "Classroom Projector 01", location: "Building A - Room 101", status: "Operational", condition: "Good" },
@@ -28,7 +33,7 @@ let allAssets = JSON.parse(localStorage.getItem("allAssets"))
 
 function displayAssets(assetsArray) {
     assetsDataContainer.innerHTML = ""
-    assetsArray.map(asset => {        
+    assetsArray.map(asset => {
         let tr = document.createElement("tr")
         tr.innerHTML = `<td class="asset-code">AST-${asset.code}</td>
                         <td class="asset-name">${asset.name}</td>
@@ -43,8 +48,28 @@ function displayAssets(assetsArray) {
 }
 displayAssets(allAssets)
 
+function toastMsg(state, message) {
+    
+    if (state == "success") {
+    }
+
+    if (state == "error") {
+    }
+
+    toastNotification.innerText = message
+
+    toastNotification.classList.add("active")
+    setTimeout(() => {
+        toastNotification.classList.remove("active")
+    }, 3000);
+}
+
+function f() {
+    toastMsg("error", "Task added successfully!")
+}
+
 function addNewAsset() {
-    let newAssset = {}   
+    let newAssset = {}
 
     newAssset.code = ++assetCodeCount
     newAssset.name = assetName.value
@@ -60,14 +85,15 @@ function addNewAsset() {
 
     assetName.value = ""
     assetLocation.selectedInex = 0
+    closeModal()
 }
 
-function openModal () {
+function openModal() {
     modalOverlay.classList.add("active")
     document.body.style.overflow = "hidden"
 }
 
-function closeModal () {
+function closeModal() {
     modalOverlay.classList.remove("active")
     document.body.style.overflow = "auto"
 }

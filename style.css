@@ -24,7 +24,7 @@
 
     /* MODAL */
 
-    --modal-overlay-bg: rgba(15, 23, 42, .35);
+    --modal-overlay-bg: rgba(15, 23, 42, .5);
 
     --modal-bg: #FFFFFF;
     --modal-border: 1px solid #E7ECF2;
@@ -193,6 +193,47 @@
 
     --view-btn-hover-bg: #F8FAFC;
     --view-btn-hover-border: 1.5px solid #D1D5DB;
+
+    /* TOAST */
+
+    --toast-bg: #FFFFFF;
+    --toast-color: #111827;
+    --toast-border: 1px solid #E7ECF2;
+    --toast-radius: 18px;
+    --toast-shadow: 0 12px 30px rgba(15, 23, 42, .12);
+
+    /* SUCCESS TOAST */
+
+    --toast-success-icon-bg: #EAF8F0;
+    --toast-success-icon-color: #16A34A;
+
+    --toast-success-progress: #16A34A;
+
+    /* ERROR TOAST */
+
+    --toast-error-icon-bg: #FEECEC;
+    --toast-error-icon-color: #DC2626;
+
+    --toast-error-progress: #DC2626;
+
+    /* WARNING TOAST */
+
+    --toast-warning-icon-bg: #FFF8E6;
+    --toast-warning-icon-color: #D97706;
+
+    --toast-warning-progress: #F59E0B;
+
+    /* INFO TOAST */
+
+    --toast-info-icon-bg: #EFF6FF;
+    --toast-info-icon-color: #2563EB;
+
+    --toast-info-progress: #2563EB;
+
+    /* CLOSE BUTTON */
+
+    --toast-close-color: #6B7280;
+    --toast-close-hover-color: #374151;
 }
 
 * {
@@ -212,6 +253,44 @@ body {
     max-width: 1450px;
     margin: 0 auto;
     padding: 0 30px;
+}
+
+/* Toast Notification */
+
+.toast-notification {
+    padding: 14px 20px;
+    position: fixed;
+    z-index: 5;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-75px) scale(0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    background-color: var(--toast-bg);
+    border: var(--toast-border);
+    border-radius: 8px;
+    color: var(--toast-color);
+    box-shadow: var(--toast-shadow);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.toast-notification.active {
+    transform: translateX(-50%) translateY(0px) scale(1);
+}
+
+.toast-notification i {
+    font-size: 22px;
+    color: var(--toast-error-icon-color);
+}
+
+.toast-notification.success i {
+    color: var(--toast-success-icon-color);
+}
+
+.toast-notification.error i {
+    color: var(--toast-error-icon-color);
 }
 
 /* Navbar */
@@ -314,7 +393,9 @@ section {
     font-size: clamp(14px, 1.1vw, 18px);
 }
 
-.title-section .modal-overlay {
+/* Modal */
+
+.modal-overlay {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -327,15 +408,15 @@ section {
     background-color: var(--modal-overlay-bg);
     visibility: hidden;
     opacity: 0;
-    transition: opacity 0.2s ease, visibility 0.2s ease;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
 }
 
-.title-section .modal-overlay.active {
+.modal-overlay.active {
     visibility: initial;
     opacity: 1;
 }
 
-.title-section .modal-overlay .add-new-asset-modal {
+.modal-overlay .add-new-asset-modal {
     width: 100%;
     max-width: 500px;
     padding: 20px;
@@ -343,23 +424,23 @@ section {
     border: var(--modal-border);
     border-radius: 12px;
     box-shadow: var(--modal-shadow);
-    transform: translateY(-30px);
+    transform: translateY(-30px) scale(0.96);
     opacity: 0;
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
 }
 
-.title-section .modal-overlay.active .add-new-asset-modal {
+.modal-overlay.active .add-new-asset-modal {
     transform: translateY(0);
     opacity: 1;
 }
 
-.title-section .modal-overlay .add-new-asset-modal .modal-header {
+.modal-overlay .add-new-asset-modal .modal-header {
     display: flex;
     align-items: center;
     gap: 16px;
 }
 
-.title-section .modal-overlay .add-new-asset-modal .modal-header .icon-circle {
+.modal-overlay .add-new-asset-modal .modal-header .icon-circle {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -371,34 +452,34 @@ section {
     color: var(--modal-icon-color);
 }
 
-.title-section .modal-overlay .add-new-asset-modal .modal-header .modal-title {
+.modal-overlay .add-new-asset-modal .modal-header .modal-title {
     display: flex;
     flex-direction: column;
     gap: 4px;
 }
 
-.title-section .modal-overlay .add-new-asset-modal .modal-header .modal-title h2 {
+.modal-overlay .add-new-asset-modal .modal-header .modal-title h2 {
     color: var(--modal-title);
     font-size: 24px;
 }
 
-.title-section .modal-overlay .add-new-asset-modal .modal-header .modal-title p {
+.modal-overlay .add-new-asset-modal .modal-header .modal-title p {
     font-size: 14px;
     color: var(--modal-subtitle);
 }
 
-.title-section .modal-overlay .add-new-asset-modal .hr {
+.modal-overlay .add-new-asset-modal .hr {
     border-bottom: var(--modal-separator-border);
     margin-top: 18px;
 }
 
-.title-section .modal-overlay .add-new-asset-modal .input-fields {
+.modal-overlay .add-new-asset-modal .input-fields {
     margin-top: 10px;
     display: flex;
     flex-direction: column;
 }
 
-.title-section .modal-overlay .add-new-asset-modal .input-fields label {
+.modal-overlay .add-new-asset-modal .input-fields label {
     margin-top: 18px;
     margin-bottom: 6px;
     font-size: 14px;
@@ -406,26 +487,41 @@ section {
     color: var(--form-label-color);
 }
 
-.title-section .modal-overlay .add-new-asset-modal .input-fields label span {
+.modal-overlay .add-new-asset-modal .input-fields label span {
     color: var(--form-required-color);
 }
 
-.title-section .modal-overlay .add-new-asset-modal .input-fields input,
-.title-section .modal-overlay .add-new-asset-modal .input-fields select {
+.modal-overlay .add-new-asset-modal .input-fields div {
+    width: 100%;
+    position: relative;
+}
+
+.modal-overlay .add-new-asset-modal .input-fields div i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 12px;
+    color: var(--select-arrow);
+}
+
+.modal-overlay .add-new-asset-modal .input-fields input,
+.modal-overlay .add-new-asset-modal .input-fields select {
+    width: 100%;
     height: 45px;
     padding: 0 12px;
     border: var(--input-border);
     border-radius: 8px;
     background-color: var(--input-bg);
     outline: none;
+    appearance: none;
     transition: border 0.2s ease;
 }
 
-.title-section .modal-overlay .add-new-asset-modal .input-fields input:focus {
+.modal-overlay .add-new-asset-modal .input-fields input:focus {
     border: var(--input-focus-border);
 }
 
-.title-section .modal-overlay .add-new-asset-modal .modal-btns {
+.modal-overlay .add-new-asset-modal .modal-btns {
     margin-top: 28px;
     display: flex;
     align-items: center;
@@ -433,7 +529,7 @@ section {
     gap: 8px;
 }
 
-.title-section .modal-overlay .add-new-asset-modal .modal-btns button {
+.modal-overlay .add-new-asset-modal .modal-btns button {
     display: flex;
     align-items: center;
     gap: 6px;
@@ -444,23 +540,23 @@ section {
     transition: background-color 0.2s ease;
 }
 
-.title-section .modal-overlay .add-new-asset-modal .modal-btns .cancel-btn {
+.modal-overlay .add-new-asset-modal .modal-btns .cancel-btn {
     background-color: var(--btn-secondary-bg);
     border: var(--btn-secondary-border);
     color: var(--btn-secondary-color);
 }
 
-.title-section .modal-overlay .add-new-asset-modal .modal-btns .cancel-btn:hover {
+.modal-overlay .add-new-asset-modal .modal-btns .cancel-btn:hover {
     background-color: var(--btn-secondary-hover-bg);
 }
 
-.title-section .modal-overlay .add-new-asset-modal .modal-btns .add-asset-btn {
+.modal-overlay .add-new-asset-modal .modal-btns .add-asset-btn {
     background-color: var(--btn-primary-bg);
     border: var(--btn-primary-border);
     color: var(--btn-primary-color);
 }
 
-.title-section .modal-overlay .add-new-asset-modal .modal-btns .add-asset-btn:hover {
+.modal-overlay .add-new-asset-modal .modal-btns .add-asset-btn:hover {
     background-color: var(--btn-primary-hover-bg);
 }
 
@@ -615,11 +711,6 @@ section {
     border-radius: 8px;
     appearance: none;
     outline: none;
-    transition: border 0.2s ease;
-}
-
-.search-and-filter-section .filters .select-box select:focus {
-    border: var(--select-focus-border);
 }
 
 .search-and-filter-section .filters .select-box i {
