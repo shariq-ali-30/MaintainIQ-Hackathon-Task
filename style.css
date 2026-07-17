@@ -325,6 +325,14 @@ section {
     width: 100%;
     height: 100%;
     background-color: var(--modal-overlay-bg);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.title-section .modal-overlay.active {
+    visibility: initial;
+    opacity: 1;
 }
 
 .title-section .modal-overlay .add-new-asset-modal {
@@ -335,6 +343,14 @@ section {
     border: var(--modal-border);
     border-radius: 12px;
     box-shadow: var(--modal-shadow);
+    transform: translateY(-30px);
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.title-section .modal-overlay.active .add-new-asset-modal {
+    transform: translateY(0);
+    opacity: 1;
 }
 
 .title-section .modal-overlay .add-new-asset-modal .modal-header {
@@ -373,16 +389,17 @@ section {
 
 .title-section .modal-overlay .add-new-asset-modal .hr {
     border-bottom: var(--modal-separator-border);
-    margin: 16px 0;
+    margin-top: 18px;
 }
 
 .title-section .modal-overlay .add-new-asset-modal .input-fields {
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
 }
 
 .title-section .modal-overlay .add-new-asset-modal .input-fields label {
-    margin-top: 16px;
+    margin-top: 18px;
     margin-bottom: 6px;
     font-size: 14px;
     font-weight: 500;
@@ -409,7 +426,7 @@ section {
 }
 
 .title-section .modal-overlay .add-new-asset-modal .modal-btns {
-    margin-top: 20px;
+    margin-top: 28px;
     display: flex;
     align-items: center;
     justify-content: end;
@@ -427,13 +444,13 @@ section {
     transition: background-color 0.2s ease;
 }
 
-.title-section .modal-overlay .add-new-asset-modal .modal-btns .cancle-btn {
+.title-section .modal-overlay .add-new-asset-modal .modal-btns .cancel-btn {
     background-color: var(--btn-secondary-bg);
     border: var(--btn-secondary-border);
     color: var(--btn-secondary-color);
 }
 
-.title-section .modal-overlay .add-new-asset-modal .modal-btns .cancle-btn:hover {
+.title-section .modal-overlay .add-new-asset-modal .modal-btns .cancel-btn:hover {
     background-color: var(--btn-secondary-hover-bg);
 }
 

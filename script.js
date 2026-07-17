@@ -1,23 +1,36 @@
 let assetsDataContainer = document.querySelector(".assets-data-container")
+let modalOverlay = document.querySelector(".modal-overlay")
+let openModalBtn = document.querySelector(".add-new-asset-btn")
+let cancelBtn = document.querySelector(".cancel-btn")
+let addAssetBtn = document.querySelector(".add-asset-btn")
+let assetName = document.querySelector(".name-input")
+let assetLocation = document.querySelector(".location-input")
 
 const allAssetsData = [
-    { code: "AST-1001", name: "Classroom Projector 01", location: "Building A - Room 101", status: "Operational", condition: "Good" },
-    { code: "AST-1002", name: "Facility AC Unit", location: "Building B - Floor 2", status: "Issue Reported", condition: "Fair" },
-    { code: "AST-1003", name: "Backup Generator", location: "Utility Area", status: "Under Maintenance", condition: "Poor" },
-    { code: "AST-1004", name: "Admin Office Laptop", location: "Admin Office", status: "Operational", condition: "Good" },
-    { code: "AST-1005", name: "Office Printer", location: "Admin Office", status: "Operational", condition: "Good" }
+    { code: 1001, name: "Classroom Projector 01", location: "Building A - Room 101", status: "Operational", condition: "Good" },
+    { code: 1002, name: "Facility AC Unit", location: "Building B - Floor 2", status: "Issue Reported", condition: "Fair" },
+    { code: 1003, name: "Backup Generator", location: "Utility Area", status: "Under Maintenance", condition: "Poor" },
+    { code: 1004, name: "Admin Office Laptop", location: "Admin Office", status: "Operational", condition: "Good" },
+    { code: 1005, name: "Office Printer", location: "Admin Office", status: "Operational", condition: "Good" }
 ]
 
 if (!localStorage.getItem("allAssets")) {
     localStorage.setItem("allAssets", JSON.stringify(allAssetsData))
 }
 
+if (!localStorage.getItem("assetCodeCount")) {
+    localStorage.setItem("assetCodeCount", 1005)
+}
+
+let assetCodeCount = localStorage.getItem("assetCodeCount")
+
 let allAssets = JSON.parse(localStorage.getItem("allAssets"))
 
 function displayAssets(assetsArray) {
+    assetsDataContainer.innerHTML = ""
     assetsArray.map(asset => {        
         let tr = document.createElement("tr")
-        tr.innerHTML = `<td class="asset-code">${asset.code}</td>
+        tr.innerHTML = `<td class="asset-code">AST-${asset.code}</td>
                         <td class="asset-name">${asset.name}</td>
                         <td class="location">${asset.location}</td>
                         <td class="status ${asset.status.replace(" ", "-").toLowerCase()}">
@@ -29,3 +42,42 @@ function displayAssets(assetsArray) {
     })
 }
 displayAssets(allAssets)
+
+function addNewAsset() {
+    let newAssset = {}   
+
+    newAssset.code = ++assetCodeCount
+    newAssset.name = assetName.value
+    newAssset.location = assetLocation.value
+    newAssset.status = "Operational"
+    newAssset.condition = "Good"
+
+    allAssets.push(newAssset)
+
+    localStorage.setItem("assetCodeCount", assetCodeCount)
+    localStorage.setItem("allAssets", JSON.stringify(allAssets))
+    displayAssets(allAssets)
+
+    assetName.value = ""
+    assetLocation.selectedInex = 0
+}
+
+function openModal () {
+    modalOverlay.classList.add("active")
+    document.body.style.overflow = "hidden"
+}
+
+function closeModal () {
+    modalOverlay.classList.remove("active")
+    document.body.style.overflow = "auto"
+}
+
+// Event Listeners
+
+openModalBtn.addEventListener("click", openModal)
+
+cancelBtn.addEventListener("click", closeModal)
+
+addAssetBtn.addEventListener("click", () => {
+    addNewAsset()
+})
