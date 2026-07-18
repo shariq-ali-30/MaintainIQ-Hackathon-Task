@@ -13,6 +13,10 @@ let toastIcon = document.getElementById("toast-icon")
 let toastMessage = document.querySelector(".toast-message")
 let searchInput = document.getElementById("search-input")
 let statusDropdown = document.getElementById("status-dropdown")
+let locationDropdown = document.getElementById("location-dropdown")
+let emptyStateMessage = document.querySelector(".empty-state")
+let assetTable = document.querySelector(".asset-table")
+let resetToDemoDataBtn = document.querySelector(".reset-to-demo-data-btn")
 
 const allAssetsData = [
     { code: 1001, name: "Classroom Projector 01", location: "Building A - Room 101", status: "Operational", condition: "Good" },
@@ -135,7 +139,11 @@ function closeModal() {
 }
 
 function searchAssets() {
-    let filteredAssets = allAssets.filter(asset => asset.name.toLowerCase().includes(searchInput.value))
+    if (!assetsDataContainer.children.length > 0) {
+        showToast("error", "No matching assets found!")
+    }
+
+    let filteredAssets = allAssets.filter(asset => asset.name.toLowerCase().includes(searchInput.value.toLowerCase()) || asset.code.toString().includes(searchInput.value))
     displayAssets(filteredAssets)
 }
 
@@ -145,8 +153,23 @@ function statusFilter() {
         return
     }
 
-    let filteredAssets = allAssets.filter(asset => asset.status.toLowerCase() == statusDropdown.value.toLowerCase())    
+    let filteredAssets = allAssets.filter(asset => asset.status.toLowerCase() == statusDropdown.value.toLowerCase())
     displayAssets(filteredAssets)
+}
+
+function locationFilter() {
+    if (locationDropdown.value.toLowerCase() == "all locations") {
+        displayAssets(allAssets)
+        return
+    }
+
+    let filteredAssets = allAssets.filter(asset => asset.location.toLowerCase() == locationDropdown.value.toLowerCase())
+    displayAssets(filteredAssets)
+}
+
+function resetToDemoData() {
+    localStorage.removeItem("allAssets")
+    window.location.reload()
 }
 
 // Event Listeners
@@ -162,3 +185,7 @@ addAssetBtn.addEventListener("click", () => {
 searchInput.addEventListener("input", searchAssets)
 
 statusDropdown.addEventListener("change", statusFilter)
+
+locationDropdown.addEventListener("change", locationFilter)
+
+resetToDemoDataBtn.addEventListener("click", resetToDemoData)

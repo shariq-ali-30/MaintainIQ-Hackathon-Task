@@ -26,9 +26,9 @@
                 <i class="fa-solid fa-screwdriver-wrench"></i>
                 <h2>Maintain<span>IQ</span></h2>
             </div>
-            <button class="reset-demo-data-btn">
+            <button class="reset-to-demo-data-btn">
                 <i class="ph ph-arrow-clockwise"></i>
-                Reset Demo Data
+                Reset To Demo Data
             </button>
         </div>
     </nav>
@@ -148,7 +148,7 @@
                 </div>
 
                 <div class="select-box">
-                    <select class="location-filter">
+                    <select class="location-filter" id="location-dropdown">
                         <option selected>All Locations</option>
                         <option value="auditorium">Auditorium</option>
                         <option value="computer lab">Computer Lab</option>
@@ -161,7 +161,7 @@
 
         <section class="asset-table-section">
 
-            <table>
+            <table class="asset-table">
                 <thead>
                     <tr>
                         <th>Asset Code</th>
@@ -184,10 +184,6 @@
                     </tr> -->
                 </tbody>
             </table>
-
-            <div class="not-found-message">
-
-            </div>
 
         </section>
 
