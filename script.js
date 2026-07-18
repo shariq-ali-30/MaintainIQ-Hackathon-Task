@@ -11,6 +11,8 @@ let assetLocation = document.querySelector(".location-input")
 let toast = document.querySelector(".toast")
 let toastIcon = document.getElementById("toast-icon")
 let toastMessage = document.querySelector(".toast-message")
+let searchInput = document.getElementById("search-input")
+let statusDropdown = document.getElementById("status-dropdown")
 
 const allAssetsData = [
     { code: 1001, name: "Classroom Projector 01", location: "Building A - Room 101", status: "Operational", condition: "Good" },
@@ -34,6 +36,10 @@ let allAssets = JSON.parse(localStorage.getItem("allAssets"))
 
 function updatePageDetails() {
     totalAssetsCount.innerText = allAssets.length
+    activeIssuesCount.innerText = allAssets.filter(asset => asset.status.toLowerCase() == "issue reported").length
+    underMaintenanceCount.innerText = allAssets.filter(asset => asset.status.toLowerCase() == "under maintenance").length
+
+    displayAssets(allAssets)
 }
 updatePageDetails()
 
@@ -108,6 +114,7 @@ function addNewAsset() {
     localStorage.setItem("assetCodeCount", assetCodeCount)
     localStorage.setItem("allAssets", JSON.stringify(allAssets))
     displayAssets(allAssets)
+    updatePageDetails()
 
     assetName.value = ""
     assetLocation.selectedInex = 0
@@ -127,6 +134,21 @@ function closeModal() {
     document.body.style.overflow = "auto"
 }
 
+function searchAssets() {
+    let filteredAssets = allAssets.filter(asset => asset.name.toLowerCase().includes(searchInput.value))
+    displayAssets(filteredAssets)
+}
+
+function statusFilter() {
+    if (statusDropdown.value.toLowerCase() == "all statuses") {
+        displayAssets(allAssets)
+        return
+    }
+
+    let filteredAssets = allAssets.filter(asset => asset.status.toLowerCase() == statusDropdown.value.toLowerCase())    
+    displayAssets(filteredAssets)
+}
+
 // Event Listeners
 
 openModalBtn.addEventListener("click", openModal)
@@ -136,3 +158,7 @@ cancelBtn.addEventListener("click", closeModal)
 addAssetBtn.addEventListener("click", () => {
     addNewAsset()
 })
+
+searchInput.addEventListener("input", searchAssets)
+
+statusDropdown.addEventListener("change", statusFilter)

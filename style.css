@@ -517,6 +517,11 @@ section {
     transition: border 0.2s ease;
 }
 
+.modal-overlay .add-new-asset-modal .input-fields input.error,
+.modal-overlay .add-new-asset-modal .input-fields select.error {
+    border-color: var(--toast-error-icon-color);
+}
+
 .modal-overlay .add-new-asset-modal .input-fields input:focus {
     border: var(--input-focus-border);
 }

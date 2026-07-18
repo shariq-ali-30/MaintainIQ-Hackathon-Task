@@ -95,7 +95,7 @@
                 </div>
                 <div class="stats-card-details">
                     <p class="title">Total Assets</p>
-                    <h2 class="number" id="total-assets-count">5</h2>
+                    <h2 class="number" id="total-assets-count"></h2>
                 </div>
                 <div class="icon-circle total-assets-icon-box">
                     <i class="ph ph-trend-up"></i>
@@ -108,7 +108,7 @@
                 </div>
                 <div class="stats-card-details">
                     <p class="title">Active Issues</p>
-                    <h2 class="number" id="active-issues-count">1</h2>
+                    <h2 class="number" id="active-issues-count"></h2>
                 </div>
                 <div class="icon-circle active-issues-icon-box">
                     <i class="ph ph-trend-up"></i>
@@ -121,7 +121,7 @@
                 </div>
                 <div class="stats-card-details">
                     <p class="title">Under Maintenance</p>
-                    <h2 class="number" id="under-maintenance-count">1</h2>
+                    <h2 class="number" id="under-maintenance-count"></h2>
                 </div>
                 <div class="icon-circle under-maintenance-icon-box">
                     <i class="ph ph-trend-up"></i>
@@ -134,15 +134,15 @@
 
             <div class="input-box">
                 <i class="ph ph-magnifying-glass"></i>
-                <input type="text" placeholder="Search by name or code...">
+                <input type="text" placeholder="Search by name or code..." id="search-input">
             </div>
             <div class="filters">
                 <div class="select-box">
-                    <select class="status-filter">
-                        <option selected>All Statuse</option>
+                    <select class="status-filter" id="status-dropdown">
+                        <option selected>All Statuses</option>
                         <option value="operational">Operational</option>
-                        <option value="issue reportes">Issue Reported</option>
-                        <option value="under maintenance">Under maintenance</option>
+                        <option value="issue reported">Issue Reported</option>
+                        <option value="under maintenance">Under Maintenance</option>
                     </select>
                     <i class="ph ph-caret-down"></i>
                 </div>
@@ -184,6 +184,10 @@
                     </tr> -->
                 </tbody>
             </table>
+
+            <div class="not-found-message">
+
+            </div>
 
         </section>
 
