@@ -15,9 +15,9 @@
 </head>
 
 <body>
-    <div class="toast-notification">
-        <i class="fa-solid fa-circle-xmark"></i>
-        Message
+    <div class="toast">
+        <i class="fa-solid fa-circle-xmark" id="toast-icon"></i>
+        <p class="toast-message">Message</p>
     </div>
 
     <nav class="navbar">
@@ -26,7 +26,7 @@
                 <i class="fa-solid fa-screwdriver-wrench"></i>
                 <h2>Maintain<span>IQ</span></h2>
             </div>
-            <button class="reset-demo-data-btn" onclick="f()">
+            <button class="reset-demo-data-btn">
                 <i class="ph ph-arrow-clockwise"></i>
                 Reset Demo Data
             </button>
@@ -95,7 +95,7 @@
                 </div>
                 <div class="stats-card-details">
                     <p class="title">Total Assets</p>
-                    <h2 class="number">5</h2>
+                    <h2 class="number" id="total-assets-count">5</h2>
                 </div>
                 <div class="icon-circle total-assets-icon-box">
                     <i class="ph ph-trend-up"></i>
@@ -108,7 +108,7 @@
                 </div>
                 <div class="stats-card-details">
                     <p class="title">Active Issues</p>
-                    <h2 class="number">1</h2>
+                    <h2 class="number" id="active-issues-count">1</h2>
                 </div>
                 <div class="icon-circle active-issues-icon-box">
                     <i class="ph ph-trend-up"></i>
@@ -121,7 +121,7 @@
                 </div>
                 <div class="stats-card-details">
                     <p class="title">Under Maintenance</p>
-                    <h2 class="number">1</h2>
+                    <h2 class="number" id="under-maintenance-count">1</h2>
                 </div>
                 <div class="icon-circle under-maintenance-icon-box">
                     <i class="ph ph-trend-up"></i>

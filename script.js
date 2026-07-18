@@ -1,3 +1,6 @@
+let totalAssetsCount = document.getElementById("total-assets-count")
+let activeIssuesCount = document.getElementById("active-issues-count")
+let underMaintenanceCount = document.getElementById("under-maintenance-count")
 let assetsDataContainer = document.querySelector(".assets-data-container")
 let modalOverlay = document.querySelector(".modal-overlay")
 let openModalBtn = document.querySelector(".add-new-asset-btn")
@@ -5,11 +8,9 @@ let cancelBtn = document.querySelector(".cancel-btn")
 let addAssetBtn = document.querySelector(".add-asset-btn")
 let assetName = document.querySelector(".name-input")
 let assetLocation = document.querySelector(".location-input")
-let toastNotification = document.querySelector(".toast-notification")
-let toastNotificationIcon = document.querySelector(".toast-notification i")
-
-console.log(toastNotificationIcon);
-
+let toast = document.querySelector(".toast")
+let toastIcon = document.getElementById("toast-icon")
+let toastMessage = document.querySelector(".toast-message")
 
 const allAssetsData = [
     { code: 1001, name: "Classroom Projector 01", location: "Building A - Room 101", status: "Operational", condition: "Good" },
@@ -31,6 +32,11 @@ let assetCodeCount = localStorage.getItem("assetCodeCount")
 
 let allAssets = JSON.parse(localStorage.getItem("allAssets"))
 
+function updatePageDetails() {
+    totalAssetsCount.innerText = allAssets.length
+}
+updatePageDetails()
+
 function displayAssets(assetsArray) {
     assetsDataContainer.innerHTML = ""
     assetsArray.map(asset => {
@@ -48,28 +54,48 @@ function displayAssets(assetsArray) {
 }
 displayAssets(allAssets)
 
-function toastMsg(state, message) {
-    
+let toastTimeout;
+function showToast(state, message) {
+    clearTimeout(toastTimeout)
+
     if (state == "success") {
+        toastIcon.className = "fa fa-circle-check"
     }
 
     if (state == "error") {
+        toastIcon.className = "fa fa-circle-xmark"
     }
 
-    toastNotification.innerText = message
+    toastMessage.innerText = message
 
-    toastNotification.classList.add("active")
-    setTimeout(() => {
-        toastNotification.classList.remove("active")
+    toast.classList.add("active")
+    toastTimeout = setTimeout(() => {
+        toast.classList.remove("active")
     }, 3000);
 }
 
-function f() {
-    toastMsg("error", "Task added successfully!")
-}
-
+let errorTimeout;
 function addNewAsset() {
+    clearTimeout(errorTimeout)
+
     let newAssset = {}
+    const originalBorderColor = assetName.style.borderColor;
+
+    if (!assetName.value.trim()) {
+        assetName.classList.add("error")
+        errorTimeout = setTimeout(() => {
+            assetName.classList.remove("error")
+        }, 3000);
+        return showToast("error", "Please enter an asset name!")
+    }
+
+    if (assetLocation.selectedIndex == 0) {
+        assetLocation.classList.add("error")
+        errorTimeout = setTimeout(() => {
+            assetLocation.classList.remove("error")
+        }, 3000);
+        return showToast("error", "Please select a location!")
+    }
 
     newAssset.code = ++assetCodeCount
     newAssset.name = assetName.value
@@ -86,6 +112,7 @@ function addNewAsset() {
     assetName.value = ""
     assetLocation.selectedInex = 0
     closeModal()
+    showToast("success", "Asset added successfully!")
 }
 
 function openModal() {
@@ -94,6 +121,8 @@ function openModal() {
 }
 
 function closeModal() {
+    assetName.value = ""
+    assetLocation.selectedIndex = 0
     modalOverlay.classList.remove("active")
     document.body.style.overflow = "auto"
 }
