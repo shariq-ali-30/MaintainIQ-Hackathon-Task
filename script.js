@@ -14,7 +14,6 @@ let toastMessage = document.querySelector(".toast-message")
 let searchInput = document.getElementById("search-input")
 let statusDropdown = document.getElementById("status-dropdown")
 let locationDropdown = document.getElementById("location-dropdown")
-let emptyStateMessage = document.querySelector(".empty-state")
 let assetTable = document.querySelector(".asset-table")
 let resetToDemoDataBtn = document.querySelector(".reset-to-demo-data-btn")
 
@@ -37,6 +36,13 @@ if (!localStorage.getItem("assetCodeCount")) {
 let assetCodeCount = localStorage.getItem("assetCodeCount")
 
 let allAssets = JSON.parse(localStorage.getItem("allAssets"))
+
+let locations = [...new Set(allAssets.map(asset => asset.location.toLowerCase()))].sort().map(loction => {
+    let option = document.createElement("option")
+    option.value = loction.toLowerCase()
+    option.innerText = loction
+    return option
+})
 
 function updatePageDetails() {
     totalAssetsCount.innerText = allAssets.length
@@ -120,8 +126,6 @@ function addNewAsset() {
     displayAssets(allAssets)
     updatePageDetails()
 
-    assetName.value = ""
-    assetLocation.selectedInex = 0
     closeModal()
     showToast("success", "Asset added successfully!")
 }
@@ -167,6 +171,14 @@ function locationFilter() {
     displayAssets(filteredAssets)
 }
 
+function locationHandler() {
+    locations.forEach(location => {
+        locationDropdown.appendChild(location)
+        assetLocation.appendChild(location.cloneNode(true))
+    })
+}
+locationHandler()
+
 function resetToDemoData() {
     localStorage.removeItem("allAssets")
     window.location.reload()
@@ -178,9 +190,7 @@ openModalBtn.addEventListener("click", openModal)
 
 cancelBtn.addEventListener("click", closeModal)
 
-addAssetBtn.addEventListener("click", () => {
-    addNewAsset()
-})
+addAssetBtn.addEventListener("click", addNewAsset)
 
 searchInput.addEventListener("input", searchAssets)
 
