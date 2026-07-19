@@ -30,7 +30,7 @@
 
     /* DIVIDER */
 
-    --divider: #EEF2F6;
+    --divider: 1.5px solid #EEF2F6;
 
     /* LABELS */
 
@@ -145,7 +145,7 @@ body {
 /* Title Section */
 
 .title-section {
-    margin-top: 20px;
+    margin-top: 25px;
     display: flex;
     align-items: center;
     gap: 25px;
@@ -160,7 +160,7 @@ body {
     align-items: center;
     gap: 8px;
     padding: 8px 18px;
-    font-size: 18px;
+    font-size: 17px;
     border-radius: 999px;
     background-color: var(--status-operational-bg);
     color: var(--status-operational-text);
@@ -173,5 +173,125 @@ body {
     border-radius: 50%;
 }
 
-/* Technical Details */
+/* Asset Details Section */
 
+.asset-details-section {
+    width: 49%;
+    margin-top: 30px;
+}
+
+/* Technical details */
+
+.asset-details-section .technical-details-card {
+    padding: 20px 20px 5px 20px;
+    border-radius: 8px;
+    background-color: var(--card-bg);
+    border: var(--card-border);
+    box-shadow: var(--card-shadow);
+}
+
+.section-header {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-transform: capitalize;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.section-header i {
+    font-size: 28px;
+    color: var(--section-icon-color);
+}
+
+.asset-details-section .technical-details-card .detail {
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    text-transform: capitalize;
+    border-bottom: var(--divider);
+}
+
+.asset-details-section .technical-details-card .detail:last-child {
+    border-bottom: none;
+}
+
+.asset-details-section .technical-details-card .detail .key {
+    color: var(--label-color);
+    font-size: 15px;
+    width: 60%;
+}
+
+.asset-details-section .technical-details-card .detail .value {
+    width: 40%;
+    color: var(--value-color);
+    font-size: 15px;
+}
+
+.asset-details-section .technical-details-card .detail .value .condition {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 16px;
+    border-radius: 999px;
+}
+
+.asset-details-section .technical-details-card .detail .value .condition.good {
+    background-color: var(--status-operational-bg);
+    color: var(--status-operational-text);
+}
+
+.asset-details-section .technical-details-card .detail .value .condition .dot {
+    border: 3.5px solid;
+    border-radius: 50%;
+}
+
+.asset-details-section .technical-details-card .detail .value .condition.good .dot {
+    border-color: var(--status-operational-dot);
+}
+
+/* QR Code */
+
+.qr-code-card {
+    margin-top: 20px;
+    background-color: var(--card-bg);
+    border: var(--card-border);
+    box-shadow: var(--card-shadow);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.qr-code-card .qr-code {
+    width: 180px;
+    height: 180px;
+    border: var(--qr-border);
+    border-radius: 6px;
+    margin: 20px auto;
+}
+
+.qr-code-card button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 auto;
+    font-size: 16px;
+    padding: 10px 60px;
+    border-radius: 5px;
+    background-color: var(--btn-primary-bg);
+    color: var(--btn-primary-color);
+    border-color: transparent;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.qr-code-card button:active {
+    background-color: var(--btn-primary-active-bg);
+}
+
+.qr-code-card button i {
+    font-size: 20px;
+}
