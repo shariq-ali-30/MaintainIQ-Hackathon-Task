@@ -14,7 +14,6 @@ let toastMessage = document.querySelector(".toast-message")
 let searchInput = document.getElementById("search-input")
 let statusDropdown = document.getElementById("status-dropdown")
 let locationDropdown = document.getElementById("location-dropdown")
-let assetTable = document.querySelector(".asset-table")
 let resetToDemoDataBtn = document.querySelector(".reset-to-demo-data-btn")
 
 const allAssetsData = [
