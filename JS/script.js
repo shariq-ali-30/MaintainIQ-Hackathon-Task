@@ -17,11 +17,11 @@ let locationDropdown = document.getElementById("location-dropdown")
 let resetToDemoDataBtn = document.querySelector(".reset-to-demo-data-btn")
 
 const allAssetsData = [
-    { code: 1001, name: "Classroom Projector 01", location: "Building A - Room 101", status: "Operational", condition: "Good" },
-    { code: 1002, name: "Facility AC Unit", location: "Building B - Floor 2", status: "Issue Reported", condition: "Fair" },
-    { code: 1003, name: "Backup Generator", location: "Utility Area", status: "Under Maintenance", condition: "Poor" },
-    { code: 1004, name: "Admin Office Laptop", location: "Admin Office", status: "Operational", condition: "Good" },
-    { code: 1005, name: "Office Printer", location: "Admin Office", status: "Operational", condition: "Good" }
+    { code: 1001, name: "Classroom Projector 01", location: "Building A - Room 101", status: "Operational", condition: "Good", history: [{ activity: "Asset Created", time: "July 20, 2026 at 10:00 AM" }] },
+    { code: 1002, name: "Facility AC Unit", location: "Building B - Floor 2", status: "Issue Reported", condition: "Fair", history: [{ activity: "Asset Created", time: "July 19, 2026 at 02:15 PM" }] },
+    { code: 1003, name: "Backup Generator", location: "Utility Area", status: "Under Maintenance", condition: "Poor", history: [{ activity: "Asset Created", time: "July 18, 2026 at 08:45 AM" }] },
+    { code: 1004, name: "Admin Office Laptop", location: "Admin Office", status: "Operational", condition: "Good", history: [{ activity: "Asset Created", time: "July 20, 2026 at 01:30 PM" }] },
+    { code: 1005, name: "Office Printer", location: "Admin Office", status: "Operational", condition: "Good", history: [{ activity: "Asset Created", time: "July 17, 2026 at 04:20 PM" }] }
 ]
 
 if (!localStorage.getItem("allAssets")) {
@@ -95,6 +95,17 @@ function addNewAsset() {
 
     let newAssset = {}
     const originalBorderColor = assetName.style.borderColor;
+    let currentDate = new Date().toLocaleString("en-US", {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+    })
+    let currentTime = new Date().toLocaleString("en-US", {
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true,
+    })
+    const timeCreated = `${currentDate} at ${currentTime}`
 
     if (!assetName.value.trim()) {
         assetName.classList.add("error")
@@ -117,6 +128,7 @@ function addNewAsset() {
     newAssset.location = assetLocation.value
     newAssset.status = "Operational"
     newAssset.condition = "Good"
+    newAssset.history = [{ activity: "Asset Created", time: timeCreated }]
 
     allAssets.push(newAssset)
 
@@ -179,14 +191,14 @@ function locationHandler() {
 locationHandler()
 
 function resetToDemoData() {
-    localStorage.removeItem("allAssets")
+    localStorage.clear()
     window.location.reload()
 }
 
-function viewDetails(assetCode){
+function viewDetails(assetCode) {
     window.location.href = `pages/details.html?code=${assetCode}`
 }
- 
+
 // Event Listeners
 
 openModalBtn.addEventListener("click", openModal)
