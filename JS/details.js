@@ -1,3 +1,4 @@
+let backBtn = document.querySelector(".back-btn")
 let allAssets = JSON.parse(localStorage.getItem("allAssets"))
 let paramCode = new URLSearchParams(window.location.search).get("code")
 let currentAsset = allAssets.find(asset => asset.code == paramCode)
@@ -7,6 +8,13 @@ let assetCode = document.querySelector(".asset-code")
 let assetLocation = document.querySelector(".asset-location")
 let assetCondition = document.querySelector(".condition")
 let assetTimeline = document.querySelector(".timeline")
+let modal = document.querySelector(".modal-overlay")
+let editBtn = document.querySelector(".edit-btn")
+let closeBtn = document.querySelector(".cancel-btn")
+let assetNameInput = document.querySelector(".name-input")
+let assetStatusInput = document.querySelector(".status-input")
+let assetLocationInput = document.querySelector(".location-input")
+let assetConditionInput = document.querySelector(".condition-input")
 
 assetName.innerHTML = currentAsset.name
 assetStatus.innerHTML = `<span class="dot"></span> ${currentAsset.status}`
@@ -27,3 +35,29 @@ currentAsset.history.forEach(historyItem => {
                      </div>`
     assetTimeline.appendChild(div)
 });
+
+function openModal() {
+    modal.classList.add("active")
+    document.body.style.overflow = "hidden"
+    assetNameInput.value = currentAsset.name
+    assetStatusInput.selectedIndex = 0
+    assetLocationInput.value = currentAsset.location
+    assetConditionInput.selectedIndex = 0
+}
+
+function closeModal() {
+    modal.classList.remove("active")
+    document.body.style.overflow = "auto"
+    assetNameInput.value = ""
+    assetStatusInput.selectedIndex = 0
+    assetLocationInput.value = ""
+    assetConditionInput.selectedIndex = 0
+}
+
+// Event Listners
+
+backBtn.addEventListener("click", () => window.history.back())
+
+editBtn.addEventListener("click", openModal)
+
+closeBtn.addEventListener("click", closeModal)

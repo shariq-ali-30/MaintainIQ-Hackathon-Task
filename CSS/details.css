@@ -16,6 +16,49 @@
     --back-btn-color: #374151;
     --back-btn-active: #111827;
 
+    /* MODAL */
+
+    --modal-overlay-bg: rgba(15, 23, 42, .5);
+
+    --modal-bg: #FFFFFF;
+    --modal-border: 1px solid #E7ECF2;
+    --modal-shadow: 0 24px 60px rgba(15, 23, 42, .18);
+
+    --modal-separator-border: 1.5px solid #EEF2F6;
+
+    --modal-title: #111827;
+    --modal-subtitle: #6B7280;
+
+    /* MODAL ICON */
+
+    --modal-icon-bg: #EAF8F0;
+    --modal-icon-color: #16A34A;
+
+    /* FORM LABELS */
+
+    --form-label-color: #374151;
+
+    /* INPUT */
+
+    --input-bg: #FFFFFF;
+    --input-border: 1.5px solid #E5E7EB;
+
+    --input-focus-border: 1.5px solid #16A34A;
+
+    /* EDIT BUTTON */
+
+    --edit-btn-bg: #16A34A;
+    --edit-btn-color: #FFFFFF;
+    --edit-btn-border: 1px solid transparent;
+    --edit-btn-active-bg: #15803D;
+
+    /* RETIRE BUTTON */
+
+    --retire-btn-bg: #DC2626;
+    --retire-btn-color: #FFFFFF;
+    --retire-btn-border: 1px solid transparent;
+    --retire-btn-active-bg: #B91C1C;
+
     /* CARD */
 
     --card-bg: #FFFFFF;
@@ -95,7 +138,7 @@
     --btn-secondary-border: 1.5px solid #E5E7EB;
     --btn-secondary-active-bg: #F8FAFC;
 
-    /* PRINT BUTTON */
+    /* Download BUTTON */
 
     --download-btn-bg: #FFFFFF;
     --download-btn-color: #16A34A;
@@ -117,7 +160,6 @@
     --scrollbar-track-bg: #F1F5F9;
     --scrollbar-thumb-bg: #CBD5E1;
     --scrollbar-thumb-hover-bg: #94A3B8;
-
 }
 
 * {
@@ -156,11 +198,177 @@ body {
     padding: 0 clamp(12px, 3vw, 30px);
 }
 
+/* Modal */
+
+.modal-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: var(--modal-overlay-bg);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.modal-overlay.active {
+    visibility: initial;
+    opacity: 1;
+}
+
+.modal-overlay .edit-asset-modal {
+    width: 100%;
+    max-width: 500px;
+    padding: clamp(16px, 2vw, 20px);
+    background-color: var(--modal-bg);
+    border: var(--modal-border);
+    border-radius: clamp(10px, 1.2vw, 12px);
+    box-shadow: var(--modal-shadow);
+    transform: translateY(-30px) scale(0.96);
+    opacity: 0;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
+}
+
+.modal-overlay.active .edit-asset-modal {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+.modal-overlay .edit-asset-modal .modal-header {
+    display: flex;
+    align-items: center;
+    gap: clamp(12px, 1.5vw, 16px);
+}
+
+.modal-overlay .edit-asset-modal .modal-header .icon-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: clamp(50px, 5.5vw, 60px);
+    width: clamp(50px, 5.5vw, 60px);
+    border-radius: 50%;
+    font-size: clamp(24px, 2.2vw, 28px);
+    background-color: var(--modal-icon-bg);
+    color: var(--modal-icon-color);
+}
+
+.modal-overlay .edit-asset-modal .modal-header .modal-title {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.modal-overlay .edit-asset-modal .modal-header .modal-title h2 {
+    color: var(--modal-title);
+    font-size: clamp(20px, 2.2vw, 24px);
+}
+
+.modal-overlay .edit-asset-modal .modal-header .modal-title p {
+    font-size: clamp(12px, 1.2vw, 14px);
+    color: var(--modal-subtitle);
+}
+
+.modal-overlay .edit-asset-modal .hr {
+    border-bottom: var(--modal-separator-border);
+    margin-top: clamp(14px, 1.5vw, 18px);
+}
+
+.modal-overlay .edit-asset-modal .input-fields {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-overlay .edit-asset-modal .input-fields label {
+    margin-top: clamp(14px, 1.5vw, 18px);
+    margin-bottom: 6px;
+    font-size: clamp(12px, 1.2vw, 14px);
+    font-weight: 500;
+    color: var(--form-label-color);
+}
+
+.modal-overlay .edit-asset-modal .input-fields div {
+    width: 100%;
+    position: relative;
+}
+
+.modal-overlay .edit-asset-modal .input-fields div i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 12px;
+    color: var(--select-arrow);
+}
+
+.modal-overlay .edit-asset-modal .input-fields input,
+.modal-overlay .edit-asset-modal .input-fields select {
+    width: 100%;
+    height: clamp(40px, 4.5vw, 45px);
+    padding: 0 12px;
+    border: var(--input-border);
+    border-radius: clamp(6px, 0.8vw, 8px);
+    background-color: var(--input-bg);
+    outline: none;
+    appearance: none;
+    transition: border 0.2s ease;
+}
+
+.modal-overlay .edit-asset-modal .input-fields select {
+    text-transform: capitalize;
+}
+
+.modal-overlay .edit-asset-modal .input-fields input:focus {
+    border: var(--input-focus-border);
+}
+
+.modal-overlay .edit-asset-modal .modal-btns {
+    margin-top: clamp(22px, 2.5vw, 28px);
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 8px;
+}
+
+.modal-overlay .edit-asset-modal .modal-btns button {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: clamp(8px, 1vw, 10px) clamp(12px, 1.5vw, 16px);
+    font-size: clamp(12px, 1.2vw, 14px);
+    border-radius: clamp(4px, 0.5vw, 6px);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.modal-overlay .edit-asset-modal .modal-btns .cancel-btn {
+    background-color: var(--btn-secondary-bg);
+    border: var(--btn-secondary-border);
+    color: var(--btn-secondary-color);
+}
+
+.modal-overlay .edit-asset-modal .modal-btns .cancel-btn:active {
+    background-color: var(--btn-secondary-active-bg);
+}
+
+.modal-overlay .edit-asset-modal .modal-btns .save-changes-btn {
+    background-color: var(--btn-primary-bg);
+    border: var(--btn-primary-border);
+    color: var(--btn-primary-color);
+}
+
+.modal-overlay .edit-asset-modal .modal-btns .save-changes-btn:active {
+    background-color: var(--btn-primary-active-bg);
+}
+
 /* Back Button */
 
 .back-btn {
     width: fit-content;
-    text-decoration: none;
     font-size: 14px;
     display: flex;
     align-items: center;
@@ -189,8 +397,51 @@ body {
 .title-section {
     margin-top: 25px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     gap: 25px;
+}
+
+.title-section div {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.title-section div button {
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.title-section div button i {
+    font-size: 16px;
+}
+
+.title-section button.edit-btn {
+    background-color: var(--edit-btn-bg);
+    color: var(--edit-btn-color);
+    border: var(--edit-btn-border);
+}
+
+.title-section button.edit-btn:active {
+    background-color: var(--edit-btn-active-bg);
+}
+
+.title-section button.retire-btn {
+    background-color: var(--retire-btn-bg);
+    color: var(--retire-btn-color);
+    border: var(--retire-btn-border);
+}
+
+.title-section button.retire-btn:active {
+    background-color: var(--retire-btn-active-bg);
 }
 
 .title-section .asset-name {
@@ -198,6 +449,7 @@ body {
 }
 
 .title-section .asset-status {
+    margin-left: 14px;
     display: flex;
     align-items: center;
     gap: 8px;

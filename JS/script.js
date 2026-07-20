@@ -17,11 +17,11 @@ let locationDropdown = document.getElementById("location-dropdown")
 let resetToDemoDataBtn = document.querySelector(".reset-to-demo-data-btn")
 
 const allAssetsData = [
-    { code: 1001, name: "Classroom Projector 01", location: "Building A - Room 101", status: "Operational", condition: "Good", history: [{ activity: "Asset Created", time: "July 20, 2026 at 10:00 AM" }] },
+    { code: 1001, name: "Classroom Projector 01", location: "Building A - Room 101", status: "Operational", condition: "Excellent", history: [{ activity: "Asset Created", time: "July 20, 2026 at 10:00 AM" }] },
     { code: 1002, name: "Facility AC Unit", location: "Building B - Floor 2", status: "Issue Reported", condition: "Fair", history: [{ activity: "Asset Created", time: "July 19, 2026 at 02:15 PM" }] },
     { code: 1003, name: "Backup Generator", location: "Utility Area", status: "Under Maintenance", condition: "Poor", history: [{ activity: "Asset Created", time: "July 18, 2026 at 08:45 AM" }] },
-    { code: 1004, name: "Admin Office Laptop", location: "Admin Office", status: "Operational", condition: "Good", history: [{ activity: "Asset Created", time: "July 20, 2026 at 01:30 PM" }] },
-    { code: 1005, name: "Office Printer", location: "Admin Office", status: "Operational", condition: "Good", history: [{ activity: "Asset Created", time: "July 17, 2026 at 04:20 PM" }] }
+    { code: 1004, name: "Admin Office Laptop", location: "Admin Office", status: "Operational", condition: "Excellent", history: [{ activity: "Asset Created", time: "July 20, 2026 at 01:30 PM" }] },
+    { code: 1005, name: "Office Printer", location: "Admin Office", status: "Operational", condition: "Excellent", history: [{ activity: "Asset Created", time: "July 17, 2026 at 04:20 PM" }] }
 ]
 
 if (!localStorage.getItem("allAssets")) {
@@ -127,7 +127,7 @@ function addNewAsset() {
     newAssset.name = assetName.value
     newAssset.location = assetLocation.value
     newAssset.status = "Operational"
-    newAssset.condition = "Good"
+    newAssset.condition = "Excellent"
     newAssset.history = [{ activity: "Asset Created", time: timeCreated }]
 
     allAssets.push(newAssset)

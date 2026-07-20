@@ -20,11 +20,72 @@
 <body>
     <div class="container">
 
-        <a href="/index.html" class="back-btn"><i class="ph ph-arrow-left"></i> Back To Dashboard</a>
+        <div class="modal-overlay">
+            <div class="edit-asset-modal">
+
+                <div class="modal-header">
+                    <div class="icon-circle">
+                        <i class="ph-bold ph-pencil-simple"></i>
+                    </div>
+
+                    <div class="modal-title">
+                        <h2>Edit Asset</h2>
+                        <p>Update the asset details below.</p>
+                    </div>
+                </div>
+
+                <div class="hr"></div>
+
+                <div class="input-fields">
+                    <label>Asset Name</label>
+                    <input type="text" class="name-input">
+
+                    <label>Status</label>
+                    <div>
+                        <select class="status-input">
+                            <option selected disabled>Status</option>
+                            <option value="operational">Operational</option>
+                            <option value="issue reported">Issue Reported</option>
+                            <option value="under maintenance">Under Maintenance</option>
+                        </select>
+                        <i class="ph ph-caret-down"></i>
+                    </div>
+
+                    <label>Location</label>
+                    <input type="text" class="location-input">
+
+                    <label>Condition</label>
+                    <div>
+                        <select class="condition-input">
+                            <option selected disabled>Condition</option>
+                            <option value="excellent">Excellent</option>
+                            <option value="good">Good</option>
+                            <option value="fair">Fair</option>
+                            <option value="poor">Poor</option>
+                        </select>
+                        <i class="ph ph-caret-down"></i>
+                    </div>
+                </div>
+
+                <div class="modal-btns">
+                    <button class="cancel-btn">Cancle</button>
+                    <button class="save-changes-btn">Save Changes</button>
+                </div>
+
+            </div>
+        </div>
+
+        <button class="back-btn"><i class="ph ph-arrow-left"></i> Back To Dashboard</button>
 
         <section class="title-section">
-            <h1 class="asset-name">Asset Name</h1>
-            <p class="asset-status operational"><span class="dot"></span>operational</p>
+            <div>
+                <h1 class="asset-name">Asset Name</h1>
+                <p class="asset-status operational"><span class="dot"></span>operational</p>
+            </div>
+            <div class="btns">
+                <button class="edit-btn"><i class="ph ph-pencil-simple"></i> Edit</button>
+                <button class="retire-btn"><i class="ph ph-trash"></i> Retire Asset</button>
+            </div>
         </section>
 
         <section class="asset-details-and-timeline">
