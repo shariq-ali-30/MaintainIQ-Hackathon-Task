@@ -46,7 +46,7 @@
 
     --timeline-line: #DDE5ED;
     --timeline-dot-bg: #FFFFFF;
-    --timeline-dot-border: #D7F3E2;
+    --timeline-dot-border: 1.5px solid #D7F3E2;
     --timeline-dot-active: #16A34A;
 
     /* STATUS */
@@ -106,6 +106,7 @@
 body {
     background-color: var(--body-bg);
     color: var(--body-text);
+    padding-bottom: 30px;
 }
 
 .container {
@@ -162,22 +163,55 @@ body {
     padding: 8px 18px;
     font-size: 17px;
     border-radius: 999px;
-    background-color: var(--status-operational-bg);
-    color: var(--status-operational-text);
     font-weight: 500;
     text-transform: capitalize;
 }
 
+.title-section .asset-status.operational {
+    background-color: var(--status-operational-bg);
+    color: var(--status-operational-text);
+}
+
+.title-section .asset-status.issue-reported {
+    background-color: var(--status-issue-bg);
+    color: var(--status-issue-text);
+}
+
+.title-section .asset-status.under-maintenance {
+    background-color: var(--status-maintenance-bg);
+    color: var(--status-maintenance-text);
+}
+
 .title-section .asset-status .dot {
-    border: 4px solid var(--status-operational-dot);
+    border: 4px solid;
     border-radius: 50%;
+}
+
+.title-section .asset-status.operational .dot {
+    border-color: var(--status-operational-dot);
+}
+
+.title-section .asset-status.asset-status.issue-reported .dot {
+    border-color: var(--status-issue-dot);
+}
+
+.title-section .asset-status.asset-status.under-maintenance .dot {
+    border-color: var(--status-maintenance-dot);
+}
+
+/* Main Section */
+
+.asset-details-and-timeline {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    gap: 20px;
 }
 
 /* Asset Details Section */
 
 .asset-details-section {
-    width: 49%;
-    margin-top: 30px;
+    width: 60%;
 }
 
 /* Technical details */
@@ -270,7 +304,8 @@ body {
     height: 180px;
     border: var(--qr-border);
     border-radius: 6px;
-    margin: 20px auto;
+    margin: 25px auto;
+    overflow: hidden;
 }
 
 .qr-code-card button {
@@ -293,5 +328,58 @@ body {
 }
 
 .qr-code-card button i {
-    font-size: 20px;
+    font-size: 24px;
+}
+
+/* Asset Time Line Section */
+
+.asset-timeline-section {
+    width: 40%;
+    padding: 20px;
+    background-color: var(--card-bg);
+    border: var(--card-border);
+    box-shadow: var(--card-shadow);
+    border-radius: 10px;
+}
+
+.asset-timeline-section .timeline {
+    height: 499px;
+    overflow-y: auto;
+    margin-top: 25px;
+    transform: translateX(14px);
+    border-left: 3px dashed var(--timeline-line);
+}
+
+.asset-timeline-section .timeline .timeline-item {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.asset-timeline-section .timeline .timeline-item .dot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -11px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--timeline-dot-bg);
+    border: var(--timeline-dot-border);
+    outline: 5px solid var(--card-bg);
+}
+
+.asset-timeline-section .timeline .timeline-item .dot span {
+    border: 5px solid var(--timeline-dot-active);
+    border-radius: 50%;
+}
+
+.asset-timeline-section .timeline .timeline-item .content .title {
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.asset-timeline-section .timeline .timeline-item .content .time {
+    color: var(--body-text-secondary);
+    font-size: 12px;
 }
