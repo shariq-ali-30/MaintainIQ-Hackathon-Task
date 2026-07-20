@@ -62,7 +62,7 @@ function displayAssets(assetsArray) {
                         <td class="status ${asset.status.replace(" ", "-").toLowerCase()}">
                             <p><span class="dot"></span> ${asset.status}</p>
                         </td>
-                        <td class="action"><button><i class="ph ph-eye"></i> View</button></td>`
+                        <td class="action"><button onclick="viewDetails(${asset.code})"><i class="ph ph-eye"></i> View</button></td>`
 
         assetsDataContainer.appendChild(tr)
     })
@@ -183,6 +183,10 @@ function resetToDemoData() {
     window.location.reload()
 }
 
+function viewDetails(assetCode){
+    window.location.href = `pages/details.html?code=${assetCode}`
+}
+ 
 // Event Listeners
 
 openModalBtn.addEventListener("click", openModal)

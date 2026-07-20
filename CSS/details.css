@@ -37,6 +37,24 @@
     --label-color: #6B7280;
     --value-color: #111827;
 
+    /* CONDITION */
+
+    --condition-excellent-bg: #DCFCE7;
+    --condition-excellent-text: #166534;
+    --condition-excellent-dot: #16A34A;
+
+    --condition-good-bg: #EAF8F0;
+    --condition-good-text: #15803D;
+    --condition-good-dot: #16A34A;
+
+    --condition-fair-bg: #FFF8E6;
+    --condition-fair-text: #D97706;
+    --condition-fair-dot: #F59E0B;
+
+    --condition-poor-bg: #FEE2E2;
+    --condition-poor-text: #DC2626;
+    --condition-poor-dot: #EF4444;
+
     /* QR */
 
     --qr-bg: #FFFFFF;
@@ -79,10 +97,10 @@
 
     /* PRINT BUTTON */
 
-    --print-btn-bg: #FFFFFF;
-    --print-btn-color: #16A34A;
-    --print-btn-border: 1.5px solid #16A34A;
-    --print-btn-active-bg: #EAF8F0;
+    --download-btn-bg: #FFFFFF;
+    --download-btn-color: #16A34A;
+    --download-btn-border: 1.5px solid #16A34A;
+    --download-btn-active-bg: #EAF8F0;
 
     /* TOAST */
 
@@ -94,6 +112,12 @@
     --toast-success-icon: #16A34A;
     --toast-error-icon: #DC2626;
 
+    /* SCROLLBAR */
+
+    --scrollbar-track-bg: #F1F5F9;
+    --scrollbar-thumb-bg: #CBD5E1;
+    --scrollbar-thumb-hover-bg: #94A3B8;
+
 }
 
 * {
@@ -101,6 +125,23 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Inter", sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--scrollbar-track-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background-color: var(--scrollbar-thumb-bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar-thumb-hover-bg);
 }
 
 body {
@@ -274,18 +315,45 @@ body {
     border-radius: 999px;
 }
 
-.asset-details-section .technical-details-card .detail .value .condition.good {
-    background-color: var(--status-operational-bg);
-    color: var(--status-operational-text);
-}
-
 .asset-details-section .technical-details-card .detail .value .condition .dot {
     border: 3.5px solid;
     border-radius: 50%;
 }
 
+.asset-details-section .technical-details-card .detail .value .condition.excellent {
+    background-color: var(--condition-excellent-bg);
+    color: var(--condition-excellent-text);
+}
+
+.asset-details-section .technical-details-card .detail .value .condition.excellent .dot {
+    border-color: var(--condition-excellent-dot);
+}
+
+.asset-details-section .technical-details-card .detail .value .condition.good {
+    background-color: var(--condition-good-bg);
+    color: var(--condition-good-text);
+}
+
 .asset-details-section .technical-details-card .detail .value .condition.good .dot {
-    border-color: var(--status-operational-dot);
+    border-color: var(--condition-good-dot);
+}
+
+.asset-details-section .technical-details-card .detail .value .condition.fair {
+    background-color: var(--condition-fair-bg);
+    color: var(--condition-fair-text);
+}
+
+.asset-details-section .technical-details-card .detail .value .condition.fair .dot {
+    border-color: var(--condition-fair-dot);
+}
+
+.asset-details-section .technical-details-card .detail .value .condition.poor {
+    background-color: var(--condition-poor-bg);
+    color: var(--condition-poor-text);
+}
+
+.asset-details-section .technical-details-card .detail .value .condition.poor .dot {
+    border-color: var(--condition-poor-dot);
 }
 
 /* QR Code */
@@ -314,17 +382,17 @@ body {
     gap: 12px;
     margin: 0 auto;
     font-size: 16px;
-    padding: 10px 60px;
+    padding: 10px 40px;
     border-radius: 5px;
-    background-color: var(--btn-primary-bg);
-    color: var(--btn-primary-color);
-    border-color: transparent;
+    background-color: var(--download-btn-bg);
+    color: var(--download-btn-color);
+    border: var(--download-btn-border);
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
 
 .qr-code-card button:active {
-    background-color: var(--btn-primary-active-bg);
+    background-color: var(--download-btn-active-bg);
 }
 
 .qr-code-card button i {
@@ -346,14 +414,26 @@ body {
     height: 499px;
     overflow-y: auto;
     margin-top: 25px;
-    transform: translateX(14px);
-    border-left: 3px dashed var(--timeline-line);
+}
+
+.asset-timeline-section .timeline::-webkit-scrollbar {
+    width: 0;
+}
+
+.asset-timeline-section .timeline:hover::-webkit-scrollbar {
+    width: 5px;
 }
 
 .asset-timeline-section .timeline .timeline-item {
+    margin-left: 11px;
     display: flex;
     gap: 25px;
-    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-left: 3px dashed var(--timeline-line);
+}
+
+.asset-timeline-section .timeline .timeline-item:last-child {
+    padding-bottom: 0;
 }
 
 .asset-timeline-section .timeline .timeline-item .dot {
