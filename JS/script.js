@@ -2,6 +2,7 @@ let totalAssetsCount = document.getElementById("total-assets-count")
 let activeIssuesCount = document.getElementById("active-issues-count")
 let underMaintenanceCount = document.getElementById("under-maintenance-count")
 let assetsDataContainer = document.querySelector(".assets-data-container")
+let assetsTableSection = document.querySelector(".asset-table-section")
 let modalOverlay = document.querySelector(".modal-overlay")
 let openModalBtn = document.querySelector(".add-new-asset-btn")
 let cancelBtn = document.querySelector(".cancel-btn")
@@ -49,6 +50,12 @@ function updatePageDetails() {
     underMaintenanceCount.innerText = allAssets.filter(asset => asset.status.toLowerCase() == "under maintenance").length
 
     displayAssets(allAssets)
+
+    if (assetsDataContainer.children.length == 0) {
+        assetsTableSection.style.display = "none"
+    } else {
+        assetsTableSection.style.display = "flex"
+    }
 }
 updatePageDetails()
 
@@ -154,8 +161,15 @@ function closeModal() {
 }
 
 function searchAssets() {
-    if (!assetsDataContainer.children.length > 0) {
+    if (assetsDataContainer.children.length == 0) {
         showToast("error", "No matching assets found!")
+        assetsTableSection.style.display = "none"
+    } else {
+        assetsTableSection.style.display = "flex"
+    }
+
+    if (searchInput.value.length == 0) {
+        assetsTableSection.style.display = "flex"
     }
 
     let filteredAssets = allAssets.filter(asset => asset.name.toLowerCase().includes(searchInput.value.toLowerCase()) || asset.code.toString().includes(searchInput.value))
