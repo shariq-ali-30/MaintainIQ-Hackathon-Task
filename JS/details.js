@@ -9,6 +9,8 @@ let assetStatus = document.querySelector(".asset-status")
 let assetCode = document.querySelector(".asset-code")
 let assetLocation = document.querySelector(".asset-location")
 let assetCondition = document.querySelector(".condition")
+let assetQRCode = document.querySelector(".qr-code-container")
+let qrCodeDownloadBtn = document.querySelector(".qr-code-download-btn")
 let assetTimeline = document.querySelector(".timeline")
 let modal = document.querySelector(".modal-overlay")
 let editBtn = document.querySelector(".edit-btn")
@@ -63,6 +65,9 @@ function updatePage() {
     assetLocation.innerHTML = currentAsset.location
     assetCondition.innerHTML = `<span class="dot"></span> ${currentAsset.condition}`
     assetCondition.className = `condition ${currentAsset.condition.toLowerCase().replace(" ", "-")}`
+    new QRCode(assetQRCode, {
+        text: currentAsset.QRCodeLink,
+    })
     assetTimeline.innerHTML = ""
     currentAsset.history.forEach(historyItem => {
         let div = document.createElement("div")
@@ -75,7 +80,7 @@ function updatePage() {
                          <span class="time">${historyItem.time}</span>
                          </div>`
         assetTimeline.appendChild(div)
-    });
+    });    
 }
 updatePage()
 
@@ -165,3 +170,11 @@ retireConfirmBtn.addEventListener("click", () => {
 })
 
 retireModalCancelBtn.addEventListener("click", () => retireModal.classList.remove("active"))
+
+qrCodeDownloadBtn.addEventListener("click", () => {
+    let canvas = document.querySelector(".qr-code-container canvas")
+    let link = document.createElement("a")
+    link.download = "qrcode.png"
+    link.href = canvas.toDataURL("image/png")
+    link.click()
+})
