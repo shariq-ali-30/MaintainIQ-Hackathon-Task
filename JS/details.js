@@ -1,3 +1,5 @@
+let notFoundContiner = document.querySelector(".not-found-container")
+let mainContainer = document.querySelector(".container")
 let backBtn = document.querySelector(".back-btn")
 let allAssets = JSON.parse(localStorage.getItem("allAssets"))
 let paramCode = new URLSearchParams(window.location.search).get("code")
@@ -17,6 +19,40 @@ let assetNameInput = document.querySelector(".name-input")
 let assetStatusInput = document.querySelector(".status-input")
 let assetLocationInput = document.querySelector(".location-input")
 let assetConditionInput = document.querySelector(".condition-input")
+let retireConfirmBtn = document.querySelector(".retire-confirm-btn")
+let retireModalCancelBtn = document.querySelector(".retire-cancel-btn")
+let retireModal = document.querySelector(".retire-modal-overlay")
+let toast = document.querySelector(".toast")
+let toastIcon = document.getElementById("toast-icon")
+let toastMessage = document.querySelector(".toast-message")
+
+backBtn.addEventListener("click", () => window.location.href = "/index.html")
+
+
+if (!currentAsset) {
+    mainContainer.style.display = "none"
+    notFoundContiner.style.display = "flex"
+}
+
+let toastTimeout;
+function showToast(state, message) {
+    clearTimeout(toastTimeout)
+
+    if (state == "success") {
+        toastIcon.className = "fa fa-circle-check"
+    }
+
+    if (state == "error") {
+        toastIcon.className = "fa fa-circle-xmark"
+    }
+
+    toastMessage.innerText = message
+
+    toast.classList.add("active")
+    toastTimeout = setTimeout(() => {
+        toast.classList.remove("active")
+    }, 3000);
+}
 
 function updatePage() {
     document.title = `${currentAsset.name} | Asset Details - MaintainIQ`
@@ -27,8 +63,8 @@ function updatePage() {
     assetLocation.innerHTML = currentAsset.location
     assetCondition.innerHTML = `<span class="dot"></span> ${currentAsset.condition}`
     assetCondition.className = `condition ${currentAsset.condition.toLowerCase().replace(" ", "-")}`
+    assetTimeline.innerHTML = ""
     currentAsset.history.forEach(historyItem => {
-        assetTimeline.innerHTML = ""
         let div = document.createElement("div")
         div.classList.add("timeline-item")
         div.innerHTML = `<div class="dot">
@@ -37,8 +73,8 @@ function updatePage() {
                      <div class="content">
                          <p class="title">${historyItem.activity}</p>
                          <span class="time">${historyItem.time}</span>
-                     </div>`
-        assetTimeline.insertBefore(div, assetTimeline.firstElementChild)
+                         </div>`
+        assetTimeline.appendChild(div)
     });
 }
 updatePage()
@@ -62,13 +98,48 @@ function closeModal() {
 }
 
 function editAsset() {
+
+    let currentDate = new Date().toLocaleString("en-US", {
+        month: "long",
+        day: "numeric",
+        year: "numeric"
+    })
+    let currentTime = new Date().toLocaleString("en-US", {
+        hour: "2-digit",
+        minute: "2-digit"
+    })
+    let timeUpdated = `${currentDate} at ${currentTime}`
+
+    let tempHistory = []
+
+    if (currentAsset.name !== assetNameInput.value) {
+        tempHistory.unshift(`Name changed to ${assetNameInput.value}`)
+    }
+    if (currentAsset.status.toLowerCase() !== assetStatusInput.value.toLowerCase()) {
+        tempHistory.unshift(`Status updated to ${assetStatusInput.value}`)
+    }
+    if (currentAsset.location !== assetLocationInput.value) {
+        tempHistory.unshift(`Location changed to ${assetLocationInput.value}`)
+    }
+    if (currentAsset.condition.toLowerCase() !== assetConditionInput.value.toLowerCase()) {
+        tempHistory.unshift(`Condition updated to ${assetConditionInput.value}`)
+    }
+
+    if (tempHistory.length > 1) {
+        tempHistory[0] = "Updated Asset Details"
+    }
+
     currentAsset.name = assetNameInput.value
     currentAsset.status = assetStatusInput.value
     currentAsset.location = assetLocationInput.value
     currentAsset.condition = assetConditionInput.value
+    if (tempHistory.length > 0) {
+        currentAsset.history.unshift({ activity: tempHistory[0], time: timeUpdated })
+        showToast("success", "Asset updated successfully!")
+    }
+    localStorage.setItem("allAssets", JSON.stringify(allAssets))
     closeModal()
     updatePage()
-    localStorage.setItem("allAssets", JSON.stringify(allAssets))
 }
 
 function retireAsset() {
@@ -77,15 +148,20 @@ function retireAsset() {
     window.location.href = "/index.html"
 }
 
-
 // Event Listners
 
-backBtn.addEventListener("click", () => window.location.href = "/index.html")
 
 editBtn.addEventListener("click", openModal)
-
-retireBtn.addEventListener("click", retireAsset)
 
 closeBtn.addEventListener("click", closeModal)
 
 saveChangesBtn.addEventListener("click", editAsset)
+
+retireBtn.addEventListener("click", () => retireModal.classList.add("active"))
+
+retireConfirmBtn.addEventListener("click", () => {
+    retireAsset()
+    retireModal.classList.remove("active")
+})
+
+retireModalCancelBtn.addEventListener("click", () => retireModal.classList.remove("active"))

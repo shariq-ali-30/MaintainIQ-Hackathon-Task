@@ -18,6 +18,23 @@
 </head>
 
 <body>
+    <div class="toast">
+        <i class="fa-solid fa-circle-xmark" id="toast-icon"></i>
+        <p class="toast-message">Message</p>
+    </div>
+
+    <div class="not-found-container">
+        <div class="icon-circle">
+            <i class="fa-solid fa-file-circle-xmark"></i>
+        </div>
+        <h2 class="not-found-title">Asset not found</h2>
+        <p class="not-found-desc">
+            The asset you're looking for doesn't exist<br>
+            or may have been removed.
+        </p>
+        <a href="/index.html"><i class="ph-bold ph-arrow-left"></i>Back To Dashboard</a>
+    </div>
+
     <div class="container">
 
         <div class="modal-overlay">
@@ -75,7 +92,7 @@
             </div>
         </div>
 
-        <div class="modal-overlay retire-modal-overlay active">
+        <div class="modal-overlay retire-modal-overlay">
 
             <div class="retire-asset-modal">
 
@@ -86,18 +103,15 @@
 
                     <div class="modal-title">
                         <h2>Retire Asset</h2>
-                        <p>
-                            Are you sure you want to retire this asset? This action cannot be undone.
-                        </p>
+                        <p>Are you sure you want to retire this asset?</p>
                     </div>
                 </div>
 
                 <div class="hr"></div>
 
                 <div class="retire-asset-content">
-                    <p>
-                        The selected asset will be removed from the active inventory and marked as retired.
-                    </p>
+                    <p>This action will permanently delete the asset and all associated data. Once retired, it cannot be
+                        restored.</p>
                 </div>
 
                 <div class="modal-btns">

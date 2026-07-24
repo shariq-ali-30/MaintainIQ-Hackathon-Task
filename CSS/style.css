@@ -362,7 +362,7 @@ section {
 .modal-overlay .add-new-asset-modal {
     width: 100%;
     max-width: 500px;
-    padding: clamp(16px, 2vw, 20px);
+    padding: clamp(12px, 2vw, 20px);
     background-color: var(--modal-bg);
     border: var(--modal-border);
     border-radius: clamp(10px, 1.2vw, 12px);
@@ -450,7 +450,7 @@ section {
 .modal-overlay .add-new-asset-modal .input-fields input,
 .modal-overlay .add-new-asset-modal .input-fields select {
     width: 100%;
-    height: clamp(40px, 4.5vw, 45px);
+    height: 45px;
     padding: 0 12px;
     border: var(--input-border);
     border-radius: clamp(6px, 0.8vw, 8px);
@@ -485,8 +485,8 @@ section {
     display: flex;
     align-items: center;
     gap: 6px;
-    padding: clamp(8px, 1vw, 10px) clamp(12px, 1.5vw, 16px);
-    font-size: clamp(12px, 1.2vw, 14px);
+    padding: 8px clamp(12px, 1.5vw, 16px);
+    font-size: 14px;
     border-radius: clamp(4px, 0.5vw, 6px);
     cursor: pointer;
     transition: background-color 0.2s ease;

@@ -6,15 +6,26 @@
     --body-text: #111827;
     --body-text-secondary: #6B7280;
 
-    /* PAGE */
+    /* TOAST */
 
-    --page-title: #111827;
-    --page-subtitle: #6B7280;
+    --toast-bg: #FFFFFF;
+    --toast-color: #111827;
+    --toast-border: 1px solid #E7ECF2;
+    --toast-shadow: 0 12px 30px rgba(15, 23, 42, .12);
 
-    /* NAVIGATION */
+    /* SUCCESS TOAST */
 
-    --back-btn-color: #374151;
-    --back-btn-active: #111827;
+    --toast-success-icon-color: #16A34A;
+
+    /* ERROR TOAST */
+
+    --toast-error-icon-color: #DC2626;
+
+    /* SCROLLBAR */
+
+    --scrollbar-track-bg: #F1F5F9;
+    --scrollbar-thumb-bg: #CBD5E1;
+    --scrollbar-thumb-hover-bg: #94A3B8;
 
     /* MODAL */
 
@@ -67,8 +78,6 @@
 
     /* SECTION TITLE */
 
-    --section-title: #111827;
-    --section-icon-bg: #EAF8F0;
     --section-icon-color: #16A34A;
 
     /* DIVIDER */
@@ -100,7 +109,6 @@
 
     /* QR */
 
-    --qr-bg: #FFFFFF;
     --qr-border: 1px solid #E7ECF2;
 
     /* TIMELINE */
@@ -145,21 +153,11 @@
     --download-btn-border: 1.5px solid #16A34A;
     --download-btn-active-bg: #EAF8F0;
 
-    /* TOAST */
-
-    --toast-bg: #FFFFFF;
-    --toast-color: #111827;
-    --toast-border: 1px solid #E7ECF2;
-    --toast-shadow: 0 12px 30px rgba(15, 23, 42, .12);
-
-    --toast-success-icon: #16A34A;
-    --toast-error-icon: #DC2626;
-
-    /* SCROLLBAR */
-
-    --scrollbar-track-bg: #F1F5F9;
-    --scrollbar-thumb-bg: #CBD5E1;
-    --scrollbar-thumb-hover-bg: #94A3B8;
+    /* NOT FOUND STATE */
+    --not-found-icon-bg: #EAF8F0;
+    --not-found-icon-color: #16A34A;
+    --not-found-title: #111827;
+    --not-found-desc: #6B7280;
 }
 
 * {
@@ -189,13 +187,52 @@
 body {
     background-color: var(--body-bg);
     color: var(--body-text);
-    padding-bottom: 30px;
+    padding-bottom: clamp(20px, 3vw, 30px);
 }
 
 .container {
     max-width: 1450px;
     margin: 0 auto;
     padding: 0 clamp(12px, 3vw, 30px);
+}
+
+/* Toast */
+
+.toast {
+    padding: clamp(10px, 1.2vw, 14px) clamp(16px, 1.8vw, 20px);
+    position: fixed;
+    z-index: 5;
+    top: clamp(15px, 2.5vw, 25px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-75px) scale(0.2);
+    display: flex;
+    align-items: center;
+    gap: clamp(8px, 1vw, 10px);
+    font-size: clamp(13px, 1.1vw, 15px);
+    background-color: var(--toast-bg);
+    border: var(--toast-border);
+    border-radius: clamp(6px, 0.8vw, 8px);
+    color: var(--toast-color);
+    box-shadow: var(--toast-shadow);
+    white-space: nowrap;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.toast.active {
+    transform: translateX(-50%) translateY(0px) scale(1);
+}
+
+.toast i {
+    font-size: clamp(18px, 1.8vw, 22px);
+    color: var(--toast-error-icon-color);
+}
+
+.toast i.fa-circle-check {
+    color: var(--toast-success-icon-color);
+}
+
+.toast.error i.fa-circle-xmark {
+    color: var(--toast-error-icon-color);
 }
 
 /* Modal */
@@ -224,7 +261,7 @@ body {
 .modal-overlay .edit-asset-modal {
     width: 100%;
     max-width: 500px;
-    padding: clamp(16px, 2vw, 20px);
+    padding: clamp(12px, 2vw, 20px);
     background-color: var(--modal-bg);
     border: var(--modal-border);
     border-radius: clamp(10px, 1.2vw, 12px);
@@ -309,7 +346,7 @@ body {
 .modal-overlay .edit-asset-modal .input-fields select {
     text-transform: capitalize;
     width: 100%;
-    height: clamp(40px, 4.5vw, 45px);
+    height: 45px;
     padding: 0 12px;
     border: var(--input-border);
     border-radius: clamp(6px, 0.8vw, 8px);
@@ -339,8 +376,8 @@ body {
     display: flex;
     align-items: center;
     gap: 6px;
-    padding: clamp(8px, 1vw, 10px) clamp(12px, 1.5vw, 16px);
-    font-size: clamp(12px, 1.2vw, 14px);
+    padding: 8px clamp(12px, 1.5vw, 16px);
+    font-size: 14px;
     border-radius: clamp(4px, 0.5vw, 6px);
     cursor: pointer;
     transition: background-color 0.2s ease;
@@ -366,7 +403,7 @@ body {
     background-color: var(--btn-primary-active-bg);
 }
 
-/* Confirmation Modal */
+/* Retire Confirmation Modal */
 
 .modal-overlay .retire-asset-modal {
     width: 100%;
@@ -399,9 +436,7 @@ body {
     height: clamp(50px, 5.5vw, 60px);
     width: clamp(50px, 5.5vw, 60px);
     border-radius: 50%;
-
     font-size: clamp(24px, 2.2vw, 28px);
-
     background-color: #FEE2E2;
     color: var(--retire-btn-bg);
 }
@@ -418,28 +453,28 @@ body {
 }
 
 .modal-overlay .retire-asset-modal .modal-header .modal-title p {
+    max-width: 300px;
     font-size: clamp(12px, 1.2vw, 14px);
     color: var(--modal-subtitle);
 }
 
 .modal-overlay .retire-asset-modal .hr {
     border-bottom: var(--modal-separator-border);
+    margin: clamp(14px, 1.5vw, 18px) 0;
+}
+
+.modal-overlay .retire-asset-modal .retire-asset-content {
     margin-top: clamp(14px, 1.5vw, 18px);
 }
 
-.modal-overlay .retire-asset-modal .retire-content {
-    margin-top: clamp(14px, 1.5vw, 18px);
-}
-
-.modal-overlay .retire-asset-modal .retire-content p {
+.modal-overlay .retire-asset-modal .retire-asset-content p {
     color: var(--body-text-secondary);
-    font-size: clamp(13px, 1.2vw, 15px);
+    font-size: clamp(14px, 1.2vw, 15px);
     line-height: 1.7;
 }
 
 .modal-overlay .retire-asset-modal .modal-btns {
     margin-top: clamp(22px, 2.5vw, 28px);
-
     display: flex;
     align-items: center;
     justify-content: end;
@@ -450,15 +485,10 @@ body {
     display: flex;
     align-items: center;
     gap: 6px;
-
     padding: clamp(8px, 1vw, 10px) clamp(12px, 1.5vw, 16px);
-
-    font-size: clamp(12px, 1.2vw, 14px);
-
+    font-size: 14px;
     border-radius: clamp(4px, 0.5vw, 6px);
-
     cursor: pointer;
-
     transition: background-color 0.2s ease;
 }
 
@@ -472,27 +502,95 @@ body {
     background-color: var(--btn-secondary-active-bg);
 }
 
-.modal-overlay .retire-asset-modal .modal-btns .retire-btn {
+.modal-overlay .retire-asset-modal .modal-btns .retire-confirm-btn {
     background-color: var(--retire-btn-bg);
     border: var(--retire-btn-border);
     color: var(--retire-btn-color);
 }
 
-.modal-overlay .retire-asset-modal .modal-btns .retire-btn:active {
+.modal-overlay .retire-asset-modal .modal-btns .retire-confirm-btn:active {
     background-color: var(--retire-btn-active-bg);
+}
+
+/* Asset Not Found Container */
+
+.not-found-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--body-bg, red);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: clamp(40px, 8vw, 80px) clamp(16px, 2vw, 24px);
+    height: 100vh;
+    width: 100%;
+}
+
+.not-found-container .icon-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: clamp(70px, 7vw, 90px);
+    height: clamp(70px, 7vw, 90px);
+    border-radius: 50%;
+    background-color: var(--not-found-icon-bg, #EAF8F0);
+    color: var(--not-found-icon-color, #16A34A);
+    font-size: clamp(32px, 3vw, 40px);
+    margin-bottom: clamp(16px, 2vw, 24px);
+}
+
+.not-found-container .not-found-title {
+    font-size: clamp(22px, 2vw, 28px);
+    font-weight: 700;
+    color: var(--not-found-title, #111827);
+    margin-bottom: clamp(8px, 1vw, 12px);
+}
+
+.not-found-container .not-found-desc {
+    font-size: clamp(13px, 1.1vw, 15px);
+    color: var(--not-found-desc, #6B7280);
+    line-height: 1.5;
+    max-width: 400px;
+}
+
+.not-found-container a {
+    display: flex;
+    align-items: center;
+    gap: clamp(6px, 0.6vw, 8px);
+    text-decoration: none;
+    padding: clamp(8px, 0.8vw, 10px) clamp(14px, 1.5vw, 16px);
+    border-radius: clamp(4px, 0.5vw, 6px);
+    margin-top: clamp(16px, 2vw, 24px);
+    font-size: clamp(14px, 1vw, 16px);
+    font-weight: 500;
+    color: var(--download-btn-color);
+    background-color: var(--download-btn-bg);
+    border: var(--download-btn-border);
+    transition: background-color 0.2s ease;
+}
+
+.not-found-container a:active {
+    background-color: var(--download-btn-active-bg);
+}
+
+.not-found-container a i {
+    font-size: clamp(14px, 1.1vw, 18px);
 }
 
 /* Back Button */
 
 .back-btn {
     width: fit-content;
-    font-size: 14px;
+    font-size: clamp(12px, 1vw, 14px);
     display: flex;
     align-items: center;
-    gap: 6px;
-    margin-top: 20px;
-    padding: 7px 14px;
-    border-radius: 6px;
+    gap: clamp(4px, 0.5vw, 6px);
+    margin-top: clamp(15px, 2vw, 20px);
+    padding: clamp(6px, 0.6vw, 8px) clamp(10px, 1vw, 14px);
+    border-radius: clamp(4px, 0.5vw, 6px);
     font-weight: 500;
     background-color: var(--btn-secondary-bg);
     color: var(--btn-secondary-color);
@@ -506,72 +604,79 @@ body {
 }
 
 .back-btn i {
-    font-size: 18px;
+    font-size: clamp(14px, 1.2vw, 18px);
 }
 
 /* Title Section */
 
 .title-section {
-    margin-top: 25px;
+    margin-top: clamp(18px, 2.5vw, 25px);
     display: flex;
+    flex-wrap: wrap-reverse;
     justify-content: space-between;
     align-items: center;
-    gap: 25px;
+    gap: clamp(18px, 2vw, 25px);
 }
 
 .title-section div {
     display: flex;
     align-items: center;
-    gap: 12px;
+    flex-wrap: wrap-reverse;
+    gap: clamp(14px, 1vw, 18px);
 }
 
-.title-section div button {
-    padding: 10px 16px;
+.title-section .btns {
+    margin-left: auto;
+    gap: clamp(8px, 1vw, 12px);
+}
+
+.title-section .btns button {
+    padding: clamp(8px, 0.8vw, 10px) clamp(12px, 1.2vw, 16px);
     display: flex;
     align-items: center;
-    gap: 6px;
-    font-size: 14px;
+    gap: clamp(4px, 0.5vw, 6px);
+    font-size: clamp(13px, 1vw, 14px);
     font-weight: 500;
-    border-radius: 5px;
+    border-radius: clamp(4px, 0.5vw, 6px);
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
 
-.title-section div button i {
+.title-section .btns button i {
     font-size: 16px;
 }
 
-.title-section button.edit-btn {
+.title-section .btns button.edit-btn {
     background-color: var(--edit-btn-bg);
     color: var(--edit-btn-color);
     border: var(--edit-btn-border);
 }
 
-.title-section button.edit-btn:active {
+.title-section .btns button.edit-btn:active {
     background-color: var(--edit-btn-active-bg);
 }
 
-.title-section button.retire-btn {
+.title-section .btns button.retire-btn {
     background-color: var(--retire-btn-bg);
     color: var(--retire-btn-color);
     border: var(--retire-btn-border);
 }
 
-.title-section button.retire-btn:active {
+.title-section .btns button.retire-btn:active {
     background-color: var(--retire-btn-active-bg);
 }
 
 .title-section .asset-name {
     text-transform: capitalize;
+    font-size: clamp(28px, 2.2vw, 32px);
 }
 
 .title-section .asset-status {
-    margin-left: 14px;
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 8px 18px;
-    font-size: 17px;
+    gap: clamp(6px, 0.6vw, 8px);
+    padding: clamp(7px, 0.6vw, 8px) clamp(13px, 1.2vw, 18px);
+    font-size: clamp(14px, 1.1vw, 17px);
     border-radius: 999px;
     font-weight: 500;
     text-transform: capitalize;
@@ -593,7 +698,7 @@ body {
 }
 
 .title-section .asset-status .dot {
-    border: 4px solid;
+    border: clamp(3px, 0.3vw, 4px) solid;
     border-radius: 50%;
 }
 
@@ -612,45 +717,46 @@ body {
 /* Main Section */
 
 .asset-details-and-timeline {
-    margin-top: 30px;
+    margin-top: clamp(20px, 2.5vw, 30px);
     width: 100%;
     display: flex;
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: clamp(15px, 1.8vw, 20px);
 }
 
 /* Asset Details Section */
 
 .asset-details-section {
-    width: 60%;
+    flex-grow: 1;
 }
 
 /* Technical details */
 
 .asset-details-section .technical-details-card {
-    padding: 20px 20px 5px 20px;
-    border-radius: 8px;
+    padding: clamp(14px, 1.5vw, 20px) clamp(14px, 1.5vw, 20px) clamp(4px, 0.5vw, 5px) clamp(14px, 1.5vw, 20px);
+    border-radius: clamp(6px, 0.8vw, 8px);
     background-color: var(--card-bg);
     border: var(--card-border);
     box-shadow: var(--card-shadow);
 }
 
 .section-header {
-    margin-bottom: 10px;
+    margin-bottom: clamp(8px, 0.8vw, 10px);
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: clamp(6px, 0.6vw, 8px);
     text-transform: capitalize;
-    font-size: 18px;
+    font-size: clamp(15px, 1.3vw, 18px);
     font-weight: 500;
 }
 
 .section-header i {
-    font-size: 28px;
+    font-size: clamp(22px, 2vw, 28px);
     color: var(--section-icon-color);
 }
 
 .asset-details-section .technical-details-card .detail {
-    height: 60px;
+    height: clamp(52px, 4.5vw, 60px);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -665,27 +771,27 @@ body {
 
 .asset-details-section .technical-details-card .detail .key {
     color: var(--label-color);
-    font-size: 15px;
-    width: 60%;
+    font-size: clamp(13px, 1vw, 15px);
+    width: 50%;
 }
 
 .asset-details-section .technical-details-card .detail .value {
-    width: 40%;
+    width: 50%;
     color: var(--value-color);
-    font-size: 15px;
+    font-size: clamp(13px, 1vw, 15px);
 }
 
 .asset-details-section .technical-details-card .detail .value .condition {
     width: fit-content;
     display: flex;
     align-items: center;
-    gap: 6px;
-    padding: 6px 16px;
+    gap: clamp(4px, 0.5vw, 6px);
+    padding: clamp(4px, 0.5vw, 6px) clamp(10px, 1vw, 16px);
     border-radius: 999px;
 }
 
 .asset-details-section .technical-details-card .detail .value .condition .dot {
-    border: 3.5px solid;
+    border: clamp(2.5px, 0.25vw, 3.5px) solid;
     border-radius: 50%;
 }
 
@@ -728,31 +834,31 @@ body {
 /* QR Code */
 
 .qr-code-card {
-    margin-top: 20px;
+    margin-top: clamp(15px, 2vw, 20px);
     background-color: var(--card-bg);
     border: var(--card-border);
     box-shadow: var(--card-shadow);
-    border-radius: 8px;
-    padding: 20px;
+    border-radius: clamp(6px, 0.8vw, 8px);
+    padding: clamp(14px, 1.5vw, 20px);
 }
 
 .qr-code-card .qr-code {
-    width: 180px;
-    height: 180px;
+    width: clamp(140px, 14vw, 180px);
+    height: clamp(140px, 14vw, 180px);
     border: var(--qr-border);
-    border-radius: 6px;
-    margin: 25px auto;
+    border-radius: clamp(4px, 0.5vw, 6px);
+    margin: clamp(18px, 2vw, 25px) auto;
     overflow: hidden;
 }
 
 .qr-code-card button {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: clamp(8px, 0.8vw, 12px);
     margin: 0 auto;
-    font-size: 16px;
-    padding: 10px 40px;
-    border-radius: 5px;
+    font-size: clamp(13px, 1.1vw, 16px);
+    padding: clamp(8px, 0.8vw, 10px) clamp(24px, 3vw, 40px);
+    border-radius: clamp(4px, 0.5vw, 5px);
     background-color: var(--download-btn-bg);
     color: var(--download-btn-color);
     border: var(--download-btn-border);
@@ -765,24 +871,25 @@ body {
 }
 
 .qr-code-card button i {
-    font-size: 24px;
+    font-size: clamp(18px, 1.8vw, 24px);
 }
 
 /* Asset Time Line Section */
 
 .asset-timeline-section {
-    width: 40%;
-    padding: 20px;
+    flex-grow: 1;
+    max-width: 430px;
+    padding: clamp(14px, 1.5vw, 20px);
     background-color: var(--card-bg);
     border: var(--card-border);
     box-shadow: var(--card-shadow);
-    border-radius: 10px;
+    border-radius: clamp(8px, 1vw, 10px);
 }
 
 .asset-timeline-section .timeline {
-    height: 499px;
+    max-height: 498px;
     overflow-y: auto;
-    margin-top: 25px;
+    margin-top: clamp(18px, 2vw, 25px);
 }
 
 .asset-timeline-section .timeline::-webkit-scrollbar {
@@ -794,10 +901,10 @@ body {
 }
 
 .asset-timeline-section .timeline .timeline-item {
-    margin-left: 11px;
+    margin-left: clamp(8px, 0.8vw, 11px);
     display: flex;
-    gap: 25px;
-    padding-bottom: 30px;
+    gap: clamp(18px, 2vw, 25px);
+    padding-bottom: clamp(20px, 2.2vw, 30px);
     border-left: 3px dashed var(--timeline-line);
 }
 
@@ -809,26 +916,42 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: -11px;
-    width: 20px;
-    height: 20px;
+    margin-left: clamp(-11px, -0.8vw, -9px);
+    width: clamp(16px, 1.4vw, 20px);
+    height: clamp(16px, 1.4vw, 20px);
     border-radius: 50%;
     background-color: var(--timeline-dot-bg);
     border: var(--timeline-dot-border);
-    outline: 5px solid var(--card-bg);
+    outline: 3px solid var(--card-bg);
 }
 
 .asset-timeline-section .timeline .timeline-item .dot span {
-    border: 5px solid var(--timeline-dot-active);
+    border: 4px solid var(--timeline-dot-active);
     border-radius: 50%;
 }
 
 .asset-timeline-section .timeline .timeline-item .content .title {
     font-weight: 600;
     text-transform: capitalize;
+    font-size: clamp(13px, 1.1vw, 16px);
 }
 
 .asset-timeline-section .timeline .timeline-item .content .time {
     color: var(--body-text-secondary);
-    font-size: 12px;
+    font-size: clamp(10px, 0.9vw, 12px);
+}
+
+@media (max-width: 400px) {
+    * {
+        cursor: default !important;
+    }
+
+    .title-section div {
+        flex-direction: column-reverse;
+        align-items: start
+    }
+
+    .title-section .btns {
+        flex-direction: row;
+    }
 }
