@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/bold/style.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+    <link rel="stylesheet" href="/CSS/public.css">
+    <link rel="shortcut icon" href="/images/icon.png" type="image/x-icon">
+    <title>Asset Details (Public)</title>
+</head>
+
+<body>
+    <div class="toast">
+        <i class="fa-solid fa-circle-xmark" id="toast-icon"></i>
+        <p class="toast-message">Message</p>
+    </div>
+
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+                <h2>Maintain<span>IQ</span></h2>
+            </div>
+        </div>
+    </nav>
+
+    <div class="not-found-container">
+        <div class="icon-circle">
+            <i class="fa-solid fa-file-circle-xmark"></i>
+        </div>
+        <h2 class="not-found-title">Asset not found</h2>
+        <p class="not-found-desc">
+            The asset you're looking for doesn't exist<br>
+            or may have been removed.
+        </p>
+    </div>
+
+    <div class="container">
+
+        <section class="title-section">
+            <div>
+                <h1 class="asset-name">Asset Name</h1>
+                <p class="asset-status operational"><span class="dot"></span>operational</p>
+            </div>
+        </section>
+
+        <section class="asset-details-and-timeline">
+
+            <section class="asset-details-section">
+
+                <div class="technical-details-card">
+                    <div class="section-header">
+                        <i class="ph-bold ph-file-text"></i>
+                        <p>technical details</p>
+                    </div>
+
+                    <div class="detail">
+                        <p class="key">Asset Code</p>
+                        <p class="value asset-code">AST-1001</p>
+                    </div>
+                    <div class="detail">
+                        <p class="key">Location</p>
+                        <p class="value asset-location">Admin Office</p>
+                    </div>
+                    <div class="detail">
+                        <p class="key">Current condition</p>
+                        <p class="value">
+                            <span class="condition excellent"><span class="dot"></span> excellent</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="report-issue-card">
+                    <div class="section-header report-header">
+                        <i class="ph-bold ph-warning-circle"></i>
+                        <p>Report an Issue</p>
+                    </div>
+
+                    <div class="report-issue-form" id="issueForm">
+                        <div class="input-group">
+                            <label>Issue Title <span>*</span></label>
+                            <input type="text" placeholder="e.g., Screen is flickering" class="issue-title-input">
+                        </div>
+                        <div class="input-group">
+                            <label>Description <span>*</span></label>
+                            <textarea rows="4" placeholder="Describe the problem in detail..." class="issue-description-input"></textarea>
+                        </div>
+                        <button class="submit-issue-btn"><i class="ph ph-paper-plane-right"></i> Submit Report</button>
+                    </div>
+                </div>
+
+            </section>
+
+            <section class="asset-timeline-section">
+
+                <div class="section-header">
+                    <i class="ph-bold ph-clock-counter-clockwise"></i>
+                    <p>Maintenance History</p>
+                </div>
+
+                <div class="timeline">
+                    <!-- Timeline items go here -->
+                </div>
+
+            </section>
+
+        </section>
+
+    </div>
+
+    <script src="/JS/public.js"></script>
+</body>
+
+</html>

@@ -854,6 +854,10 @@ body {
     padding: clamp(14px, 1.5vw, 20px);
 }
 
+.qr-code-card .section-header {
+    margin-right: auto;
+}
+
 .qr-code-card .qr-code-container {
     display: flex;
     justify-content: center;
@@ -877,7 +881,7 @@ body {
     flex-wrap: wrap;
     width: fit-content;
     align-items: center;
-    gap: 10px;
+    gap: clamp(8px, 1vw, 16px);
     margin: 0 auto;
 }
 
@@ -885,8 +889,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 200px;
-    height: 40px;
+    width: clamp(180px, 15vw, 200px);
+    height: clamp(36px, 3vw, 44px);
     margin: 0 auto;
     gap: clamp(8px, 0.8vw, 12px);
     font-size: clamp(13px, 1.1vw, 16px);
@@ -975,6 +979,7 @@ body {
 }
 
 @media (max-width: 400px) {
+    
     * {
         cursor: default !important;
     }

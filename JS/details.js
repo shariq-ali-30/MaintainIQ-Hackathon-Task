@@ -200,7 +200,7 @@ retireModalCancelBtn.addEventListener("click", () => retireModal.classList.remov
 qrCodeDownloadBtn.addEventListener("click", () => {
     let canvas = document.querySelector(".qr-code-container canvas")
     let link = document.createElement("a")
-    link.download = `AST-${currentAsset.code}-qrcode.png`
+    link.download = `AST-${currentAsset.code}-QRcode.png`
     link.href = canvas.toDataURL("image/png")
     link.click()
 })
