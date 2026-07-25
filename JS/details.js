@@ -65,9 +65,13 @@ function updatePage() {
     assetLocation.innerHTML = currentAsset.location
     assetCondition.innerHTML = `<span class="dot"></span> ${currentAsset.condition}`
     assetCondition.className = `condition ${currentAsset.condition.toLowerCase().replace(" ", "-")}`
-    new QRCode(assetQRCode, {
-        text: currentAsset.QRCodeLink,
+    assetQRCode.innerHTML = ""
+    let qrCode = new QRCodeStyling({
+        data: currentAsset.QRCodeLink,
+        margin: 10,
+        image: "/images/qr-image.png"
     })
+    qrCode.append(assetQRCode)
     assetTimeline.innerHTML = ""
     currentAsset.history.forEach(historyItem => {
         let div = document.createElement("div")
@@ -102,7 +106,26 @@ function closeModal() {
     assetConditionInput.selectedIndex = 0
 }
 
+let errorTimeOut;
 function editAsset() {
+    clearTimeout(errorTimeOut)
+
+    if (!assetNameInput.value.trim()) {
+        showToast("error", "Please enter asset name!")
+        assetNameInput.classList.add("error")
+        errorTimeOut = setTimeout(() => {
+            assetNameInput.classList.remove("error")
+        }, 3000);
+        return
+    }
+    if (!assetLocationInput.value.trim()) {
+        showToast("error", "Please enter asset location!")
+        assetLocationInput.classList.add("error")
+        errorTimeOut = setTimeout(() => {
+            assetLocationInput.classList.remove("error")
+        }, 3000);
+        return
+    }
 
     let currentDate = new Date().toLocaleString("en-US", {
         month: "long",
@@ -174,7 +197,7 @@ retireModalCancelBtn.addEventListener("click", () => retireModal.classList.remov
 qrCodeDownloadBtn.addEventListener("click", () => {
     let canvas = document.querySelector(".qr-code-container canvas")
     let link = document.createElement("a")
-    link.download = "qrcode.png"
+    link.download = `AST-${currentAsset.code}-qrcode.png`
     link.href = canvas.toDataURL("image/png")
     link.click()
 })

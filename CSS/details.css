@@ -356,6 +356,14 @@ body {
     transition: border 0.2s ease;
 }
 
+.modal-overlay .edit-asset-modal .input-fields input::placeholder {
+    text-transform: initial;
+}
+
+.modal-overlay .edit-asset-modal .input-fields input.error {
+    border-color: var(--toast-error-icon-color);
+}
+
 .modal-overlay .edit-asset-modal .input-fields select {
     text-transform: capitalize;
 }
@@ -848,7 +856,6 @@ body {
     align-items: center;
     width: clamp(140px, 14vw, 180px);
     height: clamp(140px, 14vw, 180px);
-    padding: clamp(5px, 1vw, 8px);
     border: var(--qr-border);
     border-radius: clamp(4px, 0.5vw, 6px);
     margin: clamp(18px, 2vw, 25px) auto;

@@ -7,8 +7,8 @@ let modalOverlay = document.querySelector(".modal-overlay")
 let openModalBtn = document.querySelector(".add-new-asset-btn")
 let cancelBtn = document.querySelector(".cancel-btn")
 let addAssetBtn = document.querySelector(".add-asset-btn")
-let assetName = document.querySelector(".name-input")
-let assetLocation = document.querySelector(".location-input")
+let assetNameInput = document.querySelector(".name-input")
+let assetLocationInput = document.querySelector(".location-input")
 let toast = document.querySelector(".toast")
 let toastIcon = document.getElementById("toast-icon")
 let toastMessage = document.querySelector(".toast-message")
@@ -37,14 +37,20 @@ let assetCodeCount = localStorage.getItem("assetCodeCount")
 
 let allAssets = JSON.parse(localStorage.getItem("allAssets"))
 
-let locations = [...new Set(allAssets.map(asset => asset.location.toLowerCase()))].sort().map(loction => {
-    let option = document.createElement("option")
-    option.value = loction.toLowerCase()
-    option.innerText = loction
-    return option
-})
-
 function updatePageDetails() {
+    let locations = [...new Set(allAssets.map(asset => asset.location.toLowerCase()))].sort().map(loction => {
+        let option = document.createElement("option")
+        option.value = loction.toLowerCase()
+        option.innerText = loction
+        return option
+    })
+    locationDropdown.innerHTML = ""
+    locations.forEach(location => {
+        locationDropdown.appendChild(location)
+        assetLocationInput.appendChild(location.cloneNode(true))
+    })
+
+
     totalAssetsCount.innerText = allAssets.length
     activeIssuesCount.innerText = allAssets.filter(asset => asset.status.toLowerCase() == "issue reported").length
     underMaintenanceCount.innerText = allAssets.filter(asset => asset.status.toLowerCase() == "under maintenance").length
@@ -101,7 +107,7 @@ function addNewAsset() {
     clearTimeout(errorTimeout)
 
     let newAssset = {}
-    const originalBorderColor = assetName.style.borderColor;
+    const originalBorderColor = assetNameInput.style.borderColor;
     let currentDate = new Date().toLocaleString("en-US", {
         month: "long",
         day: "numeric",
@@ -114,25 +120,25 @@ function addNewAsset() {
     })
     const timeCreated = `${currentDate} at ${currentTime}`
 
-    if (!assetName.value.trim()) {
-        assetName.classList.add("error")
+    if (!assetNameInput.value.trim()) {
+        assetNameInput.classList.add("error")
         errorTimeout = setTimeout(() => {
-            assetName.classList.remove("error")
+            assetNameInput.classList.remove("error")
         }, 3000);
-        return showToast("error", "Please enter an asset name!")
+        return showToast("error", "Please enter asset name!")
     }
 
-    if (assetLocation.selectedIndex == 0) {
-        assetLocation.classList.add("error")
+    if (!assetLocationInput.value.trim()) {
+        assetLocationInput.classList.add("error")
         errorTimeout = setTimeout(() => {
-            assetLocation.classList.remove("error")
+            assetLocationInput.classList.remove("error")
         }, 3000);
-        return showToast("error", "Please select a location!")
+        return showToast("error", "Please enter asset location!")
     }
 
     newAssset.code = ++assetCodeCount
-    newAssset.name = assetName.value
-    newAssset.location = assetLocation.value
+    newAssset.name = assetNameInput.value
+    newAssset.location = assetLocationInput.value
     newAssset.status = "Operational"
     newAssset.condition = "Excellent"
     newAssset.history = [{ activity: "Asset Created", time: timeCreated }]
@@ -148,7 +154,7 @@ function addNewAsset() {
     closeModal()
     showToast("success", "Asset added successfully!")
     console.log(newAssset);
-    
+
 }
 
 function openModal() {
@@ -157,8 +163,8 @@ function openModal() {
 }
 
 function closeModal() {
-    assetName.value = ""
-    assetLocation.selectedIndex = 0
+    assetNameInput.value = ""
+    assetLocationInput.value = ""
     modalOverlay.classList.remove("active")
     document.body.style.overflow = "auto"
 }
@@ -198,14 +204,6 @@ function locationFilter() {
     let filteredAssets = allAssets.filter(asset => asset.location.toLowerCase() == locationDropdown.value.toLowerCase())
     displayAssets(filteredAssets)
 }
-
-function locationHandler() {
-    locations.forEach(location => {
-        locationDropdown.appendChild(location)
-        assetLocation.appendChild(location.cloneNode(true))
-    })
-}
-locationHandler()
 
 function resetToDemoData() {
     localStorage.clear()
