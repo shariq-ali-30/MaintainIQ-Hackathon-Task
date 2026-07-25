@@ -342,6 +342,7 @@ body {
     color: var(--select-arrow);
 }
 
+
 .modal-overlay .edit-asset-modal .input-fields input,
 .modal-overlay .edit-asset-modal .input-fields select {
     text-transform: capitalize;
@@ -842,6 +843,9 @@ body {
 /* QR Code */
 
 .qr-code-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-top: clamp(15px, 2vw, 20px);
     background-color: var(--card-bg);
     border: var(--card-border);
@@ -868,23 +872,35 @@ body {
     height: 100%;
 }
 
-.qr-code-card button {
+.qr-code-card .btns {
+    display: flex;
+    flex-wrap: wrap;
+    width: fit-content;
+    align-items: center;
+    gap: 10px;
+    margin: 0 auto;
+}
+
+.qr-code-card .btns button {
     display: flex;
     align-items: center;
-    gap: clamp(8px, 0.8vw, 12px);
+    justify-content: center;
+    width: 200px;
+    height: 40px;
     margin: 0 auto;
+    gap: clamp(8px, 0.8vw, 12px);
     font-size: clamp(13px, 1.1vw, 16px);
-    padding: clamp(8px, 0.8vw, 10px) clamp(24px, 3vw, 40px);
+    font-weight: 500;
     border-radius: clamp(4px, 0.5vw, 5px);
-    background-color: var(--download-btn-bg);
-    color: var(--download-btn-color);
-    border: var(--download-btn-border);
+    background-color: var(--btn-primary-bg);
+    color: var(--btn-primary-color);
+    border: var(--btn-primary-border);
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
 
 .qr-code-card button:active {
-    background-color: var(--download-btn-active-bg);
+    background-color: var(--btn-primary-active-bg);
 }
 
 .qr-code-card button i {

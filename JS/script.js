@@ -15,14 +15,15 @@ let toastMessage = document.querySelector(".toast-message")
 let searchInput = document.getElementById("search-input")
 let statusDropdown = document.getElementById("status-dropdown")
 let locationDropdown = document.getElementById("location-dropdown")
+let locationList = document.getElementById("location-list")
 let resetToDemoDataBtn = document.querySelector(".reset-to-demo-data-btn")
 
 const allAssetsData = [
-    { code: 1001, name: "Classroom Projector 01", location: "Building A - Room 101", status: "Operational", condition: "Excellent", QRCodeLink: "http://127.0.0.1:5500/pages/public?code=1001", history: [{ activity: "Asset Created", time: "July 20, 2026 at 10:00 AM" }] },
-    { code: 1002, name: "Facility AC Unit", location: "Building B - Floor 2", status: "Issue Reported", condition: "Fair", QRCodeLink: "http://127.0.0.1:5500/pages/public?code=1002", history: [{ activity: "Asset Created", time: "July 19, 2026 at 02:15 PM" }] },
-    { code: 1003, name: "Backup Generator", location: "Utility Area", status: "Under Maintenance", condition: "Poor", QRCodeLink: "http://127.0.0.1:5500/pages/public?code=1003", history: [{ activity: "Asset Created", time: "July 18, 2026 at 08:45 AM" }] },
-    { code: 1004, name: "Admin Office Laptop", location: "Admin Office", status: "Operational", condition: "Excellent", QRCodeLink: "http://127.0.0.1:5500/pages/public?code=1004", history: [{ activity: "Asset Created", time: "July 20, 2026 at 01:30 PM" }] },
-    { code: 1005, name: "Office Printer", location: "Admin Office", status: "Operational", condition: "Excellent", QRCodeLink: "http://127.0.0.1:5500/pages/public?code=1005", history: [{ activity: "Asset Created", time: "July 17, 2026 at 04:20 PM" }] }
+    { code: 1001, name: "Classroom Projector 01", location: "Building A - Room 101", status: "Operational", condition: "Excellent", publicPageLink: "http://127.0.0.1:5500/pages/public?code=1001", history: [{ activity: "Asset Created", time: "July 20, 2026 at 10:00 AM" }] },
+    { code: 1002, name: "Facility AC Unit", location: "Building B - Floor 2", status: "Issue Reported", condition: "Fair", publicPageLink: "http://127.0.0.1:5500/pages/public?code=1002", history: [{ activity: "Asset Created", time: "July 19, 2026 at 02:15 PM" }] },
+    { code: 1003, name: "Backup Generator", location: "Utility Area", status: "Under Maintenance", condition: "Poor", publicPageLink: "http://127.0.0.1:5500/pages/public?code=1003", history: [{ activity: "Asset Created", time: "July 18, 2026 at 08:45 AM" }] },
+    { code: 1004, name: "Admin Office Laptop", location: "Admin Office", status: "Operational", condition: "Excellent", publicPageLink: "http://127.0.0.1:5500/pages/public?code=1004", history: [{ activity: "Asset Created", time: "July 20, 2026 at 01:30 PM" }] },
+    { code: 1005, name: "Office Printer", location: "Admin Office", status: "Operational", condition: "Excellent", publicPageLink: "http://127.0.0.1:5500/pages/public?code=1005", history: [{ activity: "Asset Created", time: "July 17, 2026 at 04:20 PM" }] }
 ]
 
 if (!localStorage.getItem("allAssets")) {
@@ -38,16 +39,18 @@ let assetCodeCount = localStorage.getItem("assetCodeCount")
 let allAssets = JSON.parse(localStorage.getItem("allAssets"))
 
 function updatePageDetails() {
-    let locations = [...new Set(allAssets.map(asset => asset.location.toLowerCase()))].sort().map(loction => {
+    let locations = [...new Set(allAssets.map(asset => asset.location))].sort().map(loction => {
         let option = document.createElement("option")
-        option.value = loction.toLowerCase()
+        option.value = loction
         option.innerText = loction
+        
         return option
     })
-    locationDropdown.innerHTML = ""
+    locationDropdown.innerHTML = "<option>All Locations</option>"
+    locationList.innerHTML = ""
     locations.forEach(location => {
         locationDropdown.appendChild(location)
-        assetLocationInput.appendChild(location.cloneNode(true))
+        locationList.appendChild(location.cloneNode(true))
     })
 
 
@@ -107,7 +110,6 @@ function addNewAsset() {
     clearTimeout(errorTimeout)
 
     let newAssset = {}
-    const originalBorderColor = assetNameInput.style.borderColor;
     let currentDate = new Date().toLocaleString("en-US", {
         month: "long",
         day: "numeric",
@@ -142,7 +144,7 @@ function addNewAsset() {
     newAssset.status = "Operational"
     newAssset.condition = "Excellent"
     newAssset.history = [{ activity: "Asset Created", time: timeCreated }]
-    newAssset.QRCodeLink = `https://127.0.0.1:5500/pages/public?code=${assetCodeCount}`
+    newAssset.publicPageLink = `https://127.0.0.1:5500/pages/public?code=${assetCodeCount}`
 
     allAssets.push(newAssset)
 

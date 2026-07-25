@@ -11,6 +11,7 @@ let assetLocation = document.querySelector(".asset-location")
 let assetCondition = document.querySelector(".condition")
 let assetQRCode = document.querySelector(".qr-code-container")
 let qrCodeDownloadBtn = document.querySelector(".qr-code-download-btn")
+let publicPageBtn = document.querySelector(".public-page-btn")
 let assetTimeline = document.querySelector(".timeline")
 let modal = document.querySelector(".modal-overlay")
 let editBtn = document.querySelector(".edit-btn")
@@ -27,9 +28,6 @@ let retireModal = document.querySelector(".retire-modal-overlay")
 let toast = document.querySelector(".toast")
 let toastIcon = document.getElementById("toast-icon")
 let toastMessage = document.querySelector(".toast-message")
-
-backBtn.addEventListener("click", () => window.location.href = "/index.html")
-
 
 if (!currentAsset) {
     mainContainer.style.display = "none"
@@ -67,9 +65,13 @@ function updatePage() {
     assetCondition.className = `condition ${currentAsset.condition.toLowerCase().replace(" ", "-")}`
     assetQRCode.innerHTML = ""
     let qrCode = new QRCodeStyling({
-        data: currentAsset.QRCodeLink,
+        data: currentAsset.publicPageLink,
         margin: 10,
-        image: "/images/qr-image.png"
+        image: "/images/icon.png",
+        imageOptions: {
+            imageSize: 0.5,
+            margin: 10
+        }
     })
     qrCode.append(assetQRCode)
     assetTimeline.innerHTML = ""
@@ -178,6 +180,7 @@ function retireAsset() {
 
 // Event Listners
 
+backBtn.addEventListener("click", () => window.location.href = "/index.html")
 
 editBtn.addEventListener("click", openModal)
 
@@ -199,5 +202,12 @@ qrCodeDownloadBtn.addEventListener("click", () => {
     let link = document.createElement("a")
     link.download = `AST-${currentAsset.code}-qrcode.png`
     link.href = canvas.toDataURL("image/png")
+    link.click()
+})
+
+publicPageBtn.addEventListener("click", () => {
+    let link = document.createElement("a")
+    link.href = currentAsset.publicPageLink
+    link.target = "_blank"
     link.click()
 })
