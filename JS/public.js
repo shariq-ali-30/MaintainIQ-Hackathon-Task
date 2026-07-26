@@ -1,8 +1,5 @@
 let notFoundContiner = document.querySelector(".not-found-container")
 let mainContainer = document.querySelector(".container")
-let allAssets = JSON.parse(localStorage.getItem("allAssets"))
-let paramCode = new URLSearchParams(window.location.search).get("code")
-let currentAsset = allAssets.find(asset => asset.code == paramCode)
 let toast = document.querySelector(".toast")
 let toastIcon = document.getElementById("toast-icon")
 let toastMessage = document.querySelector(".toast-message")
@@ -15,6 +12,22 @@ let assetTimeline = document.querySelector(".timeline")
 let issueTitleInput = document.querySelector(".issue-title-input")
 let issueDescriptionInput = document.querySelector(".issue-description-input")
 let submitIssueBtn = document.querySelector(".submit-issue-btn")
+
+const allAssetsData = [
+    { code: 1001, name: "Classroom Projector 01", location: "Building A - Room 101", status: "Operational", condition: "Excellent", publicPageLink: "https://shariq-maintainiq.vercel.app/pages/public.html?code=1001", history: [{ activity: "Asset Created", time: "July 20, 2026 at 10:00 AM" }] },
+    { code: 1002, name: "Facility AC Unit", location: "Building B - Floor 2", status: "Issue Reported", condition: "Fair", publicPageLink: "https://shariq-maintainiq.vercel.app/pages/public.html?code=1002", history: [{ activity: "Asset Created", time: "July 19, 2026 at 02:15 PM" }] },
+    { code: 1003, name: "Backup Generator", location: "Utility Area", status: "Under Maintenance", condition: "Poor", publicPageLink: "https://shariq-maintainiq.vercel.app/pages/public.html?code=1003", history: [{ activity: "Asset Created", time: "July 18, 2026 at 08:45 AM" }] },
+    { code: 1004, name: "Admin Office Laptop", location: "Admin Office", status: "Operational", condition: "Excellent", publicPageLink: "https://shariq-maintainiq.vercel.app/pages/public.html?code=1004", history: [{ activity: "Asset Created", time: "July 20, 2026 at 01:30 PM" }] },
+    { code: 1005, name: "Office Printer", location: "Admin Office", status: "Operational", condition: "Excellent", publicPageLink: "https://shariq-maintainiq.vercel.app/pages/public.html?code=1005", history: [{ activity: "Asset Created", time: "July 17, 2026 at 04:20 PM" }] }
+]
+
+if (!localStorage.getItem("allAssets")) {
+    localStorage.setItem("allAssets", JSON.stringify(allAssetsData))
+}
+
+let allAssets = JSON.parse(localStorage.getItem("allAssets"))
+let paramCode = new URLSearchParams(window.location.search).get("code")
+let currentAsset = allAssets.find(asset => asset.code == paramCode)
 
 if (!currentAsset) {
     mainContainer.style.display = "none"

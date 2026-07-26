@@ -2,20 +2,21 @@ let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 let emailInput = document.getElementById("emailInput")
 let passwordInput = document.getElementById("passwordInput")
 let loginForm = document.querySelector(".login-form")
+let eyeIcon = document.getElementById("eye-icon")
 let toast = document.querySelector(".toast")
 let toastIcon = document.getElementById("toast-icon")
 let toastMessage = document.querySelector(".toast-message")
 
 emailInput.value = "dummyadmin@gmail.com"
-passwordInput.value = "admin123"
+passwordInput.value = "dummyadmin123"
 
 if (!localStorage.getItem("currentUser")) {
     localStorage.setItem("currentUser", null)
 }
 
-let currentUser = localStorage.getItem("currentUser")
+let currentUser = JSON.parse(localStorage.getItem("currentUser"))
 
-if (currentUser !== "null") {
+if (currentUser) {
     window.location.href = "/index.html"
 }
 
@@ -23,7 +24,7 @@ const users = [
     {
         role: "Admin",
         email: "dummyadmin@gmail.com",
-        password: "admin123"
+        password: "dummyadmin123"
     }
 ]
 
@@ -45,6 +46,16 @@ function showToast(state, message) {
     toastTimeout = setTimeout(() => {
         toast.classList.remove("active")
     }, 3000);
+}
+
+function toggleEye() {
+    if (passwordInput.type == "password"){
+        eyeIcon.className = "ph ph-eye-slash"
+        passwordInput.type = "text"
+    } else {
+        eyeIcon.className = "ph ph-eye"
+        passwordInput.type = "password"
+    }
 }
 
 let errorTimeout;
@@ -79,27 +90,37 @@ function loginHandler(event) {
         return
     }
 
-    users.forEach(user => {
-        if (emailInput.value.toLowerCase().trim() != user.email) {
-            emailInput.classList.add("error")
-            errorTimeout = setTimeout(() => {
-                emailInput.classList.remove("error")
-            }, 3000)
-            showToast("error", "Email not found!")
-            return
-        }
-        if (passwordInput.value.trim() != user.password) {
-            passwordInput.classList.add("error")
-            errorTimeout = setTimeout(() => {
-                passwordInput.classList.remove("error")
-            }, 3000)
-            showToast("error", "Incorrect password!")
-            return
-        }
+    let user = users.find(user => emailInput.value.trim() == user.email)
 
-        currentUser = user
-        localStorage.setItem("currentUser", JSON.stringify(currentUser))
-    })
+    if (!user) {
+        showToast("error", "Email not found!")
+        emailInput.classList.add("error")
+        errorTimeout = setTimeout(() => {
+            emailInput.classList.remove("error")
+        }, 3000)
+        return
+    }
+
+    if (emailInput.value.toLowerCase().trim() != user.email) {
+        emailInput.classList.add("error")
+        errorTimeout = setTimeout(() => {
+            emailInput.classList.remove("error")
+        }, 3000)
+        showToast("error", "Email not found!")
+        return
+    }
+    if (passwordInput.value.trim() != user.password) {
+        passwordInput.classList.add("error")
+        errorTimeout = setTimeout(() => {
+            passwordInput.classList.remove("error")
+        }, 3000)
+        showToast("error", "Incorrect password!")
+        return
+    }
+
+    currentUser = user
+
+    localStorage.setItem("currentUser", JSON.stringify(currentUser))
 
     emailInput.value = ""
     passwordInput.value = ""
@@ -112,3 +133,5 @@ function loginHandler(event) {
 // Event Listeners
 
 loginForm.addEventListener("submit", loginHandler)
+
+eyeIcon.addEventListener("click", toggleEye)

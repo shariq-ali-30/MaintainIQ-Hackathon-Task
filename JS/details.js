@@ -190,10 +190,7 @@ saveChangesBtn.addEventListener("click", editAsset)
 
 retireBtn.addEventListener("click", () => retireModal.classList.add("active"))
 
-retireConfirmBtn.addEventListener("click", () => {
-    retireAsset()
-    retireModal.classList.remove("active")
-})
+retireConfirmBtn.addEventListener("click", retireAsset)
 
 retireModalCancelBtn.addEventListener("click", () => retireModal.classList.remove("active"))
 

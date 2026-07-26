@@ -755,7 +755,7 @@ section {
     color: var(--status-maintenance-text);
 }
 
-.asset-table-section table tbody tr td.under-mintenance p .dot {
+.asset-table-section table tbody tr td.under-maintenance p .dot {
     border-color: var(--status-maintenance-dot);
 }
 
