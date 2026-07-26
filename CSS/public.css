@@ -246,12 +246,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: clamp(70px, 7vw, 90px);
-    height: clamp(70px, 7vw, 90px);
+    width: clamp(80px, 7vw, 90px);
+    height: clamp(80px, 7vw, 90px);
     border-radius: 50%;
     background-color: var(--not-found-icon-bg);
     color: var(--not-found-icon-color);
-    font-size: clamp(32px, 3vw, 40px);
+    font-size: clamp(36px, 3vw, 40px);
     margin-bottom: clamp(16px, 2vw, 24px);
 }
 
@@ -585,6 +585,11 @@ body {
 }
 
 @media (max-width: 400px) {
+
+    * {
+        cursor: default !important;
+    }
+
     .title-section div {
         flex-direction: column-reverse;
         align-items: start

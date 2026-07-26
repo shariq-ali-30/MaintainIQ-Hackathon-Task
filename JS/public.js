@@ -67,6 +67,7 @@ function updatePage() {
 updatePage()
 
 let errorTimeOut;
+
 function reportIssue() {
     clearTimeout(errorTimeOut)
     if (!issueTitleInput.value.trim()) {
@@ -100,6 +101,8 @@ function reportIssue() {
     currentAsset.history.unshift({ activity: `Issue Reported - ${issueTitleInput.value}`, time: timeReported})
     currentAsset.status = "Issue Reported"
     localStorage.setItem("allAssets", JSON.stringify(allAssets))
+    issueTitleInput.value = ""
+    issueDescriptionInput.value = ""
     showToast("success", "Issue reported successfully!")
     updatePage()
 }
