@@ -1,3 +1,4 @@
+let roleOptions = document.querySelectorAll(".role-option")
 let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 let emailInput = document.getElementById("emailInput")
 let passwordInput = document.getElementById("passwordInput")
@@ -6,6 +7,35 @@ let eyeIcon = document.getElementById("eye-icon")
 let toast = document.querySelector(".toast")
 let toastIcon = document.getElementById("toast-icon")
 let toastMessage = document.querySelector(".toast-message")
+
+const users = [
+    {
+        role: "Admin",
+        email: "dummyadmin@gmail.com",
+        password: "dummyadmin123"
+    },
+    {
+        role: "Technician",
+        email: "dummytechnician@gmail.com",
+        password: "dummytechnician123"
+    }
+]
+
+function roleHandler(event) {
+    let clickedOption = event.currentTarget
+
+    roleOptions.forEach(option => option.classList.remove("active"))
+    clickedOption.classList.add("active")
+
+    if (clickedOption.innerText.toLowerCase() == "admin") {
+        emailInput.value = "dummyadmin@gmail.com"
+        passwordInput.value = "dummyadmin123"
+    }
+    if (clickedOption.innerText.toLowerCase() == "technician") {
+        emailInput.value = "dummytechnician@gmail.com"
+        passwordInput.value = "dummytechnician123"
+    }
+}
 
 emailInput.value = "dummyadmin@gmail.com"
 passwordInput.value = "dummyadmin123"
@@ -17,16 +47,13 @@ if (!localStorage.getItem("currentUser")) {
 let currentUser = JSON.parse(localStorage.getItem("currentUser"))
 
 if (currentUser) {
-    window.location.href = "/index.html"
-}
-
-const users = [
-    {
-        role: "Admin",
-        email: "dummyadmin@gmail.com",
-        password: "dummyadmin123"
+    if (currentUser.role.toLowerCase() == "admin") {
+        window.location.href = "/index.html"
     }
-]
+    if (currentUser.role.toLowerCase() == "technician") {
+        window.location.href = "/pages/issues.html"
+    }
+}
 
 let toastTimeout;
 function showToast(state, message) {
@@ -49,7 +76,7 @@ function showToast(state, message) {
 }
 
 function toggleEye() {
-    if (passwordInput.type == "password"){
+    if (passwordInput.type == "password") {
         eyeIcon.className = "ph ph-eye-slash"
         passwordInput.type = "text"
     } else {
@@ -122,15 +149,26 @@ function loginHandler(event) {
 
     localStorage.setItem("currentUser", JSON.stringify(currentUser))
 
+    if (currentUser.role.toLowerCase() == "admin") {
+        setTimeout(() => {
+            window.location.href = "/index.html"
+        }, 2000)
+    }
+
+    if (currentUser.role.toLowerCase() == "technician") {
+        setTimeout(() => {
+            window.location.href = "/pages/issues.html"
+        }, 2000)
+    }
+
     emailInput.value = ""
     passwordInput.value = ""
     showToast("success", "Login successful!")
-    setTimeout(() => {
-        window.location.href = "/index.html"
-    }, 2000)
 }
 
 // Event Listeners
+
+roleOptions.forEach(option => option.addEventListener("click", roleHandler))
 
 loginForm.addEventListener("submit", loginHandler)
 

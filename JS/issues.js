@@ -11,6 +11,7 @@ let searchInput = document.getElementById("search-input")
 let statusDropdown = document.getElementById("status-dropdown")
 let priorityDropdown = document.getElementById("priority-dropdown")
 let resetToDemoDataBtn = document.querySelector(".reset-to-demo-data-btn")
+let logOutBtn = document.querySelector(".logout-btn")
 
 if (!localStorage.getItem("currentUser")) {
     localStorage.setItem("currentUser", null)
@@ -56,7 +57,7 @@ function displayIssues(issuesArray) {
     issuesDataContainer.innerHTML = ""
     issuesArray.map(issue => {
         let tr = document.createElement("tr")
-        tr.innerHTML = `<td class="issue-code">${issue.code}</td>
+        tr.innerHTML = `<td class="issue-code">ISS-${issue.code}</td>
                         <td class="asset-name">${issue.assetName}</td>
                         <td class="issue-title">${issue.title}</td>
                         <td class="priority ${issue.priority.toLowerCase()}">
@@ -108,7 +109,7 @@ function searchIssues() {
     let filteredIssues = allIssues.filter(issue => 
         issue.title.toLowerCase().includes(searchInput.value.toLowerCase()) || 
         issue.assetName.toLowerCase().includes(searchInput.value.toLowerCase()) || 
-        issue.code.toLowerCase().includes(searchInput.value.toLowerCase())
+        issue.code.toString().includes(searchInput.value)
     )
     displayIssues(filteredIssues)
 }
@@ -134,12 +135,19 @@ function priorityFilter() {
 }
 
 function resetToDemoData() {
-    localStorage.removeItem("allIssues", "issueCodeCount");
+    localStorage.removeItem("allIssues");
+    localStorage.removeItem("issueCodeCount");
     window.location.reload()
 }
 
 function viewDetails(issueCode) {
-    window.location.href = `pages/issue-details.html?code=${issueCode}`
+    window.location.href = `/pages/issue-details.html?code=${issueCode}`
+}
+
+function logOut() {
+    currentUser = null
+    localStorage.setItem("currentUser", currentUser)
+    window.location.href = "/pages/login.html"
 }
 
 // Event Listeners
@@ -151,3 +159,5 @@ statusDropdown.addEventListener("change", statusFilter)
 priorityDropdown.addEventListener("change", priorityFilter)
 
 resetToDemoDataBtn.addEventListener("click", resetToDemoData)
+
+logOutBtn.addEventListener("click", logOut)

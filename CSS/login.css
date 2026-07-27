@@ -1,45 +1,27 @@
 :root {
-
-    /* BODY */
-
     --body-bg: #F7F9FC;
     --body-text: #111827;
     --body-text-secondary: #6B7280;
-
-    /* TOAST */
 
     --toast-bg: #FFFFFF;
     --toast-color: #111827;
     --toast-border: 1px solid #E7ECF2;
     --toast-shadow: 0 12px 30px rgba(15, 23, 42, .12);
 
-    /* SUCCESS TOAST */
-
     --toast-success-icon-color: #16A34A;
-
-    /* ERROR TOAST */
-
     --toast-error-icon-color: #DC2626;
-
-    /* CARD */
 
     --card-bg: #FFFFFF;
     --card-border: 1px solid #E7ECF2;
     --card-shadow: 0 12px 30px rgba(15, 23, 42, .08);
 
-    /* FORM LABELS */
-
     --form-label-color: #374151;
     --form-required-color: #DC2626;
-
-    /* INPUT */
 
     --input-bg: #FFFFFF;
     --input-border: 1.5px solid #E5E7EB;
     --input-focus-border: 1.5px solid #16A34A;
     --input-icon-color: #6B7280;
-
-    /* BUTTON PRIMARY */
 
     --btn-primary-bg: #16A34A;
     --btn-primary-color: #FFFFFF;
@@ -103,6 +85,47 @@ body {
 .login-container {
     width: 100%;
     max-width: 440px;
+}
+
+.role-selection-wrapper {
+    width: 100%;
+    margin-bottom: clamp(12px, 1.5vw, 14px);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.role-toggle-container {
+    display: flex;
+    background-color: #EBF0F5;
+    border: var(--card-border);
+    border-radius: clamp(8px, 1vw, 10px);
+    padding: 3px;
+    gap: 4px;
+}
+
+.role-option {
+    flex: 1;
+    text-align: center;
+    padding: clamp(6px, 0.8vw, 8px) 0;
+    font-size: clamp(13px, 1.1vw, 14px);
+    font-weight: 500;
+    color: var(--body-text-secondary);
+    border-radius: clamp(5px, 0.7vw, 7px);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.role-option:hover {
+    color: var(--body-text);
+}
+
+.role-option.active {
+    background-color: var(--card-bg);
+    color: var(--btn-primary-bg);
+    font-weight: 600;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
 .login-card {
@@ -225,6 +248,10 @@ body {
 
     * {
         cursor: default !important;
+    }
+
+    .role-selection-wrapper {
+        padding: 0 14px;
     }
 
     .login-card {

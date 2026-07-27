@@ -17,6 +17,7 @@ let statusDropdown = document.getElementById("status-dropdown")
 let locationDropdown = document.getElementById("location-dropdown")
 let locationList = document.getElementById("location-list")
 let resetToDemoDataBtn = document.querySelector(".reset-to-demo-data-btn")
+let logOutBtn = document.querySelector(".logout-btn")
 
 if (!localStorage.getItem("currentUser")) {
     localStorage.setItem("currentUser", null)
@@ -228,7 +229,9 @@ function viewDetails(assetCode) {
 }
 
 function logOut() {
-    
+    currentUser = null
+    localStorage.setItem("currentUser", currentUser)
+    window.location.href = "/pages/login.html"
 }
 
 // Event Listeners
@@ -246,3 +249,5 @@ statusDropdown.addEventListener("change", statusFilter)
 locationDropdown.addEventListener("change", locationFilter)
 
 resetToDemoDataBtn.addEventListener("click", resetToDemoData)
+
+logOutBtn.addEventListener("click", logOut)
