@@ -15,7 +15,7 @@
         href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="shortcut icon" href="images/icon.png" type="image/x-icon">
-    <title>Dashboard | MaintainIQ</title>
+    <title>Admin Dashboard | MaintainIQ</title>
 </head>
 
 <body>
@@ -30,10 +30,21 @@
                 <i class="fa-solid fa-screwdriver-wrench"></i>
                 <h2>Maintain<span>IQ</span></h2>
             </div>
-            <button class="reset-to-demo-data-btn">
-                <i class="ph-bold ph-arrow-clockwise"></i>
-                Reset To Demo Data
+
+            <button class="menu-toggle-btn" id="menu-toggle-btn">
+                <i class="ph-bold ph-list"></i>
             </button>
+
+            <div class="nav-btns" id="nav-btns">
+                <button class="reset-to-demo-data-btn">
+                    <i class="ph-bold ph-arrow-clockwise"></i>
+                    Reset To Demo Data
+                </button>
+                <button class="logout-btn">
+                    <i class="ph-bold ph-sign-out"></i>
+                    Logout
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -42,7 +53,7 @@
         <section class="title-section">
 
             <div class="dashboard-title">
-                <h2>Dashboard</h2>
+                <h2>Admin Dashboard</h2>
                 <p>Welcome Back, Admin User!</p>
             </div>
             <button class="add-new-asset-btn">

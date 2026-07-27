@@ -872,8 +872,8 @@ body {
 
 .qr-code-card .qr-code-container canvas,
 .qr-code-card .qr-code-container img {
-    width: 100%;
-    height: 100%;
+    width: 108%;
+    height: 108%;
 }
 
 .qr-code-card .btns {

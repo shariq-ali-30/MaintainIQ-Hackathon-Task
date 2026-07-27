@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/bold/style.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+    <link rel="stylesheet" href="/CSS/issues.css">
+    <link rel="shortcut icon" href="/images/icon.png" type="image/x-icon">
+    <title>Issues Management | MaintainIQ</title>
+</head>
+
+<body>
+
+    <div class="toast">
+        <i class="fa-solid fa-circle-xmark" id="toast-icon"></i>
+        <p class="toast-message">Message</p>
+    </div>
+
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+                <h2>Maintain<span>IQ</span></h2>
+            </div>
+
+            <button class="menu-toggle-btn" id="menu-toggle-btn">
+                <i class="ph-bold ph-list"></i>
+            </button>
+
+            <div class="nav-btns" id="nav-btns">
+                <button class="reset-to-demo-data-btn">
+                    <i class="ph-bold ph-arrow-clockwise"></i>
+                    Reset To Demo Data
+                </button>
+                <button class="logout-btn">
+                    <i class="ph-bold ph-sign-out"></i>
+                    Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <section class="title-section">
+            <div class="dashboard-title">
+                <h2>Issues Management</h2>
+                <p>Track and manage reported maintenance issues.</p>
+            </div>
+        </section>
+
+        <section class="stats-cards-section">
+
+            <div class="stats-card">
+                <div class="icon-box total-issues-icon-box">
+                    <i class="ph ph-cube"></i>
+                </div>
+                <div class="stats-card-details">
+                    <p class="title">Total Issues</p>
+                    <h2 class="number" id="total-issues-count">0</h2>
+                </div>
+                <div class="icon-circle total-issues-icon-box">
+                    <i class="ph ph-trend-up"></i>
+                </div>
+            </div>
+
+            <div class="stats-card">
+                <div class="icon-box open-issues-icon-box">
+                    <i class="ph ph-warning"></i>
+                </div>
+                <div class="stats-card-details">
+                    <p class="title">Open Issues</p>
+                    <h2 class="number" id="open-issues-count">0</h2>
+                </div>
+                <div class="icon-circle open-issues-icon-box">
+                    <i class="ph ph-trend-up"></i>
+                </div>
+            </div>
+
+            <div class="stats-card">
+                <div class="icon-box in-progress-icon-box">
+                    <i class="ph ph-wrench"></i>
+                </div>
+                <div class="stats-card-details">
+                    <p class="title">In Progress</p>
+                    <h2 class="number" id="in-progress-issues-count">0</h2>
+                </div>
+                <div class="icon-circle in-progress-icon-box">
+                    <i class="ph ph-trend-up"></i>
+                </div>
+            </div>
+
+            <div class="stats-card">
+                <div class="icon-box resolved-issues-icon-box">
+                    <i class="ph ph-check-circle"></i>
+                </div>
+                <div class="stats-card-details">
+                    <p class="title">Resolved Issues</p>
+                    <h2 class="number" id="resolved-issues-count">0</h2>
+                </div>
+                <div class="icon-circle resolved-issues-icon-box">
+                    <i class="ph ph-trend-up"></i>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="search-and-filter-section">
+
+            <div class="input-box">
+                <i class="ph ph-magnifying-glass"></i>
+                <input type="text" placeholder="Search issues by issue number, asset name, or title..." id="search-input">
+            </div>
+
+            <div class="filters">
+                <div class="select-box">
+                    <select class="status-filter" id="status-dropdown">
+                        <option selected>All Statuses</option>
+                        <option value="reported">Reported</option>
+                        <option value="maintenance in progress">Maintenance In Progress</option>
+                        <option value="resolved">Resolved</option>
+                        <option value="inspection started">Inspection Started</option>
+                    </select>
+                    <i class="ph ph-caret-down"></i>
+                </div>
+
+                <div class="select-box">
+                    <select class="priority-filter" id="priority-dropdown">
+                        <option selected>All Priorities</option>
+                        <option value="critical">Critical</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                    </select>
+                    <i class="ph ph-caret-down"></i>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="issue-table-section">
+
+            <table class="issue-table">
+                <thead>
+                    <tr>
+                        <th>Issue #</th>
+                        <th>Asset</th>
+                        <th>Issue Title</th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                        <th>Reported Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody class="issues-data-container">
+                </tbody>
+            </table>
+
+        </section>
+
+    </div>
+
+    <script src="/JS/issues.js"></script>
+</body>
+
+</html>

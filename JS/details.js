@@ -70,7 +70,7 @@ function updatePage() {
         image: "/images/icon.png",
         imageOptions: {
             imageSize: 0.5,
-            margin: 10
+            margin: 8
         }
     })
     qrCode.append(assetQRCode)
