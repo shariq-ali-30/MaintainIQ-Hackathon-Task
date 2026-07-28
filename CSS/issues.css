@@ -39,8 +39,8 @@
     --open-issues-icon-box-bg: #FFF7E6;
     --open-issues-icon-color: #EAB308;
 
-    --in-progress-icon-box-bg: #EFF6FF;
-    --in-progress-icon-color: #2563EB;
+    --under-maintenance-icon-box-bg: #EFF6FF;
+    --under-maintenance-icon-color: #2563EB;
 
     --resolved-icon-box-bg: #EAF8F0;
     --resolved-icon-color: #16A34A;
@@ -105,21 +105,17 @@
 
     /* STATUS BADGES */
 
-    --status-reported-bg: #EAF8F0;
-    --status-reported-text: #15803D;
-    --status-reported-dot: #16A34A;
+    --status-issue-reported-bg: #FFF7E6;
+    --status-issue-reported-text: #D97706;
+    --status-issue-reported-dot: #F59E0B;
 
-    --status-maintenance-bg: #EFF6FF;
-    --status-maintenance-text: #1D4ED8;
-    --status-maintenance-dot: #2563EB;
+    --status-under-maintenance-bg: #EFF6FF;
+    --status-under-maintenance-text: #1D4ED8;
+    --status-under-maintenance-dot: #2563EB;
 
     --status-resolved-bg: #EAF8F0;
     --status-resolved-text: #15803D;
     --status-resolved-dot: #16A34A;
-
-    --status-inspection-bg: #F3E8FF;
-    --status-inspection-text: #7E22CE;
-    --status-inspection-dot: #9333EA;
 
     /* VIEW BUTTON */
 
@@ -382,9 +378,9 @@ section {
     color: var(--open-issues-icon-color);
 }
 
-.in-progress-icon-box {
-    background-color: var(--in-progress-icon-box-bg);
-    color: var(--in-progress-icon-color);
+.under-maintenance-icon-box {
+    background-color: var(--under-maintenance-icon-box-bg);
+    color: var(--under-maintenance-icon-color);
 }
 
 .resolved-issues-icon-box {
@@ -589,22 +585,22 @@ section {
     border-color: var(--priority-medium-dot);
 }
 
-.issue-table-section table tbody tr td.status.reported p {
-    background-color: var(--status-reported-bg);
-    color: var(--status-reported-text);
+.issue-table-section table tbody tr td.status.issue-reported p {
+    background-color: var(--status-issue-reported-bg);
+    color: var(--status-issue-reported-text);
 }
 
-.issue-table-section table tbody tr td.status.reported p .dot {
-    border-color: var(--status-reported-dot);
+.issue-table-section table tbody tr td.status.issue-reported p .dot {
+    border-color: var(--status-issue-reported-dot);
 }
 
-.issue-table-section table tbody tr td.status.maintenance-in-progress p {
-    background-color: var(--status-maintenance-bg);
-    color: var(--status-maintenance-text);
+.issue-table-section table tbody tr td.status.under-maintenance p {
+    background-color: var(--status-under-maintenance-bg);
+    color: var(--status-under-maintenance-text);
 }
 
-.issue-table-section table tbody tr td.status.maintenance-in-progress p .dot {
-    border-color: var(--status-maintenance-dot);
+.issue-table-section table tbody tr td.status.under-maintenance p .dot {
+    border-color: var(--status-under-maintenance-dot);
 }
 
 .issue-table-section table tbody tr td.status.resolved p {
@@ -614,15 +610,6 @@ section {
 
 .issue-table-section table tbody tr td.status.resolved p .dot {
     border-color: var(--status-resolved-dot);
-}
-
-.issue-table-section table tbody tr td.status.inspection-started p {
-    background-color: var(--status-inspection-bg);
-    color: var(--status-inspection-text);
-}
-
-.issue-table-section table tbody tr td.status.inspection-started p .dot {
-    border-color: var(--status-inspection-dot);
 }
 
 .issue-table-section table tbody tr td.action button {

@@ -1,6 +1,6 @@
 let totalIssuesCount = document.getElementById("total-issues-count")
 let openIssuesCount = document.getElementById("open-issues-count")
-let inProgressIssuesCount = document.getElementById("in-progress-issues-count")
+let underMaintenanceIssuesCount = document.getElementById("under-maintenance-issues-count")
 let resolvedIssuesCount = document.getElementById("resolved-issues-count")
 let issuesDataContainer = document.querySelector(".issues-data-container")
 let issueTableSection = document.querySelector(".issue-table-section")
@@ -26,11 +26,11 @@ if (!currentUser) {
 }
 
 const allIssuesData = [
-    { id: 1001, assetName: "Classroom Projector 01", title: "Display Flickering", priority: "High", status: "Reported", date: "Jul 20, 2026" },
-    { id: 1002, assetName: "Library AC Unit", title: "Water Leakage", priority: "Critical", status: "Maintenance In Progress", date: "Jul 22, 2026" },
-    { id: 1003, assetName: "Computer Lab Printer", title: "Paper Jam Error", priority: "Medium", status: "Resolved", date: "Jul 23, 2026" },
-    { id: 1004, assetName: "Admin Office Laptop", title: "Battery Not Charging", priority: "High", status: "Inspection Started", date: "Jul 24, 2026" },
-    { id: 1005, assetName: "Backup Generator", title: "Not Starting", priority: "Critical", status: "Maintenance In Progress", date: "Jul 24, 2026" }
+  { id: 1001, issueIdNumber: 1001, title: "Display Flickering", description: "Projector screen starts flickering after 15 minutes of continuous use.", status: "Resolved", priority: "High", reporterName: "Ali Raza", date: "Jul 20, 2026", assetName: "Classroom Projector 01", assetCode: 1001, assetLocation: "Building A - Room 101", assetCondition: "Excellent", history: [{ date: "Jul 20, 2026", action: "Issue Reported by Ali Raza" }], viewAssetLink: "http://127.0.0.1:5500/pages/details.html?code=1001" },
+  { id: 1002, issueIdNumber: 1002, title: "Water Leakage", description: "Water dripping directly over the study table area from the split unit.", status: "Issue Reported", priority: "Critical", reporterName: "Sara Khan", date: "Jul 22, 2026", assetName: "Facility AC Unit", assetCode: 1002, assetLocation: "Building B - Floor 2", assetCondition: "Fair", history: [{ date: "Jul 22, 2026", action: "Issue Reported by Sara Khan" }, { date: "Jul 23, 2026", action: "Technician assigned" }], viewAssetLink: "http://127.0.0.1:5500/pages/details.html?code=1002" },
+  { id: 1003, issueIdNumber: 1003, title: "Not Starting", description: "Automatic takeover failed during power outage. Battery voltage low.", status: "Under Maintenance", priority: "Critical", reporterName: "Tariq Mahmood", date: "Jul 24, 2026", assetName: "Backup Generator", assetCode: 1003, assetLocation: "Utility Area", assetCondition: "Poor", history: [{ date: "Jul 24, 2026", action: "Issue Reported by Tariq" }, { date: "Jul 25, 2026", action: "Vendor technician called" }], viewAssetLink: "http://127.0.0.1:5500/pages/details.html?code=1003" },
+  { id: 1004, issueIdNumber: 1004, title: "Battery Not Charging", description: "Laptop is not holding charge and powers off instantly when unplugged.", status: "Resolved", priority: "High", reporterName: "Bilal Sheikh", date: "Jul 24, 2026", assetName: "Admin Office Laptop", assetCode: 1004, assetLocation: "Admin Office", assetCondition: "Excellent", history: [{ date: "Jul 24, 2026", action: "Issue Reported" }, { date: "Jul 25, 2026", action: "Sent to IT hardware department" }], viewAssetLink: "http://127.0.0.1:5500/pages/details.html?code=1004" },
+  { id: 1005, issueIdNumber: 1005, title: "Paper Jam Error", description: "Roller mechanism stuck, showing persistent paper jam error on panel.", status: "Resolved", priority: "Medium", reporterName: "Usman Ahmed", date: "Jul 23, 2026", assetName: "Office Printer", assetCode: 1005, assetLocation: "Admin Office", assetCondition: "Excellent", history: [{ date: "Jul 23, 2026", action: "Issue Reported" }, { date: "Jul 23, 2026", action: "Roller cleaned & status updated" }], viewAssetLink: "http://127.0.0.1:5500/pages/details.html?code=1005" }
 ]
 
 if (!localStorage.getItem("allIssues")) {
@@ -41,8 +41,8 @@ let allIssues = JSON.parse(localStorage.getItem("allIssues"))
 
 function updatePageDetails() {
     totalIssuesCount.innerText = allIssues.length
-    openIssuesCount.innerText = allIssues.filter(issue => issue.status.toLowerCase() == "reported").length
-    inProgressIssuesCount.innerText = allIssues.filter(issue => issue.status.toLowerCase() == "maintenance in progress").length
+    openIssuesCount.innerText = allIssues.filter(issue => issue.status.toLowerCase() == "issue reported").length
+    underMaintenanceIssuesCount.innerText = allIssues.filter(issue => issue.status.toLowerCase() == "under maintenance").length
     resolvedIssuesCount.innerText = allIssues.filter(issue => issue.status.toLowerCase() == "resolved").length
 
     displayIssues(allIssues)
@@ -65,7 +65,7 @@ function displayIssues(issuesArray) {
                         <td class="priority ${issue.priority.toLowerCase()}">
                             <p><span class="dot"></span> ${issue.priority}</p>
                         </td>
-                        <td class="status ${issue.status.replace(/\s+/g, "-").toLowerCase()}">
+                        <td class="status ${issue.status.replace(" ", "-").toLowerCase()}">
                             <p><span class="dot"></span> ${issue.status}</p>
                         </td>
                         <td class="reported-date">${issue.date}</td>

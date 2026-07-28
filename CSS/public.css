@@ -457,6 +457,12 @@ body {
     margin-top: clamp(14px, 1.5vw, 18px);
 }
 
+.report-issue-form .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(12px, 1.5vw, 16px);
+}
+
 .report-issue-form .input-group {
     display: flex;
     flex-direction: column;
@@ -487,7 +493,43 @@ body {
     resize: none;
 }
 
+.report-issue-form .select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.report-issue-form select {
+    width: 100%;
+    padding: 12px 14px;
+    padding-right: 36px;
+    border: var(--input-border);
+    border-radius: clamp(6px, 0.8vw, 8px);
+    background-color: var(--input-bg);
+    outline: none;
+    font-family: inherit;
+    font-size: clamp(13px, 1.1vw, 15px);
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    transition: border 0.2s ease;
+}
+
+.report-issue-form select:focus {
+    border: var(--input-focus-border);
+}
+
+.report-issue-form .select-wrapper i {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--body-text-secondary);
+    font-size: 16px;
+}
+
 .report-issue-form input.error,
+.report-issue-form select.error,
 .report-issue-form textarea.error {
     border-color: var(--form-required-color);
 }
@@ -497,14 +539,14 @@ body {
     border: var(--input-focus-border);
 }
 
-.submit-issue-btn {
+.submit-btn {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     height: clamp(40px, 3.5vw, 48px);
-    gap: clamp(8px, 0.8vw, 12px);
-    font-size: clamp(14px, 1.2vw, 16px);
+    gap: clamp(8px, 0.8vw, 10px);
+    font-size: clamp(15px, 1.1vw, 17px);
     font-weight: 500;
     border-radius: clamp(4px, 0.5vw, 6px);
     background-color: var(--btn-primary-bg);
@@ -515,13 +557,14 @@ body {
     margin-top: 5px;
 }
 
-.submit-issue-btn:active {
+.submit-btn:active {
     background-color: var(--btn-primary-active-bg);
 }
 
 .asset-timeline-section {
     flex-grow: 1;
     max-width: 430px;
+    height: fit-content;
     padding: clamp(14px, 1.5vw, 20px);
     background-color: var(--card-bg);
     border: var(--card-border);
@@ -584,6 +627,12 @@ body {
     font-size: clamp(10px, 0.9vw, 12px);
 }
 
+@media (max-width: 576px) {
+    .report-issue-form .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (max-width: 400px) {
 
     * {
@@ -592,6 +641,6 @@ body {
 
     .title-section div {
         flex-direction: column-reverse;
-        align-items: start
+        align-items: start;
     }
 }

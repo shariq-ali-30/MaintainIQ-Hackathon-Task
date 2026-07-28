@@ -86,15 +86,36 @@
                     </div>
 
                     <div class="report-issue-form" id="issueForm">
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label>Reporter Name <span>*</span></label>
+                                <input type="text" placeholder="Enter your name" class="reporter-name-input">
+                            </div>
+
+                            <div class="input-group">
+                                <label>Priority</label>
+                                <div class="select-wrapper">
+                                    <select class="priority-input">
+                                        <option value="medium" selected>Medium</option>
+                                        <option value="high">High</option>
+                                        <option value="critical">Critical</option>
+                                    </select>
+                                    <i class="ph ph-caret-down"></i>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="input-group">
                             <label>Issue Title <span>*</span></label>
                             <input type="text" placeholder="e.g., Screen is flickering" class="issue-title-input">
                         </div>
+
                         <div class="input-group">
                             <label>Description <span>*</span></label>
                             <textarea rows="4" placeholder="Describe the problem in detail..." class="issue-description-input"></textarea>
                         </div>
-                        <button class="submit-issue-btn"><i class="ph ph-paper-plane-right"></i> Submit Report</button>
+
+                        <button class="submit-btn" type="submit">Submit Report <i class="ph-bold ph-paper-plane-right"></i></button>
                     </div>
                 </div>
 
@@ -108,7 +129,6 @@
                 </div>
 
                 <div class="timeline">
-                    <!-- Timeline items go here -->
                 </div>
 
             </section>

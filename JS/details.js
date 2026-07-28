@@ -29,6 +29,16 @@ let toast = document.querySelector(".toast")
 let toastIcon = document.getElementById("toast-icon")
 let toastMessage = document.querySelector(".toast-message")
 
+if (!localStorage.getItem("currentUser")) {
+    localStorage.setItem("currentUser", null)
+}
+
+let currentUser = JSON.parse(localStorage.getItem("currentUser"))
+
+if (!currentUser) {
+    window.location.href = "/pages/login.html"
+}
+
 if (!currentAsset) {
     mainContainer.style.display = "none"
     notFoundContiner.style.display = "flex"
