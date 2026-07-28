@@ -12,6 +12,8 @@ let statusDropdown = document.getElementById("status-dropdown")
 let priorityDropdown = document.getElementById("priority-dropdown")
 let resetToDemoDataBtn = document.querySelector(".reset-to-demo-data-btn")
 let logOutBtn = document.querySelector(".logout-btn")
+let menuToggleBtn = document.getElementById("menu-toggle-btn")
+let menu = document.getElementById("nav-btns")
 
 if (!localStorage.getItem("currentUser")) {
     localStorage.setItem("currentUser", null)
@@ -24,11 +26,11 @@ if (!currentUser) {
 }
 
 const allIssuesData = [
-    { code: 1001, assetName: "Classroom Projector 01", title: "Display Flickering", priority: "High", status: "Reported", date: "Jul 20, 2026" },
-    { code: 1002, assetName: "Library AC Unit", title: "Water Leakage", priority: "Critical", status: "Maintenance In Progress", date: "Jul 22, 2026" },
-    { code: 1003, assetName: "Computer Lab Printer", title: "Paper Jam Error", priority: "Medium", status: "Resolved", date: "Jul 23, 2026" },
-    { code: 1004, assetName: "Admin Office Laptop", title: "Battery Not Charging", priority: "High", status: "Inspection Started", date: "Jul 24, 2026" },
-    { code: 1005, assetName: "Backup Generator", title: "Not Starting", priority: "Critical", status: "Maintenance In Progress", date: "Jul 24, 2026" }
+    { id: 1001, assetName: "Classroom Projector 01", title: "Display Flickering", priority: "High", status: "Reported", date: "Jul 20, 2026" },
+    { id: 1002, assetName: "Library AC Unit", title: "Water Leakage", priority: "Critical", status: "Maintenance In Progress", date: "Jul 22, 2026" },
+    { id: 1003, assetName: "Computer Lab Printer", title: "Paper Jam Error", priority: "Medium", status: "Resolved", date: "Jul 23, 2026" },
+    { id: 1004, assetName: "Admin Office Laptop", title: "Battery Not Charging", priority: "High", status: "Inspection Started", date: "Jul 24, 2026" },
+    { id: 1005, assetName: "Backup Generator", title: "Not Starting", priority: "Critical", status: "Maintenance In Progress", date: "Jul 24, 2026" }
 ]
 
 if (!localStorage.getItem("allIssues")) {
@@ -57,7 +59,7 @@ function displayIssues(issuesArray) {
     issuesDataContainer.innerHTML = ""
     issuesArray.map(issue => {
         let tr = document.createElement("tr")
-        tr.innerHTML = `<td class="issue-code">ISS-${issue.code}</td>
+        tr.innerHTML = `<td class="issue-code">ISS-${issue.id}</td>
                         <td class="asset-name">${issue.assetName}</td>
                         <td class="issue-title">${issue.title}</td>
                         <td class="priority ${issue.priority.toLowerCase()}">
@@ -67,7 +69,7 @@ function displayIssues(issuesArray) {
                             <p><span class="dot"></span> ${issue.status}</p>
                         </td>
                         <td class="reported-date">${issue.date}</td>
-                        <td class="action"><button onclick="viewDetails(${issue.code})"><i class="ph ph-eye"></i> View</button></td>`
+                        <td class="action"><button onclick="viewDetails(${issue.id})"><i class="ph ph-eye"></i> View</button></td>`
 
         issuesDataContainer.appendChild(tr)
     })
@@ -109,7 +111,7 @@ function searchIssues() {
     let filteredIssues = allIssues.filter(issue => 
         issue.title.toLowerCase().includes(searchInput.value.toLowerCase()) || 
         issue.assetName.toLowerCase().includes(searchInput.value.toLowerCase()) || 
-        issue.code.toString().includes(searchInput.value)
+        issue.id.toString().includes(searchInput.value)
     )
     displayIssues(filteredIssues)
 }
@@ -140,8 +142,8 @@ function resetToDemoData() {
     window.location.reload()
 }
 
-function viewDetails(issueCode) {
-    window.location.href = `/pages/issue-details.html?code=${issueCode}`
+function viewDetails(issueId) {
+    window.location.href = `/pages/issue-details.html?issue-id=${issueId}`
 }
 
 function logOut() {
@@ -161,3 +163,5 @@ priorityDropdown.addEventListener("change", priorityFilter)
 resetToDemoDataBtn.addEventListener("click", resetToDemoData)
 
 logOutBtn.addEventListener("click", logOut)
+
+menuToggleBtn.addEventListener("click", () => menu.classList.toggle("active"))

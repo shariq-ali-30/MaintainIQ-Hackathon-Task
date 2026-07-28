@@ -18,6 +18,8 @@ let locationDropdown = document.getElementById("location-dropdown")
 let locationList = document.getElementById("location-list")
 let resetToDemoDataBtn = document.querySelector(".reset-to-demo-data-btn")
 let logOutBtn = document.querySelector(".logout-btn")
+let menuToggleBtn = document.getElementById("menu-toggle-btn")
+let menu = document.getElementById("nav-btns")
 
 if (!localStorage.getItem("currentUser")) {
     localStorage.setItem("currentUser", null)
@@ -251,3 +253,5 @@ locationDropdown.addEventListener("change", locationFilter)
 resetToDemoDataBtn.addEventListener("click", resetToDemoData)
 
 logOutBtn.addEventListener("click", logOut)
+
+menuToggleBtn.addEventListener("click", () => menu.classList.toggle("active"))

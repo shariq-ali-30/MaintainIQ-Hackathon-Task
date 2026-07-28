@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/bold/style.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+    <link rel="stylesheet" href="/CSS/issue-details.css">
+    <link rel="shortcut icon" href="/images/icon.png" type="image/x-icon">
+    <title>Issue Details | MaintainIQ</title>
+</head>
+
+<body>
+    <div class="toast">
+        <i class="fa-solid fa-circle-xmark" id="toast-icon"></i>
+        <p class="toast-message">Message</p>
+    </div>
+
+    <div class="not-found-container">
+        <div class="icon-circle">
+            <i class="fa-solid fa-file-circle-xmark"></i>
+        </div>
+        <h2 class="not-found-title">Issue not found</h2>
+        <p class="not-found-desc">
+            The issue you're looking for doesn't exist<br>
+            or may have been removed.
+        </p>
+        <a href="/pages/issues.html"><i class="ph-bold ph-arrow-left"></i>Back To Issues</a>
+    </div>
+
+    <div class="container">
+
+        <button class="back-btn">
+            <i class="ph ph-arrow-left"></i> Back To Issues
+        </button>
+
+        <section class="title-section">
+            <div class="issue-header-content">
+                <div class="issue-header-top">
+                    <h1 class="issue-number">#ISS-1001</h1>
+                    <p class="issue-status issue-reported"><span class="dot"></span>Reported</p>
+                </div>
+                <p class="issue-title-text">Display Flickering</p>
+            </div>
+
+            <div class="btns">
+                <button class="start-maintenance-btn">
+                    <i class="ph ph-wrench"></i> Start Maintenance
+                </button>
+                <button class="resolve-btn">
+                    <i class="ph ph-check-circle"></i> Resolve Issue
+                </button>
+            </div>
+        </section>
+
+        <section class="issue-details-and-timeline">
+
+            <section class="issue-details-section">
+
+                <div class="issue-details-card">
+                    <div class="section-header">
+                        <i class="ph-bold ph-warning-circle"></i>
+                        <p>Issue Details</p>
+                    </div>
+
+                    <div class="detail">
+                        <p class="key">Issue Number</p>
+                        <p class="value issue-code">ISS-1001</p>
+                    </div>
+                    <div class="detail">
+                        <p class="key">Reported By</p>
+                        <p class="value reporter-name">John Doe</p>
+                    </div>
+                    <div class="detail">
+                        <p class="key">Priority</p>
+                        <p class="value">
+                            <span class="priority-badge critical">
+                                <span class="dot"></span> Critical
+                            </span>
+                        </p>
+                    </div>
+                    <div class="detail">
+                        <p class="key">Reported Date</p>
+                        <p class="value reported-date">July 26, 2026 at 02:15 PM</p>
+                    </div>
+                </div>
+
+                <div class="description-card">
+                    <div class="section-header">
+                        <i class="ph-bold ph-file-text"></i>
+                        <p>Reported Issue</p>
+                    </div>
+                    <div class="description-box">
+                        <p class="description-text">
+                            The display screen flickers intermittently during operation. It shuts off automatically after 10-15 minutes of use and requires a hard power cycle to restart.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="affected-asset-card">
+                    <div class="section-header">
+                        <i class="ph-bold ph-cube"></i>
+                        <p>Affected Asset Details</p>
+                    </div>
+
+                    <div class="detail">
+                        <p class="key">Asset Name</p>
+                        <p class="value asset-name-val">Computer Lab Projector</p>
+                    </div>
+                    <div class="detail">
+                        <p class="key">Asset Code</p>
+                        <p class="value asset-code-val">AST-1001</p>
+                    </div>
+                    <div class="detail">
+                        <p class="key">Location</p>
+                        <p class="value asset-location-val">Computer Lab, Room 102</p>
+                    </div>
+                    <div class="detail">
+                        <p class="key">Current Condition</p>
+                        <p class="value">
+                            <span class="condition poor"><span class="dot"></span> Poor</span>
+                        </p>
+                    </div>
+
+                    <div class="btns">
+                        <button class="open-asset-btn">
+                            <i class="ph-bold ph-arrow-square-out"></i> View Asset Details
+                        </button>
+                    </div>
+                </div>
+
+            </section>
+
+            <section class="issue-timeline-section">
+
+                <div class="section-header">
+                    <i class="ph-bold ph-clock-counter-clockwise"></i>
+                    <p>Issue Timeline</p>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="dot">
+                            <span></span>
+                        </div>
+                        <div class="content">
+                            <p class="title">Issue Reported</p>
+                            <span class="time">July 26, 2026 at 02:15 PM</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="dot">
+                            <span></span>
+                        </div>
+                        <div class="content">
+                            <p class="title">Inspection Scheduled</p>
+                            <span class="time">July 27, 2026 at 11:00 AM</span>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+        </section>
+
+    </div>
+
+    <script src="/JS/issue-details.js"></script>
+</body>
+
+</html>

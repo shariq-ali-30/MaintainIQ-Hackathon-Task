@@ -342,7 +342,6 @@ body {
     color: var(--select-arrow);
 }
 
-
 .modal-overlay .edit-asset-modal .input-fields input,
 .modal-overlay .edit-asset-modal .input-fields select {
     text-transform: capitalize;
@@ -914,6 +913,7 @@ body {
 /* Asset Time Line Section */
 
 .asset-timeline-section {
+    height: fit-content;
     flex-grow: 1;
     max-width: 430px;
     padding: clamp(14px, 1.5vw, 20px);
