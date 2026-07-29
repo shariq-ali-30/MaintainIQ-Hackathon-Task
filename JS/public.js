@@ -24,11 +24,11 @@ const allAssetsData = [
 ]
 
 const allIssuesData = [
-  { id: 1001, issueIdNumber: 1001, title: "Display Flickering", description: "Projector screen starts flickering after 15 minutes of continuous use.", status: "Operational", priority: "High", reporterName: "Ali Raza", date: "Jul 20, 2026", assetName: "Classroom Projector 01", assetCode: 1001, assetLocation: "Building A - Room 101", assetCondition: "Excellent", history: [{ date: "Jul 20, 2026", action: "Issue Reported by Ali Raza" }], viewAssetLink: "http://127.0.0.1:5500/pages/details.html?code=1001" },
-  { id: 1002, issueIdNumber: 1002, title: "Water Leakage", description: "Water dripping directly over the study table area from the split unit.", status: "Issue Reported", priority: "Critical", reporterName: "Sara Khan", date: "Jul 22, 2026", assetName: "Facility AC Unit", assetCode: 1002, assetLocation: "Building B - Floor 2", assetCondition: "Fair", history: [{ date: "Jul 22, 2026", action: "Issue Reported by Sara Khan" }, { date: "Jul 23, 2026", action: "Technician assigned" }], viewAssetLink: "http://127.0.0.1:5500/pages/details.html?code=1002" },
-  { id: 1003, issueIdNumber: 1003, title: "Not Starting", description: "Automatic takeover failed during power outage. Battery voltage low.", status: "Under Maintenance", priority: "Critical", reporterName: "Tariq Mahmood", date: "Jul 24, 2026", assetName: "Backup Generator", assetCode: 1003, assetLocation: "Utility Area", assetCondition: "Poor", history: [{ date: "Jul 24, 2026", action: "Issue Reported by Tariq" }, { date: "Jul 25, 2026", action: "Vendor technician called" }], viewAssetLink: "http://127.0.0.1:5500/pages/details.html?code=1003" },
-  { id: 1004, issueIdNumber: 1004, title: "Battery Not Charging", description: "Laptop is not holding charge and powers off instantly when unplugged.", status: "Operational", priority: "High", reporterName: "Bilal Sheikh", date: "Jul 24, 2026", assetName: "Admin Office Laptop", assetCode: 1004, assetLocation: "Admin Office", assetCondition: "Excellent", history: [{ date: "Jul 24, 2026", action: "Issue Reported" }, { date: "Jul 25, 2026", action: "Sent to IT hardware department" }], viewAssetLink: "http://127.0.0.1:5500/pages/details.html?code=1004" },
-  { id: 1005, issueIdNumber: 1005, title: "Paper Jam Error", description: "Roller mechanism stuck, showing persistent paper jam error on panel.", status: "Operational", priority: "Medium", reporterName: "Usman Ahmed", date: "Jul 23, 2026", assetName: "Office Printer", assetCode: 1005, assetLocation: "Admin Office", assetCondition: "Excellent", history: [{ date: "Jul 23, 2026", action: "Issue Reported" }, { date: "Jul 23, 2026", action: "Roller cleaned & status updated" }], viewAssetLink: "http://127.0.0.1:5500/pages/details.html?code=1005" }
+  { id: 1001, issueIdNumber: 1001, title: "Display Flickering", description: "Projector screen starts flickering after 15 minutes of continuous use.", status: "Resolved", priority: "High", reporterName: "Ali Raza", date: "Jul 20, 2026", assetCode: 1001, assetName: "Classroom Projector 01" },
+  { id: 1002, issueIdNumber: 1002, title: "Water Leakage", description: "Water dripping directly over the study table area from the split unit.", status: "Issue Reported", priority: "Critical", reporterName: "Sara Khan", date: "Jul 22, 2026", assetCode: 1002, assetName: "Facility AC Unit" },
+  { id: 1003, issueIdNumber: 1003, title: "Not Starting", description: "Automatic takeover failed during power outage. Battery voltage low.", status: "Under Maintenance", priority: "Critical", reporterName: "Tariq Mahmood", date: "Jul 24, 2026", assetCode: 1003, assetName: "Backup Generator" },
+  { id: 1004, issueIdNumber: 1004, title: "Battery Not Charging", description: "Laptop is not holding charge and powers off instantly when unplugged.", status: "Resolved", priority: "High", reporterName: "Bilal Sheikh", date: "Jul 24, 2026", assetCode: 1004, assetName: "Admin Office Laptop" },
+  { id: 1005, issueIdNumber: 1005, title: "Paper Jam Error", description: "Roller mechanism stuck, showing persistent paper jam error on panel.", status: "Resolved", priority: "Medium", reporterName: "Usman Ahmed", date: "Jul 23, 2026", assetCode: 1005, assetName: "Office Printer" }
 ]
 
 if (!localStorage.getItem("allAssets")) {
@@ -97,7 +97,7 @@ function updatePage() {
                          <span class="time">${historyItem.time}</span>
                          </div>`
         assetTimeline.appendChild(div)
-    });
+    })
 }
 updatePage()
 
@@ -162,13 +162,6 @@ function reportIssue() {
     newIssue.description = issueDescriptionInput.value.trim()
     newIssue.assetName = currentAsset.name
     newIssue.assetCode = currentAsset.code
-    newIssue.assetLocation = currentAsset.location
-    newIssue.assetCondition = currentAsset.condition
-    newIssue.history = currentAsset.history
-    newIssue.viewAssetLink = `http://127.0.0.1:5500/pages/details.html?code=${currentAsset.code}`
-
-    console.log(newIssue);
-    
 
     allIssues.push(newIssue)
 
@@ -176,7 +169,7 @@ function reportIssue() {
 
 
     reporterNameInput.value = ""
-    issuePriorityInput.selectedIndex = 1
+    issuePriorityInput.selectedIndex = 0
     issueTitleInput.value = ""
     issueDescriptionInput.value = ""
     showToast("success", "Issue reported successfully!")
