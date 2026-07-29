@@ -603,11 +603,13 @@ section {
     border-color: var(--status-under-maintenance-dot);
 }
 
+.issue-table-section table tbody tr td.status.operational p,
 .issue-table-section table tbody tr td.status.resolved p {
     background-color: var(--status-resolved-bg);
     color: var(--status-resolved-text);
 }
 
+.issue-table-section table tbody tr td.status.operationaal p .dot,
 .issue-table-section table tbody tr td.status.resolved p .dot {
     border-color: var(--status-resolved-dot);
 }

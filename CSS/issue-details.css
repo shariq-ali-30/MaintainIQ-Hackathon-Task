@@ -76,13 +76,9 @@
     --timeline-dot-border: 1.5px solid #D7F3E2;
     --timeline-dot-active: #16A34A;
 
-    --status-operational-bg: #EAF8F0;
-    --status-operational-text: #15803D;
-    --status-operational-dot: #16A34A;
-
-    --status-maintenance-bg: #FFF1EC;
-    --status-maintenance-text: #EA580C;
-    --status-maintenance-dot: #F97316;
+    --status-under-maintenance-bg: #EFF6FF;
+    --status-under-maintenance-text: #1D4ED8;
+    --status-under-maintenance-dot: #2563EB;
 
     --status-issue-bg: #FFF8E6;
     --status-issue-text: #D97706;
@@ -278,7 +274,7 @@ body {
     flex-wrap: wrap-reverse;
     justify-content: space-between;
     align-items: flex-start;
-    gap: clamp(18px, 2vw, 25px);
+    gap: clamp(22px, 2vw, 26px);
 }
 
 .title-section .issue-header-content {
@@ -291,7 +287,7 @@ body {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: clamp(10px, 1vw, 16px);
+    gap: clamp(20px, 1vw, 26px);
 }
 
 .title-section .issue-title-text {
@@ -360,11 +356,10 @@ body {
     font-weight: 500;
     text-transform: capitalize;
 }
-
 .title-section .issue-status.operational,
 .title-section .issue-status.resolved {
-    background-color: var(--status-operational-bg);
-    color: var(--status-operational-text);
+    background-color: var(--status-resolved-bg);
+    color: var(--status-resolved-text);
 }
 
 .title-section .issue-status.issue-reported {
@@ -373,8 +368,8 @@ body {
 }
 
 .title-section .issue-status.under-maintenance {
-    background-color: var(--status-maintenance-bg);
-    color: var(--status-maintenance-text);
+    background-color: var(--status-under-maintenance-bg);
+    color: var(--status-under-maintenance-text);
 }
 
 .title-section .issue-status .dot {
@@ -384,7 +379,7 @@ body {
 
 .title-section .issue-status.operational .dot,
 .title-section .issue-status.resolved .dot {
-    border-color: var(--status-operational-dot);
+    border-color: var(--status-resolved-dot);
 }
 
 .title-section .issue-status.issue-reported .dot {
@@ -392,7 +387,7 @@ body {
 }
 
 .title-section .issue-status.under-maintenance .dot {
-    border-color: var(--status-maintenance-dot);
+    border-color: var(--status-under-maintenance-dot);
 }
 
 .issue-details-and-timeline {
@@ -534,6 +529,7 @@ body {
 .affected-asset-card {
     margin-top: clamp(15px, 2vw, 20px);
     padding: clamp(14px, 1.5vw, 20px);
+    padding-bottom: clamp(6px, 1.5vw, 10px);
     border-radius: clamp(6px, 0.8vw, 8px);
     background-color: var(--card-bg);
     border: var(--card-border);
@@ -554,12 +550,14 @@ body {
 }
 
 .affected-asset-card .detail .key {
+    text-transform: capitalize;
     color: var(--label-color);
     font-size: clamp(13px, 1vw, 15px);
     width: 50%;
 }
 
 .affected-asset-card .detail .value {
+    text-transform: capitalize;
     width: 50%;
     color: var(--value-color);
     font-size: clamp(13px, 1vw, 15px);

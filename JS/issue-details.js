@@ -48,11 +48,11 @@ const allIssuesData = [
 ]
 
 const allAssetsData = [
-    { code: 1001, name: "Classroom Projector 01", location: "Building A - Room 101", status: "Operational", condition: "Excellent", publicPageLink: "http://127.0.0.1:5500/pages/public.html?code=1001", history: [{ activity: "Asset Created", time: "July 20, 2026 at 10:00 AM" }] },
-    { code: 1002, name: "Facility AC Unit", location: "Building B - Floor 2", status: "Issue Reported", condition: "Fair", publicPageLink: "http://127.0.0.1:5500/pages/public.html?code=1002", history: [{ activity: "Asset Created", time: "July 19, 2026 at 02:15 PM" }] },
-    { code: 1003, name: "Backup Generator", location: "Utility Area", status: "Under Maintenance", condition: "Poor", publicPageLink: "http://127.0.0.1:5500/pages/public.html?code=1003", history: [{ activity: "Asset Created", time: "July 18, 2026 at 08:45 AM" }] },
-    { code: 1004, name: "Admin Office Laptop", location: "Admin Office", status: "Operational", condition: "Excellent", publicPageLink: "http://127.0.0.1:5500/pages/public.html?code=1004", history: [{ activity: "Asset Created", time: "July 20, 2026 at 01:30 PM" }] },
-    { code: 1005, name: "Office Printer", location: "Admin Office", status: "Operational", condition: "Excellent", publicPageLink: "http://127.0.0.1:5500/pages/public.html?code=1005", history: [{ activity: "Asset Created", time: "July 17, 2026 at 04:20 PM" }] }
+    { code: 1001, name: "Classroom Projector 01", location: "Building A - Room 101", status: "Operational", condition: "Excellent", publicPageLink: "https://shariq-maintainiq.vercel.app/public.html?code=1001", history: [{ activity: "Asset Created", time: "July 20, 2026 at 10:00 AM" }] },
+    { code: 1002, name: "Facility AC Unit", location: "Building B - Floor 2", status: "Issue Reported", condition: "Fair", publicPageLink: "https://shariq-maintainiq.vercel.app/public.html?code=1002", history: [{ activity: "Asset Created", time: "July 19, 2026 at 02:15 PM" }] },
+    { code: 1003, name: "Backup Generator", location: "Utility Area", status: "Under Maintenance", condition: "Poor", publicPageLink: "https://shariq-maintainiq.vercel.app/public.html?code=1003", history: [{ activity: "Asset Created", time: "July 18, 2026 at 08:45 AM" }] },
+    { code: 1004, name: "Admin Office Laptop", location: "Admin Office", status: "Operational", condition: "Excellent", publicPageLink: "https://shariq-maintainiq.vercel.app/public.html?code=1004", history: [{ activity: "Asset Created", time: "July 20, 2026 at 01:30 PM" }] },
+    { code: 1005, name: "Office Printer", location: "Admin Office", status: "Operational", condition: "Excellent", publicPageLink: "https://shariq-maintainiq.vercel.app/public.html?code=1005", history: [{ activity: "Asset Created", time: "July 17, 2026 at 04:20 PM" }] }
 ]
 
 if (!localStorage.getItem("allAssets")) {
@@ -138,8 +138,10 @@ function startMaintenance() {
     }
 
     currentAsset.status = "Under Maintenance"
+    currentIssue.status = "Under Maintenance"
     currentAsset.history.unshift({ activity: `Maintenance Started - ${currentIssue.title}`, time : timeStarted })
     localStorage.setItem("allAssets", JSON.stringify(allAssets))
+    localStorage.setItem("allIssues", JSON.stringify(allIssues))
     
     updatePageDetails()
 }
@@ -159,13 +161,15 @@ function resolveIssue() {
     const timeResolved = `${currentDate} at ${currentTime}`
 
     if (currentAsset.status.toLowerCase() == "operational") {
-        showToast("error", "Issue is already Reolved!")
+        showToast("error", "Issue is already Resolved!")
         return
     }
 
     currentAsset.status = "Operational"
+    currentIssue.status = "Operational"
     currentAsset.history.unshift({ activity: `Issue Resolved - ${currentIssue.title}`, time : timeResolved })
     localStorage.setItem("allAssets", JSON.stringify(allAssets))
+    localStorage.setItem("allIssues", JSON.stringify(allIssues))
     
     updatePageDetails()
 }

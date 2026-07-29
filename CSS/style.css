@@ -493,6 +493,7 @@ section {
 }
 
 .modal-overlay .add-new-asset-modal .input-fields input {
+    text-transform: capitalize;
     width: 100%;
     height: 45px;
     padding: 0 12px;
