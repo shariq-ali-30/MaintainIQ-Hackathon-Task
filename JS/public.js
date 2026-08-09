@@ -152,7 +152,6 @@ function reportIssue() {
     newIssue.id = ++issueCodeCount
     newIssue.status = currentAsset.status
     newIssue.title = issueTitleInput.value.trim()
-    newIssue.issueIdNumber = issueCodeCount
     newIssue.reporterName = reporterNameInput.value.trim()
     newIssue.priority = issuePriorityInput.value
     newIssue.date = currentDate
@@ -160,12 +159,10 @@ function reportIssue() {
     newIssue.assetName = currentAsset.name
     newIssue.assetCode = currentAsset.code
 
-    console.log(issueCodeCount);
-    
-
     allIssues.push(newIssue)
 
     localStorage.setItem("allIssues", JSON.stringify(allIssues))
+    localStorage.setItem("issueCodeCount", issueCodeCount)
 
 
     reporterNameInput.value = ""

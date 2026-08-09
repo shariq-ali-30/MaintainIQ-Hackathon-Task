@@ -59,12 +59,12 @@
     --priority-critical-text: #DC2626;
     --priority-critical-dot: #EF4444;
 
-    --priority-high-bg: #FFF7E6;
-    --priority-high-text: #D97706;
-    --priority-high-dot: #F59E0B;
+    --priority-high-bg: #F3E8FF;
+    --priority-high-text: #7E22CE;
+    --priority-high-dot: #9333EA;
 
-    --priority-medium-bg: #FEF3C7;
-    --priority-medium-text: #B45309;
+    --priority-medium-bg: #FFF7E6;
+    --priority-medium-text: #D97706;
     --priority-medium-dot: #F59E0B;
 
     --priority-low-bg: #EAF8F0;
@@ -356,6 +356,7 @@ body {
     font-weight: 500;
     text-transform: capitalize;
 }
+
 .title-section .issue-status.operational,
 .title-section .issue-status.resolved {
     background-color: var(--status-resolved-bg);
@@ -474,6 +475,7 @@ body {
     background-color: var(--priority-critical-bg);
     color: var(--priority-critical-text);
 }
+
 .priority-badge.critical .dot {
     background-color: var(--priority-critical-dot);
 }
@@ -482,6 +484,7 @@ body {
     background-color: var(--priority-high-bg);
     color: var(--priority-high-text);
 }
+
 .priority-badge.high .dot {
     background-color: var(--priority-high-dot);
 }
@@ -490,6 +493,7 @@ body {
     background-color: var(--priority-medium-bg);
     color: var(--priority-medium-text);
 }
+
 .priority-badge.medium .dot {
     background-color: var(--priority-medium-dot);
 }
@@ -498,6 +502,7 @@ body {
     background-color: var(--priority-low-bg);
     color: var(--priority-low-text);
 }
+
 .priority-badge.low .dot {
     background-color: var(--priority-low-dot);
 }
@@ -581,6 +586,7 @@ body {
     background-color: var(--condition-excellent-bg);
     color: var(--condition-excellent-text);
 }
+
 .affected-asset-card .detail .value .condition.excellent .dot {
     border-color: var(--condition-excellent-dot);
 }
@@ -589,6 +595,7 @@ body {
     background-color: var(--condition-good-bg);
     color: var(--condition-good-text);
 }
+
 .affected-asset-card .detail .value .condition.good .dot {
     border-color: var(--condition-good-dot);
 }
@@ -597,6 +604,7 @@ body {
     background-color: var(--condition-fair-bg);
     color: var(--condition-fair-text);
 }
+
 .affected-asset-card .detail .value .condition.fair .dot {
     border-color: var(--condition-fair-dot);
 }
@@ -605,6 +613,7 @@ body {
     background-color: var(--condition-poor-bg);
     color: var(--condition-poor-text);
 }
+
 .affected-asset-card .detail .value .condition.poor .dot {
     border-color: var(--condition-poor-dot);
 }

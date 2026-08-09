@@ -30,6 +30,14 @@ if (!currentUser) {
     window.location.href = "/pages/login.html"
 }
 
+const allIssuesData = [
+  { id: 1001, title: "Display Flickering", description: "Projector screen starts flickering after 15 minutes of continuous use.", status: "Resolved", priority: "High", reporterName: "Ali Raza", date: "Jul 20, 2026", assetCode: 1001, assetName: "Classroom Projector 01" },
+  { id: 1002, title: "Water Leakage", description: "Water dripping directly over the study table area from the split unit.", status: "Issue Reported", priority: "Critical", reporterName: "Sara Khan", date: "Jul 22, 2026", assetCode: 1002, assetName: "Facility AC Unit" },
+  { id: 1003, title: "Not Starting", description: "Automatic takeover failed during power outage. Battery voltage low.", status: "Under Maintenance", priority: "Critical", reporterName: "Tariq Mahmood", date: "Jul 24, 2026", assetCode: 1003, assetName: "Backup Generator" },
+  { id: 1004, title: "Battery Not Charging", description: "Laptop is not holding charge and powers off instantly when unplugged.", status: "Resolved", priority: "High", reporterName: "Bilal Sheikh", date: "Jul 24, 2026", assetCode: 1004, assetName: "Admin Office Laptop" },
+  { id: 1005, title: "Paper Jam Error", description: "Roller mechanism stuck, showing persistent paper jam error on panel.", status: "Resolved", priority: "Medium", reporterName: "Usman Ahmed", date: "Jul 23, 2026", assetCode: 1005, assetName: "Office Printer" }
+]
+
 let allIssues = JSON.parse(localStorage.getItem("allIssues"))
 let issueIdParam = new URLSearchParams(window.location.search).get("issue-id")
 let currentIssue = allIssues.find(issue => issue.id == issueIdParam)
@@ -38,14 +46,6 @@ if (!currentIssue) {
     notFoundContainer.style.display = "flex"
     mainContainer.style.display = "none"
 }
-
-const allIssuesData = [
-  { id: 1001, issueIdNumber: 1001, title: "Display Flickering", description: "Projector screen starts flickering after 15 minutes of continuous use.", status: "Resolved", priority: "High", reporterName: "Ali Raza", date: "Jul 20, 2026", assetCode: 1001, assetName: "Classroom Projector 01" },
-  { id: 1002, issueIdNumber: 1002, title: "Water Leakage", description: "Water dripping directly over the study table area from the split unit.", status: "Issue Reported", priority: "Critical", reporterName: "Sara Khan", date: "Jul 22, 2026", assetCode: 1002, assetName: "Facility AC Unit" },
-  { id: 1003, issueIdNumber: 1003, title: "Not Starting", description: "Automatic takeover failed during power outage. Battery voltage low.", status: "Under Maintenance", priority: "Critical", reporterName: "Tariq Mahmood", date: "Jul 24, 2026", assetCode: 1003, assetName: "Backup Generator" },
-  { id: 1004, issueIdNumber: 1004, title: "Battery Not Charging", description: "Laptop is not holding charge and powers off instantly when unplugged.", status: "Resolved", priority: "High", reporterName: "Bilal Sheikh", date: "Jul 24, 2026", assetCode: 1004, assetName: "Admin Office Laptop" },
-  { id: 1005, issueIdNumber: 1005, title: "Paper Jam Error", description: "Roller mechanism stuck, showing persistent paper jam error on panel.", status: "Resolved", priority: "Medium", reporterName: "Usman Ahmed", date: "Jul 23, 2026", assetCode: 1005, assetName: "Office Printer" }
-]
 
 const allAssetsData = [
     { code: 1001, name: "Classroom Projector 01", location: "Building A - Room 101", status: "Operational", condition: "Excellent", publicPageLink: "https://shariq-maintainiq.vercel.app/public.html?code=1001", history: [{ activity: "Asset Created", time: "July 20, 2026 at 10:00 AM" }] },
@@ -84,8 +84,8 @@ function showToast(state, message) {
 
 function updatePageDetails() {
     issueId.innerHTML = `#ISS-${currentIssue.id}`
-    issueStatus.innerHTML = `<span class="dot"></span>${currentAsset.status.replace("Operational", "Resolved")}`
-    issueStatus.className = `issue-status ${currentAsset.status.replace(" ", "-").toLowerCase()}`
+    issueStatus.innerHTML = `<span class="dot"></span>${currentIssue.status.replace("Operational", "Resolved")}`
+    issueStatus.className = `issue-status ${currentIssue.status.replace(" ", "-").toLowerCase()}`
     issueTitle.innerHTML = currentIssue.title
     issueIdNumber.innerHTML = `ISS-${currentIssue.id}`
     issueReporter.innerHTML = currentIssue.reporterName
@@ -127,12 +127,12 @@ function startMaintenance() {
     })
     const timeStarted = `${currentDate} at ${currentTime}`
 
-    if (currentAsset.status.toLowerCase() == "under maintenance") {
+    if (currentIssue.status.toLowerCase() == "under maintenance") {
         showToast("error", "Issue is already in Under Maintenance!")
         return
     }
 
-    if (currentAsset.status.toLowerCase() == "operational") {
+    if (currentIssue.status.toLowerCase() == "operational") {
         showToast("error", "Issue is already Resolved!")
         return
     }
@@ -160,7 +160,7 @@ function resolveIssue() {
     })
     const timeResolved = `${currentDate} at ${currentTime}`
 
-    if (currentAsset.status.toLowerCase() == "operational") {
+    if (currentIssue.status.toLowerCase() == "operational") {
         showToast("error", "Issue is already Resolved!")
         return
     }
