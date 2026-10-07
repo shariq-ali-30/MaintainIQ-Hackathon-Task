@@ -41,20 +41,6 @@ The project is designed to help organizations manage assets and track their main
 - Data persistence using Local Storage
 - Dynamic UI updates using JavaScript and DOM manipulation
 
-## What I Learned
-
-Through this hackathon, I learned:
-
-- How to build a complete Asset Maintenance Management application
-- How to implement role-based login flows using JavaScript
-- How to manage and persist application data using Local Storage
-- How to perform CRUD operations using JavaScript
-- How to dynamically render and update data in the DOM
-- How to create asset and maintenance issue management workflows
-- How to build responsive dashboards and management interfaces
-- How to organize a large web application into separate HTML, CSS, and JavaScript files
-- How to develop a real-world application under hackathon conditions
-
 ## Author
 
 **Shariq Ali**
